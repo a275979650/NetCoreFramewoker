@@ -1,0 +1,166 @@
+@{
+    Layout = "~/Views/Shared/_Layout_List.cshtml";
+}
+
+@section toolbar{
+    <a id="add" class="easyui-linkbutton" data-options="iconCls:'icon-add'">添加</a>
+    <a id="edit" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改</a>
+    <a id="delete" class="easyui-linkbutton" data-options="iconCls:'icon-remove'">删除</a>
+}
+
+@section search{
+    <div class="search_wrapper">
+        <div class="search_item">
+            <label class="search_label">查询类别</label>
+            <select name="condition" class="easyui-combobox" data-options="width:100">
+                <option value="">请选择</option>
+                
+                <option value="ORGAN_CODE">HKPEIS.PBDM_ORGAN.ORGAN_CODE</option>
+                <option value="ORGAN_NAME">HKPEIS.PBDM_ORGAN.ORGAN_NAME</option>
+                <option value="ORGAN_LEVEL">HKPEIS.PBDM_ORGAN.ORGAN_LEVEL</option>
+                <option value="ORGAN_TYPE">HKPEIS.PBDM_ORGAN.ORGAN_TYPE</option>
+                <option value="PROVINCE">HKPEIS.PBDM_ORGAN.PROVINCE</option>
+                <option value="CITY">HKPEIS.PBDM_ORGAN.CITY</option>
+                <option value="COUNTY">HKPEIS.PBDM_ORGAN.COUNTY</option>
+                <option value="ADDRESS">HKPEIS.PBDM_ORGAN.ADDRESS</option>
+                <option value="ZIP_CODE">HKPEIS.PBDM_ORGAN.ZIP_CODE</option>
+                <option value="PHONE">HKPEIS.PBDM_ORGAN.PHONE</option>
+                <option value="WEBSITE">HKPEIS.PBDM_ORGAN.WEBSITE</option>
+                <option value="EMAIL">HKPEIS.PBDM_ORGAN.EMAIL</option>
+                <option value="GAIN_SIGN">HKPEIS.PBDM_ORGAN.GAIN_SIGN</option>
+                <option value="LOGO_PATH">HKPEIS.PBDM_ORGAN.LOGO_PATH</option>
+                <option value="ACTIVE">HKPEIS.PBDM_ORGAN.ACTIVE</option>
+                <option value="TRX_DATE">HKPEIS.PBDM_ORGAN.TRX_DATE</option>
+                <option value="TRX_USER_KEY">HKPEIS.PBDM_ORGAN.TRX_USER_KEY</option>
+                <option value="ORGAN_SUB_NAME">HKPEIS.PBDM_ORGAN.ORGAN_SUB_NAME</option>
+                <option value="ORGAN_EN_NAME">HKPEIS.PBDM_ORGAN.ORGAN_EN_NAME</option>
+                <option value="PUBLIC_TRANS">HKPEIS.PBDM_ORGAN.PUBLIC_TRANS</option>
+                <option value="SUMMARY">HKPEIS.PBDM_ORGAN.SUMMARY</option>
+            </select>
+            <input name="keyword" class="easyui-textbox" style="width:150px" />
+        </div>
+        <div class="search_submit">
+            <a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-search'" onclick="searchGrid(this,'#dataTable')">查询</a>
+        </div>
+    </div>
+}
+<div id="dataTable">
+
+</div>
+
+<script>
+    var rootUrl = '@Url.Content("~/")';
+    var formWidth = 800;
+    var formHeight = 800;
+
+    function initTable() {
+        $('#dataTable').datagrid({
+            url: rootUrl + 'OrganSet/PBDM_ORGAN/GetDataList',
+            method: 'POST',
+            //queryParams: { 'id': id },
+            idField: 'Id',
+            fit: true,
+            fitColumns: true,
+            singleSelect: false,
+            selectOnCheck: false,
+            checkOnSelect: false,
+            //rownumbers: true,
+            pagination: true,
+            pageSize: 30,
+            //nowrap: false,
+            pageList: [10, 20, 30, 50, 100, 150, 200],
+            //showFooter: true,
+            columns: [[
+                { title: 'ck', field: 'ck', checkbox: true },
+                
+                { title: 'HKPEIS.PBDM_ORGAN.OGRAN_SERIAL_KEY', field: 'OGRAN_SERIAL_KEY', width: 200 },
+                { title: 'HKPEIS.PBDM_ORGAN.ORGAN_CODE', field: 'ORGAN_CODE', width: 200 },
+                { title: 'HKPEIS.PBDM_ORGAN.ORGAN_NAME', field: 'ORGAN_NAME', width: 200 },
+                { title: 'HKPEIS.PBDM_ORGAN.ORGAN_LEVEL', field: 'ORGAN_LEVEL', width: 200 },
+                { title: 'HKPEIS.PBDM_ORGAN.ORGAN_TYPE', field: 'ORGAN_TYPE', width: 200 },
+                { title: 'HKPEIS.PBDM_ORGAN.PROVINCE', field: 'PROVINCE', width: 200 },
+                { title: 'HKPEIS.PBDM_ORGAN.CITY', field: 'CITY', width: 200 },
+                { title: 'HKPEIS.PBDM_ORGAN.COUNTY', field: 'COUNTY', width: 200 },
+                { title: 'HKPEIS.PBDM_ORGAN.ADDRESS', field: 'ADDRESS', width: 200 },
+                { title: 'HKPEIS.PBDM_ORGAN.ZIP_CODE', field: 'ZIP_CODE', width: 200 },
+                { title: 'HKPEIS.PBDM_ORGAN.PHONE', field: 'PHONE', width: 200 },
+                { title: 'HKPEIS.PBDM_ORGAN.WEBSITE', field: 'WEBSITE', width: 200 },
+                { title: 'HKPEIS.PBDM_ORGAN.EMAIL', field: 'EMAIL', width: 200 },
+                { title: 'HKPEIS.PBDM_ORGAN.GAIN_SIGN', field: 'GAIN_SIGN', width: 200 },
+                { title: 'HKPEIS.PBDM_ORGAN.LOGO_PATH', field: 'LOGO_PATH', width: 200 },
+                { title: 'HKPEIS.PBDM_ORGAN.ACTIVE', field: 'ACTIVE', width: 200 },
+                { title: 'HKPEIS.PBDM_ORGAN.TRX_DATE', field: 'TRX_DATE', width: 200 },
+                { title: 'HKPEIS.PBDM_ORGAN.TRX_USER_KEY', field: 'TRX_USER_KEY', width: 200 },
+                { title: 'HKPEIS.PBDM_ORGAN.TRX_USER_SERIAL_KEY', field: 'TRX_USER_SERIAL_KEY', width: 200 },
+                { title: 'HKPEIS.PBDM_ORGAN.ORGAN_SUB_NAME', field: 'ORGAN_SUB_NAME', width: 200 },
+                { title: 'HKPEIS.PBDM_ORGAN.ORGAN_EN_NAME', field: 'ORGAN_EN_NAME', width: 200 },
+                { title: 'HKPEIS.PBDM_ORGAN.PUBLIC_TRANS', field: 'PUBLIC_TRANS', width: 200 },
+                { title: 'HKPEIS.PBDM_ORGAN.SUMMARY', field: 'SUMMARY', width: 200 }
+            ]],
+            onBeforeLoad: function (param) {
+
+            },
+            onBeforeSelect: function () {
+                return false;
+            }
+        });
+    }
+
+    $(function () {
+        initTable();
+
+        //添加数据
+        $('#add').click(function () {
+            dialogOpen({
+                id: 'form',
+                title: '添加数据',
+                width: formWidth,
+                height: formHeight,
+                url: rootUrl + 'OrganSet/PBDM_ORGAN/Form',
+            });
+        });
+
+        //修改数据
+        $('#edit').click(function () {
+            var selected = $("#dataTable").datagrid("getChecked");
+            if (!selected || !selected.length) {
+                dialogError('请选择要修改的记录!');
+                return;
+            }
+            var id = selected[0].Id;
+
+            dialogOpen({
+                id: 'form',
+                title: '修改数据',
+                width: formWidth,
+                height: formHeight,
+                url: rootUrl + 'OrganSet/PBDM_ORGAN/Form?id=' + id,
+            });
+        });
+
+        //删除数据
+        $('#delete').click(function () {
+            var checked = $("#dataTable").datagrid("getChecked");
+            if (!checked || !checked.length) {
+                dialogError('请选择要删除的记录!');
+                return;
+            }
+            var ids = $.map(checked, function (item) {
+                return item['Id'];
+            });
+
+            dialogComfirm('确认删除吗？', function () {
+                $.postJSON(rootUrl + 'OrganSet/PBDM_ORGAN/DeleteData', { ids: JSON.stringify(ids) }, function (resJson) {
+                    if (resJson.Success) {
+                        $('#dataTable').datagrid('clearSelections').datagrid('clearChecked');
+                        $('#dataTable').datagrid('reload');
+                        dialogMsg('删除成功!');
+                    }
+                    else {
+                        dialogError(resJson.Msg);
+                    }
+                });
+            });
+        });
+    });
+</script>

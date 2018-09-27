@@ -1,0 +1,16 @@
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.Business\bin\Debug\netstandard2.0\Hk.Core.Business.deps.json
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.Business\bin\Debug\netstandard2.0\Hk.Core.Business.dll
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.Business\bin\Debug\netstandard2.0\Hk.Core.Business.pdb
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.Business\bin\Debug\netstandard2.0\Hk.Core.DataRepository.dll
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.Business\bin\Debug\netstandard2.0\Hk.Core.Entity.dll
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.Business\bin\Debug\netstandard2.0\Hk.Core.Util.dll
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.Business\bin\Debug\netstandard2.0\Hk.Core.DataRepository.pdb
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.Business\bin\Debug\netstandard2.0\Hk.Core.Entity.pdb
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.Business\bin\Debug\netstandard2.0\Hk.Core.Util.pdb
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.Business\obj\Debug\netstandard2.0\04.Hk.Core.Business.csprojAssemblyReference.cache
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.Business\obj\Debug\netstandard2.0\04.Hk.Core.Business.csproj.CoreCompileInputs.cache
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.Business\obj\Debug\netstandard2.0\04.Hk.Core.Business.AssemblyInfoInputs.cache
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.Business\obj\Debug\netstandard2.0\04.Hk.Core.Business.AssemblyInfo.cs
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.Business\obj\Debug\netstandard2.0\04.Hk.Core.Business.csproj.CopyComplete
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.Business\obj\Debug\netstandard2.0\Hk.Core.Business.dll
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.Business\obj\Debug\netstandard2.0\Hk.Core.Business.pdb

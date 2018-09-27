@@ -1,0 +1,16 @@
+F:\SVN\20SVN\Hk.Core.Framework\HK.Core.Webs\obj\Debug\netstandard2.0\07.HK.Core.Webs.csprojAssemblyReference.cache
+F:\SVN\20SVN\Hk.Core.Framework\HK.Core.Webs\obj\Debug\netstandard2.0\07.HK.Core.Webs.csproj.CoreCompileInputs.cache
+F:\SVN\20SVN\Hk.Core.Framework\HK.Core.Webs\obj\Debug\netstandard2.0\07.HK.Core.Webs.AssemblyInfoInputs.cache
+F:\SVN\20SVN\Hk.Core.Framework\HK.Core.Webs\obj\Debug\netstandard2.0\07.HK.Core.Webs.AssemblyInfo.cs
+F:\SVN\20SVN\Hk.Core.Framework\HK.Core.Webs\bin\Debug\netstandard2.0\HK.Core.Webs.deps.json
+F:\SVN\20SVN\Hk.Core.Framework\HK.Core.Webs\bin\Debug\netstandard2.0\HK.Core.Webs.dll
+F:\SVN\20SVN\Hk.Core.Framework\HK.Core.Webs\bin\Debug\netstandard2.0\HK.Core.Webs.pdb
+F:\SVN\20SVN\Hk.Core.Framework\HK.Core.Webs\bin\Debug\netstandard2.0\Hk.Core.Logs.dll
+F:\SVN\20SVN\Hk.Core.Framework\HK.Core.Webs\bin\Debug\netstandard2.0\Hk.Core.Security.dll
+F:\SVN\20SVN\Hk.Core.Framework\HK.Core.Webs\bin\Debug\netstandard2.0\Hk.Core.Util.dll
+F:\SVN\20SVN\Hk.Core.Framework\HK.Core.Webs\bin\Debug\netstandard2.0\Hk.Core.Logs.pdb
+F:\SVN\20SVN\Hk.Core.Framework\HK.Core.Webs\bin\Debug\netstandard2.0\Hk.Core.Security.pdb
+F:\SVN\20SVN\Hk.Core.Framework\HK.Core.Webs\bin\Debug\netstandard2.0\Hk.Core.Util.pdb
+F:\SVN\20SVN\Hk.Core.Framework\HK.Core.Webs\obj\Debug\netstandard2.0\07.HK.Core.Webs.csproj.CopyComplete
+F:\SVN\20SVN\Hk.Core.Framework\HK.Core.Webs\obj\Debug\netstandard2.0\HK.Core.Webs.dll
+F:\SVN\20SVN\Hk.Core.Framework\HK.Core.Webs\obj\Debug\netstandard2.0\HK.Core.Webs.pdb

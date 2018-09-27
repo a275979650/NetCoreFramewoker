@@ -1,0 +1,12 @@
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.DataRepository\bin\Debug\netcoreapp2.1\Hk.Core.DataRepository.deps.json
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.DataRepository\bin\Debug\netcoreapp2.1\Hk.Core.DataRepository.dll
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.DataRepository\bin\Debug\netcoreapp2.1\Hk.Core.DataRepository.pdb
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.DataRepository\bin\Debug\netcoreapp2.1\Hk.Core.Util.dll
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.DataRepository\bin\Debug\netcoreapp2.1\Hk.Core.Util.pdb
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.DataRepository\obj\Debug\netcoreapp2.1\02.Hk.Core.DataRepository.csprojAssemblyReference.cache
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.DataRepository\obj\Debug\netcoreapp2.1\02.Hk.Core.DataRepository.csproj.CoreCompileInputs.cache
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.DataRepository\obj\Debug\netcoreapp2.1\02.Hk.Core.DataRepository.AssemblyInfoInputs.cache
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.DataRepository\obj\Debug\netcoreapp2.1\02.Hk.Core.DataRepository.AssemblyInfo.cs
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.DataRepository\obj\Debug\netcoreapp2.1\02.Hk.Core.DataRepository.csproj.CopyComplete
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.DataRepository\obj\Debug\netcoreapp2.1\Hk.Core.DataRepository.dll
+F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.DataRepository\obj\Debug\netcoreapp2.1\Hk.Core.DataRepository.pdb

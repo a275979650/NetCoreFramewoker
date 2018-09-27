@@ -1,0 +1,12 @@
+F:\SVN\20SVN\Hk.Core.Framework\06.Hk.Core.Security\bin\Debug\netstandard2.0\Hk.Core.Security.deps.json
+F:\SVN\20SVN\Hk.Core.Framework\06.Hk.Core.Security\bin\Debug\netstandard2.0\Hk.Core.Security.dll
+F:\SVN\20SVN\Hk.Core.Framework\06.Hk.Core.Security\bin\Debug\netstandard2.0\Hk.Core.Security.pdb
+F:\SVN\20SVN\Hk.Core.Framework\06.Hk.Core.Security\bin\Debug\netstandard2.0\Hk.Core.Util.dll
+F:\SVN\20SVN\Hk.Core.Framework\06.Hk.Core.Security\bin\Debug\netstandard2.0\Hk.Core.Util.pdb
+F:\SVN\20SVN\Hk.Core.Framework\06.Hk.Core.Security\obj\Debug\netstandard2.0\06.Hk.Core.Security.csprojAssemblyReference.cache
+F:\SVN\20SVN\Hk.Core.Framework\06.Hk.Core.Security\obj\Debug\netstandard2.0\06.Hk.Core.Security.csproj.CoreCompileInputs.cache
+F:\SVN\20SVN\Hk.Core.Framework\06.Hk.Core.Security\obj\Debug\netstandard2.0\06.Hk.Core.Security.AssemblyInfoInputs.cache
+F:\SVN\20SVN\Hk.Core.Framework\06.Hk.Core.Security\obj\Debug\netstandard2.0\06.Hk.Core.Security.AssemblyInfo.cs
+F:\SVN\20SVN\Hk.Core.Framework\06.Hk.Core.Security\obj\Debug\netstandard2.0\06.Hk.Core.Security.csproj.CopyComplete
+F:\SVN\20SVN\Hk.Core.Framework\06.Hk.Core.Security\obj\Debug\netstandard2.0\Hk.Core.Security.dll
+F:\SVN\20SVN\Hk.Core.Framework\06.Hk.Core.Security\obj\Debug\netstandard2.0\Hk.Core.Security.pdb
