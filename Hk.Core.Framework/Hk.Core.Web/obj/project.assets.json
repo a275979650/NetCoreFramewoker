@@ -4998,7 +4998,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Exceptionless": "4.3.2012",
-          "F:\\SVN\\gitPro\\Hk.Core.Framework\\06.Hk.Core.Security\\06.Hk.Core.Security.csproj": "1.0.0",
+          "Hk.Core.Security": "1.0.0",
           "Hk.Core.Util": "1.0.0",
           "NLog": "4.5.10"
         },
@@ -5007,6 +5007,19 @@
         },
         "runtime": {
           "bin/placeholder/Hk.Core.Logs.dll": {}
+        }
+      },
+      "Hk.Core.Security/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Hk.Core.Util": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Hk.Core.Security.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hk.Core.Security.dll": {}
         }
       },
       "Hk.Core.Util/1.0.0": {
@@ -13214,6 +13227,11 @@
       "path": "../Hk.Core.Logs/05.Hk.Core.Logs.csproj",
       "msbuildProject": "../Hk.Core.Logs/05.Hk.Core.Logs.csproj"
     },
+    "Hk.Core.Security/1.0.0": {
+      "type": "project",
+      "path": "../Hk.Core.Security/06.Hk.Core.Security.csproj",
+      "msbuildProject": "../Hk.Core.Security/06.Hk.Core.Security.csproj"
+    },
     "Hk.Core.Util/1.0.0": {
       "type": "project",
       "path": "../Hk.Core.Util/01.Hk.Core.Util.csproj",
@@ -13323,16 +13341,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "找不到项目“F:\\SVN\\gitPro\\Hk.Core.Framework\\06.Hk.Core.Security\\06.Hk.Core.Security.csproj”。请检查项目引用是否有效以及项目文件是否存在。",
-      "libraryId": "F:\\SVN\\gitPro\\Hk.Core.Framework\\06.Hk.Core.Security\\06.Hk.Core.Security.csproj",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v2.1"
-      ]
-    }
-  ]
+  }
 }

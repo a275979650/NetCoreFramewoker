@@ -3179,6 +3179,19 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
+      "Hk.Core.Security/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Hk.Core.Util": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Hk.Core.Security.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hk.Core.Security.dll": {}
+        }
+      },
       "Hk.Core.Util/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -9096,6 +9109,11 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
+    "Hk.Core.Security/1.0.0": {
+      "type": "project",
+      "path": "../Hk.Core.Security/06.Hk.Core.Security.csproj",
+      "msbuildProject": "../Hk.Core.Security/06.Hk.Core.Security.csproj"
+    },
     "Hk.Core.Util/1.0.0": {
       "type": "project",
       "path": "../Hk.Core.Util/01.Hk.Core.Util.csproj",
@@ -9105,7 +9123,7 @@
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "Exceptionless >= 4.3.2012",
-      "F:\\SVN\\gitPro\\Hk.Core.Framework\\06.Hk.Core.Security\\06.Hk.Core.Security.csproj",
+      "Hk.Core.Security >= 1.0.0",
       "Hk.Core.Util >= 1.0.0",
       "NETStandard.Library >= 2.0.3",
       "NLog >= 4.5.10"
@@ -9143,8 +9161,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "F:\\SVN\\gitPro\\Hk.Core.Framework\\06.Hk.Core.Security\\06.Hk.Core.Security.csproj": {
-              "projectPath": "F:\\SVN\\gitPro\\Hk.Core.Framework\\06.Hk.Core.Security\\06.Hk.Core.Security.csproj"
+            "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Security\\06.Hk.Core.Security.csproj": {
+              "projectPath": "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Security\\06.Hk.Core.Security.csproj"
             },
             "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Util\\01.Hk.Core.Util.csproj": {
               "projectPath": "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Util\\01.Hk.Core.Util.csproj"
@@ -9183,16 +9201,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "找不到项目“F:\\SVN\\gitPro\\Hk.Core.Framework\\06.Hk.Core.Security\\06.Hk.Core.Security.csproj”。请检查项目引用是否有效以及项目文件是否存在。",
-      "libraryId": "F:\\SVN\\gitPro\\Hk.Core.Framework\\06.Hk.Core.Security\\06.Hk.Core.Security.csproj",
-      "targetGraphs": [
-        ".NETStandard,Version=v2.0"
-      ]
-    }
-  ]
+  }
 }

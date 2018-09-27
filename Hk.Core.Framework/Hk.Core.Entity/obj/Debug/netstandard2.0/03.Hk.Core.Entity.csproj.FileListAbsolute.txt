@@ -10,3 +10,15 @@ F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.Entity\obj\Debug\netstandard2.0\03.Hk.Cor
 F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.Entity\obj\Debug\netstandard2.0\03.Hk.Core.Entity.csproj.CopyComplete
 F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.Entity\obj\Debug\netstandard2.0\Hk.Core.Entity.dll
 F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.Entity\obj\Debug\netstandard2.0\Hk.Core.Entity.pdb
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Entity\bin\Debug\netstandard2.0\Hk.Core.Entity.deps.json
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Entity\bin\Debug\netstandard2.0\Hk.Core.Entity.dll
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Entity\bin\Debug\netstandard2.0\Hk.Core.Entity.pdb
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Entity\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.dll
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Entity\bin\Debug\netstandard2.0\System.ComponentModel.Annotations.xml
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Entity\obj\Debug\netstandard2.0\03.Hk.Core.Entity.csproj.CoreCompileInputs.cache
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Entity\obj\Debug\netstandard2.0\03.Hk.Core.Entity.AssemblyInfoInputs.cache
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Entity\obj\Debug\netstandard2.0\03.Hk.Core.Entity.AssemblyInfo.cs
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Entity\obj\Debug\netstandard2.0\03.Hk.Core.Entity.csproj.CopyComplete
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Entity\obj\Debug\netstandard2.0\Hk.Core.Entity.dll
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Entity\obj\Debug\netstandard2.0\Hk.Core.Entity.pdb
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Entity\obj\Debug\netstandard2.0\03.Hk.Core.Entity.csprojAssemblyReference.cache
