@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.Hk.Core.Business", "Hk.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hk.Core.Web", "Hk.Core.Web\Hk.Core.Web.csproj", "{31728FAB-CDE4-4454-875C-B6706A647AD4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06.Hk.Core.Security", "06.Hk.Core.Security\06.Hk.Core.Security.csproj", "{6C6BC805-C88C-4E17-B57A-F0F4AB05B04C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06.Hk.Core.Security", "Hk.Core.Security\06.Hk.Core.Security.csproj", "{6C6BC805-C88C-4E17-B57A-F0F4AB05B04C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.Hk.Core.Logs", "Hk.Core.Logs\05.Hk.Core.Logs.csproj", "{C4B74C94-AA63-4D59-A30F-B51FEE2C2E58}"
 EndProject
