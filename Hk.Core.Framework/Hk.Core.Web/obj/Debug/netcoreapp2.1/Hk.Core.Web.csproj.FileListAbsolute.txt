@@ -114,3 +114,6 @@ F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Web\obj\Debug\netcoreapp2.1\Hk.Core.Web.
 F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Web\obj\Debug\netcoreapp2.1\Hk.Core.Web.csproj.CopyComplete
 F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Web\obj\Debug\netcoreapp2.1\Hk.Core.Web.dll
 F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Web\obj\Debug\netcoreapp2.1\Hk.Core.Web.pdb
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Web\bin\Debug\netcoreapp2.1\Hk.Core.Data.dll
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Web\bin\Debug\netcoreapp2.1\Hk.Core.Data.pdb
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Web\bin\Debug\netcoreapp2.1\appsettings.json

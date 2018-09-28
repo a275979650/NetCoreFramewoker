@@ -21,3 +21,4 @@ F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Util\obj\Debug\netstandard2.0\01.Hk.Core
 F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Util\obj\Debug\netstandard2.0\01.Hk.Core.Util.AssemblyInfo.cs
 F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Util\obj\Debug\netstandard2.0\Hk.Core.Util.dll
 F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Util\obj\Debug\netstandard2.0\Hk.Core.Util.pdb
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Util\obj\Debug\netstandard2.0\01.Hk.Core.Util.csprojAssemblyReference.cache

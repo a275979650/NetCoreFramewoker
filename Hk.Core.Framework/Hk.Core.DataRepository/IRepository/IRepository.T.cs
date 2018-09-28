@@ -8,7 +8,7 @@ using Hk.Core.Util.Dependency;
 
 namespace Hk.Core.DataRepository
 {
-    public interface IRepository<T>: ISingletonDependency where T : class, new()
+    public interface IRepository<T> where T : class, new()
     {
         #region 事物提交
 

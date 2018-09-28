@@ -12,6 +12,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Hk.Core.Business\04.Hk.Core.Business.csproj" />
     <ProjectReference Include="..\Hk.Core.DataRepository\02.Hk.Core.DataRepository.csproj" />
+    <ProjectReference Include="..\Hk.Core.Data\Hk.Core.Data.csproj" />
     <ProjectReference Include="..\Hk.Core.Entity\03.Hk.Core.Entity.csproj" />
     <ProjectReference Include="..\Hk.Core.Logs\05.Hk.Core.Logs.csproj" />
     <ProjectReference Include="..\Hk.Core.Util\01.Hk.Core.Util.csproj" />
@@ -20,7 +21,7 @@
 
   <ItemGroup>
     <Content Update="appsettings.json">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="nlog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -7,6 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <None Remove="Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="DbContext\DbContextOption.cs" />
+    <Compile Remove="DbContext\IDbContextCore.cs" />
+    <Compile Remove="DbContext\SqlServerDbContext.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Hk.Core.Util\01.Hk.Core.Util.csproj" />
   </ItemGroup>
 

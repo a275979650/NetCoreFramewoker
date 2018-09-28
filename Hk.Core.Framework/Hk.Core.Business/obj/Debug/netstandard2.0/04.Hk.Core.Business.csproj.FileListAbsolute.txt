@@ -30,3 +30,5 @@ F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Business\obj\Debug\netstandard2.0\04.Hk.
 F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Business\obj\Debug\netstandard2.0\04.Hk.Core.Business.csproj.CopyComplete
 F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Business\obj\Debug\netstandard2.0\Hk.Core.Business.dll
 F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Business\obj\Debug\netstandard2.0\Hk.Core.Business.pdb
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Business\bin\Debug\netstandard2.0\Hk.Core.Data.dll
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Business\bin\Debug\netstandard2.0\Hk.Core.Data.pdb

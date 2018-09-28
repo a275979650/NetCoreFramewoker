@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06.Hk.Core.Security", "Hk.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05.Hk.Core.Logs", "Hk.Core.Logs\05.Hk.Core.Logs.csproj", "{C4B74C94-AA63-4D59-A30F-B51FEE2C2E58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.HK.Core.Webs", "HK.Core.Webs\07.HK.Core.Webs.csproj", "{80FE7D58-2E50-4079-BF5F-49DCB5E1F7CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07.HK.Core.Webs", "HK.Core.Webs\07.HK.Core.Webs.csproj", "{80FE7D58-2E50-4079-BF5F-49DCB5E1F7CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hk.Core.Data", "Hk.Core.Data\Hk.Core.Data.csproj", "{96A620B7-0DFD-4E3B-B6FC-91DC578CA040}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{80FE7D58-2E50-4079-BF5F-49DCB5E1F7CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80FE7D58-2E50-4079-BF5F-49DCB5E1F7CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80FE7D58-2E50-4079-BF5F-49DCB5E1F7CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96A620B7-0DFD-4E3B-B6FC-91DC578CA040}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96A620B7-0DFD-4E3B-B6FC-91DC578CA040}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96A620B7-0DFD-4E3B-B6FC-91DC578CA040}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96A620B7-0DFD-4E3B-B6FC-91DC578CA040}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

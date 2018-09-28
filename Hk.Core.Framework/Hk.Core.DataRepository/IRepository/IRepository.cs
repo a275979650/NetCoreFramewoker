@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Hk.Core.DataRepository
 {
-    public interface IRepository:ISingletonDependency
+    public interface IRepository
     {
         #region 数据库连接相关方法
 
