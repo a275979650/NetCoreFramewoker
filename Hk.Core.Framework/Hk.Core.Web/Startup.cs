@@ -42,7 +42,6 @@ namespace Hk.Core.Web
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             Log.GetLog("³ÌÐò¿ªÊ¼").Content("start").Info();
-
             services.AddMvc(options =>
             {
                 options.Filters.Add<GlobalExceptionFilter>();
@@ -51,6 +50,7 @@ namespace Hk.Core.Web
             services.AddSingleton(Configuration);
             services.AddEventBus();
             services.AddNLog();
+            services.AddOptions();
             return services.AddUtil(new HomeBusinessConfig());
         }
 

@@ -8,9 +8,10 @@ namespace Hk.Core.Util.Helper
     /// </summary>
     public class ConfigHelper
     {
+
         static ConfigHelper()
         {
-            IConfiguration config = AutofacHelper.GetService<IConfiguration>();
+            IConfiguration config = Ioc.DefaultContainer.GetService<IConfiguration>();
             if (config == null)
             {
                 var builder = new ConfigurationBuilder()

@@ -1,5 +1,6 @@
-﻿using Hk.Core.Business.Base_SysManage;
+﻿using Hk.Core.DataRepository;
 using Hk.Core.Util.Dependency;
+using Hk.Core.Util.Helper;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Hk.Core.Web.Config
@@ -24,6 +25,17 @@ namespace Hk.Core.Web.Config
                         .AllowAnyHeader()
                         .AllowCredentials();//指定处理cookie
                 });
+            });
+            #endregion
+
+            #region 配置DbContextOption
+            //database connectionstring
+            var dbConnectionString = ConfigHelper.GetConnectionString("DbBase");
+            //配置DbContextOption
+            services.Configure<DbContextOption>(options =>
+            {
+                options.ConnectionString = dbConnectionString;
+                options.ModelAssemblyName = "Hk.WebApis.Models";
             });
             #endregion
         }
