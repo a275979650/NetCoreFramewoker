@@ -1,3 +1,4 @@
+using Hk.Core.Data.Models;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,14 +9,13 @@ namespace Hk.Core.Entity.OrganSet
     /// HKPEIS.PBDM_ORGAN
     /// </summary>
     [Table("PBDM_ORGAN")]
-    public class PBDM_ORGAN
+    public class PBDM_ORGAN:BaseModel<string>
     {
-
         /// <summary>
         /// HKPEIS.PBDM_ORGAN.ORGAN_KEY
         /// </summary>
         [Key]
-        public String Id { get; set; }
+        public override string Id { get; set; }
 
         /// <summary>
         /// HKPEIS.PBDM_ORGAN.OGRAN_SERIAL_KEY

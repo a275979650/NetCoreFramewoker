@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Hk.Core.Data.Models;
 
 namespace Hk.Core.Entity.Base_SysManage
 {
@@ -8,14 +9,14 @@ namespace Hk.Core.Entity.Base_SysManage
     /// Base_UserRoleMap
     /// </summary>
     [Table("Base_UserRoleMap")]
-    public class Base_UserRoleMap
+    public class Base_UserRoleMap:BaseModel<string>
     {
 
         /// <summary>
         /// Id
         /// </summary>
         [Key]
-        public String Id { get; set; }
+        public override string Id { get; set; }
 
         /// <summary>
         /// UserId

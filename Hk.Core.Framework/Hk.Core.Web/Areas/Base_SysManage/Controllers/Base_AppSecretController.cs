@@ -5,6 +5,9 @@ using Hk.Core.Util.Extentions;
 using Hk.Core.Web.Common;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using Hk.Core.Business.Common;
+using Hk.Core.Data.DbContextCore;
+using Hk.Core.IRepositorys;
 
 
 namespace Hk.Core.Web
@@ -12,7 +15,12 @@ namespace Hk.Core.Web
     [Area("Base_SysManage")]
     public class Base_AppSecretController : BaseMvcController
     {
-        Base_AppSecretBusiness _base_AppSecretBusiness = new Base_AppSecretBusiness();
+        private Base_AppSecretBusiness _base_AppSecretBusiness { get; }
+        public Base_AppSecretController(IDbContextCore dbContext)
+        {
+            _base_AppSecretBusiness = new Base_AppSecretBusiness(dbContext);
+        }
+
 
         #region 视图功能
 

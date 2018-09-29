@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Hk.Core.Repositorys</AssemblyName>
+    <RootNamespace>Hk.Core.Repositorys</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Hk.Core.Business\04.Hk.Core.Business.csproj" />
+    <ProjectReference Include="..\Hk.Core.Data\02.Hk.Core.Data.csproj" />
+    <ProjectReference Include="..\Hk.Core.Entity\03.Hk.Core.Entity.csproj" />
+    <ProjectReference Include="..\Hk.Core.IRepositorys\08.Hk.Core.IRepositorys.csproj" />
+  </ItemGroup>
+
+</Project>

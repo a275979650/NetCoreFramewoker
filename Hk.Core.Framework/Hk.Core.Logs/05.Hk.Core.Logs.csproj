@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\06.Hk.Core.Security\06.Hk.Core.Security.csproj" />
+    <ProjectReference Include="..\Hk.Core.Security\06.Hk.Core.Security.csproj" />
     <ProjectReference Include="..\Hk.Core.Util\01.Hk.Core.Util.csproj" />
   </ItemGroup>
 

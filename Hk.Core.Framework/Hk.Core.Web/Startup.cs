@@ -1,5 +1,4 @@
 using Hk.Core.Business.Base_SysManage;
-using Hk.Core.DataRepository;
 using Hk.Core.Entity.Base_SysManage;
 using Hk.Core.Logs;
 using Hk.Core.Logs.Extensions;
@@ -8,7 +7,6 @@ using Hk.Core.Util.Events.Default;
 using Hk.Core.Util.Extentions;
 using Hk.Core.Util.Filter;
 using Hk.Core.Util.Logs.Extensions;
-using Hk.Core.Web.Test;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -42,15 +40,15 @@ namespace Hk.Core.Web
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             Log.GetLog("程序开始").Content("start").Info();
-
             services.AddMvc(options =>
             {
                 options.Filters.Add<GlobalExceptionFilter>();
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);      
-            services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();            
+            services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddSingleton(Configuration);
             services.AddEventBus();
             services.AddNLog();
+            services.AddOptions();
             return services.AddUtil(new HomeBusinessConfig());
         }
 
@@ -68,22 +66,6 @@ namespace Hk.Core.Web
             ProductionConfig(app);
 
 
-        }
-
-        private void InitEF()
-        {
-            Task.Run(() =>
-            {
-                try
-                {
-                    var a = DbFactory.GetRepository(null, null, null).GetIQueryable<Base_User>().ToList();
-                }
-                catch(Exception ex)
-                {
-                    var log = Log.GetLog().Caption("EF初始化异常");
-                    ex.Log(log);
-                }
-            });
         }
         /// <summary>
         /// 开发环境配置
@@ -103,7 +85,6 @@ namespace Hk.Core.Web
             //app.UseErrorLog();
             app.UseStaticFiles();//支持静态文件
             ConfigRoute(app);
-            InitEF();
         }
         /// <summary>
         /// 路由配置,支持区域

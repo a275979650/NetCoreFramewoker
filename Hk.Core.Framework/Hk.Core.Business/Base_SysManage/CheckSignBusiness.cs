@@ -7,10 +7,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Hk.Core.Data.DbContextCore;
+
 namespace Hk.Core.Business.Base_SysManage
 {
-    public class CheckSignBusiness : BaseBusiness<Base_AppSecret>
+    public class CheckSignBusiness : BaseBusiness<Base_AppSecret,string>
     {
+        public CheckSignBusiness(IDbContextCore dbContext) : base(dbContext)
+        {
+        }
         /// <summary>
         /// 判断是否有权限操作接口
         /// </summary>
@@ -39,7 +44,7 @@ namespace Hk.Core.Business.Base_SysManage
         /// <returns></returns>
         public string GetAppSecret(string appId)
         {
-            return GetIQueryable().Where(x => x.AppId == appId).FirstOrDefault()?.AppSecret;
+            return Get().Where(x => x.AppId == appId).FirstOrDefault()?.AppSecret;
         }
 
         /// <summary>
@@ -181,5 +186,7 @@ namespace Hk.Core.Business.Base_SysManage
                 }
             }
         }
+
+
     }
 }

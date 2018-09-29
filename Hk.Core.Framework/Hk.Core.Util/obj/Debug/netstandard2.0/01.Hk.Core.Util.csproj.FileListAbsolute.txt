@@ -10,3 +10,15 @@ F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.Util\obj\Debug\netstandard2.0\Hk.Core.Uti
 F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.Util\obj\Debug\netstandard2.0\Hk.Core.Util.pdb
 F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.Util\obj\Debug\netstandard2.0\Hk.Core.Util.Properties.LibraryResource.resources
 F:\SVN\20SVN\Hk.Core.Framework\Hk.Core.Util\obj\Debug\netstandard2.0\Hk.Core.Util.Properties.R.resources
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Util\bin\Debug\netstandard2.0\Hk.Core.Util.deps.json
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Util\bin\Debug\netstandard2.0\Hk.Core.Util.dll
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Util\bin\Debug\netstandard2.0\Hk.Core.Util.pdb
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Util\obj\Debug\netstandard2.0\Hk.Core.Util.Properties.LibraryResource.resources
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Util\obj\Debug\netstandard2.0\Hk.Core.Util.Properties.R.resources
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Util\obj\Debug\netstandard2.0\01.Hk.Core.Util.csproj.GenerateResource.cache
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Util\obj\Debug\netstandard2.0\01.Hk.Core.Util.csproj.CoreCompileInputs.cache
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Util\obj\Debug\netstandard2.0\01.Hk.Core.Util.AssemblyInfoInputs.cache
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Util\obj\Debug\netstandard2.0\01.Hk.Core.Util.AssemblyInfo.cs
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Util\obj\Debug\netstandard2.0\Hk.Core.Util.dll
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Util\obj\Debug\netstandard2.0\Hk.Core.Util.pdb
+F:\SVN\gitPro\Hk.Core.Framework\Hk.Core.Util\obj\Debug\netstandard2.0\01.Hk.Core.Util.csprojAssemblyReference.cache

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Hk.Core.Data.Models;
 
 namespace Hk.Core.Entity.Base_SysManage
 {
@@ -8,14 +9,14 @@ namespace Hk.Core.Entity.Base_SysManage
     /// 系统日志表
     /// </summary>
     [Table("Base_SysLog")]
-    public class Base_SysLog
+    public class Base_SysLog:BaseModel<string>
     {
 
         /// <summary>
         /// 代理主键
         /// </summary>
         [Key]
-        public String Id { get; set; }
+        public override string Id { get; set; }
 
         /// <summary>
         /// 日志类型

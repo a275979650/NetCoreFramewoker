@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Hk.Core.Business.Base_SysManage;
+using Hk.Core.Data.DbContextCore;
 using Hk.Core.Util;
 using Hk.Core.Util.Enum;
 using Hk.Core.Util.Extentions;
+using Hk.Core.Util.Helper;
 using Hk.Core.Util.Model;
 using Hk.Core.Web.Common;
 using Microsoft.AspNetCore.Mvc;
@@ -16,8 +18,12 @@ namespace Hk.Core.Web
     /// </summary>
     public class CheckSignAttribute : Attribute, IActionFilter
     {
-        private CheckSignBusiness _checkSignBusiness { get; } = new CheckSignBusiness();
+        private CheckSignBusiness _checkSignBusiness { get; }
 
+        public CheckSignAttribute()
+        {
+            _checkSignBusiness = new CheckSignBusiness(Ioc.DefaultContainer.GetService<IDbContextCore>());
+        }
         /// <summary>
         /// Action执行之前执行
         /// </summary>

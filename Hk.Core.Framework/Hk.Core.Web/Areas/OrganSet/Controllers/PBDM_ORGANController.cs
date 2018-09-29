@@ -1,18 +1,21 @@
 using Hk.Core.Business.OrganSet;
+using Hk.Core.Data.DbContextCore;
 using Hk.Core.Entity.OrganSet;
-using Hk.Core.Util;
-using Microsoft.AspNetCore.Mvc;
-using System;
 using Hk.Core.Util.Datas;
 using Hk.Core.Util.Extentions;
+using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Hk.Core.Web
 {
     [Area("OrganSet")]
     public class PBDM_ORGANController : BaseMvcController
     {
-        PBDM_ORGANBusiness _pBDM_ORGANBusiness = new PBDM_ORGANBusiness();
-
+        private PBDM_ORGANBusiness _pBDM_ORGANBusiness;
+        public PBDM_ORGANController(IDbContextCore dbContext)
+        {
+            _pBDM_ORGANBusiness = new PBDM_ORGANBusiness(dbContext);
+        }
         #region 视图功能
 
         public IActionResult Index()

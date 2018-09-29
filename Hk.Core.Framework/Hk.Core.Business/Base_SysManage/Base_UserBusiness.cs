@@ -9,16 +9,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
+using Hk.Core.Data.DbContextCore;
+using Hk.Core.IRepositorys;
 using Hk.Core.Util.Extentions;
 using Hk.Core.Util.Helper;
 
 namespace Hk.Core.Business.Base_SysManage
 {
-    public class Base_UserBusiness : BaseBusiness<Base_User>
+    public class Base_UserBusiness : BaseBusiness<Base_User,string>
     {
-        static Base_UserModelCache _cache { get; } = new Base_UserModelCache();
-        static UserRoleCache _userRoleCache { get; } = new UserRoleCache();
-
+        private IBaseUserRoleMapRepository _baseUserRoleMapRepository;
+        private IBasePermissionUserRepository _basePermissionUserRepository;
+        private IBasePermissionRoleRepository _basePermissionRoleRepository;
+        private static Base_UserModelCache _cache { get; } = new Base_UserModelCache(Ioc.DefaultContainer.GetService<IDbContextCore>());
+        private static UserRoleCache _userRoleCache { get; } = new UserRoleCache();
+        public Base_UserBusiness(IDbContextCore dbContext) : base(dbContext)
+        {
+            _baseUserRoleMapRepository = Ioc.DefaultContainer.GetService<IBaseUserRoleMapRepository>();
+            _basePermissionUserRepository = Ioc.DefaultContainer.GetService<IBasePermissionUserRepository>();
+            _basePermissionRoleRepository = Ioc.DefaultContainer.GetService<IBasePermissionRoleRepository>();
+        }
         #region 外部接口
 
         /// <summary>
@@ -37,7 +47,7 @@ namespace Hk.Core.Business.Base_SysManage
 
             selectExpre = selectExpre.BuildExtendSelectExpre();
 
-            var q = from a in GetIQueryable().AsExpandable()
+            var q = from a in Get().AsExpandable()
                     select selectExpre.Invoke(a);
 
             //模糊查询
@@ -59,15 +69,15 @@ namespace Hk.Core.Business.Base_SysManage
         /// <returns></returns>
         public Base_User GetTheData(string id)
         {
-            return GetEntity(id);
+            return GetSingle(id);
         }
 
         public void AddData(Base_User newData)
         {
-            if (GetIQueryable().Any(x => x.UserName == newData.UserName))
+            if (Get().Any(x => x.UserName == newData.UserName))
                 throw new Exception("该用户名已存在！");
 
-            Insert(newData);
+            Add(newData);
         }
 
         /// <summary>
@@ -83,7 +93,7 @@ namespace Hk.Core.Business.Base_SysManage
 
         public void SetUserRole(string userId, List<string> roleIds)
         {
-            Service.Delete<Base_UserRoleMap>(x => x.UserId == userId);
+            _baseUserRoleMapRepository.Delete(x => x.UserId == userId);
             var insertList = roleIds.Select(x => new Base_UserRoleMap
             {
                 Id = GuidHelper.GenerateKey(),
@@ -91,7 +101,7 @@ namespace Hk.Core.Business.Base_SysManage
                 RoleId = x
             }).ToList();
 
-            Service.Insert(insertList);
+            _baseUserRoleMapRepository.AddRange(insertList);
             _cache.UpdateCache(userId);
             _userRoleCache.UpdateCache(userId);
         }
@@ -102,12 +112,12 @@ namespace Hk.Core.Business.Base_SysManage
         /// <param name="theData">删除的数据</param>
         public void DeleteData(List<string> ids)
         {
-            var userIds = GetIQueryable().Where(x => ids.Contains(x.Id)).Select(x => x.UserId).ToList();
+            var userIds = Get().Where(x => ids.Contains(x.Id)).Select(x => x.UserId).ToList();
             var adminUser = GetTheUser("Admin");
             if (ids.Contains(adminUser.Id))
                 throw new Exception("超级管理员是内置账号,禁止删除！");
 
-            Delete(ids);
+            ids.ForEach(x=>Delete(x));
             _cache.UpdateCache(ids);
             _userRoleCache.UpdateCache(ids);
         }
@@ -147,7 +157,7 @@ namespace Hk.Core.Business.Base_SysManage
             string userId = Operator.UserId;
             oldPwd = oldPwd.ToMD5String();
             newPwd = newPwd.ToMD5String();
-            var theUser = GetIQueryable().Where(x => x.UserId == userId && x.Password == oldPwd).FirstOrDefault();
+            var theUser = Get().Where(x => x.UserId == userId && x.Password == oldPwd).FirstOrDefault();
             if (theUser == null)
             {
                 res.Success = false;
@@ -171,9 +181,9 @@ namespace Hk.Core.Business.Base_SysManage
         /// <param name="permissions">权限值</param>
         public void SavePermission(string userId, List<string> permissions)
         {
-            Service.Delete<Base_PermissionUser>(x => x.UserId == userId);
-            var roleIdList = Service.GetIQueryable<Base_UserRoleMap>().Where(x => x.UserId == userId).Select(x => x.RoleId).ToList();
-            var existsPermissions = Service.GetIQueryable<Base_PermissionRole>()
+            _basePermissionUserRepository.Delete(userId);
+            var roleIdList = _baseUserRoleMapRepository.Get().Where(x => x.UserId == userId).Select(x => x.RoleId).ToList();
+            var existsPermissions =_basePermissionRoleRepository.Get()
                 .Where(x => roleIdList.Contains(x.RoleId) && permissions.Contains(x.PermissionValue))
                 .GroupBy(x => x.PermissionValue)
                 .Select(x => x.Key)
@@ -192,7 +202,7 @@ namespace Hk.Core.Business.Base_SysManage
                 });
             });
 
-            Service.Insert(insertList);
+            _basePermissionUserRepository.AddRange(insertList);
         }
 
         #endregion
@@ -204,5 +214,7 @@ namespace Hk.Core.Business.Base_SysManage
         #region 数据模型
 
         #endregion
+
+
     }
 }

@@ -1,17 +1,22 @@
-﻿using System;
-using Hk.Core.Business.Base_SysManage;
+﻿using Hk.Core.Business.Base_SysManage;
+using Hk.Core.Data.DbContextCore;
 using Hk.Core.Entity.Base_SysManage;
 using Hk.Core.Util.Datas;
 using Hk.Core.Util.Extentions;
 using Hk.Core.Web.Common;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
 {
     [Area("Base_SysManage")]
     public class Base_UserController : BaseMvcController
     {
-        Base_UserBusiness _base_UserBusiness = new Base_UserBusiness();
+        private Base_UserBusiness _base_UserBusiness;
+        public Base_UserController(IDbContextCore dbContext)
+        {
+            _base_UserBusiness = new Base_UserBusiness(dbContext);
+        }
 
         #region 视图功能
 

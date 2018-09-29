@@ -1,17 +1,19 @@
+using Hk.Core.Business.BaseBusiness;
+using Hk.Core.Data.DbContextCore;
 using Hk.Core.Entity.OrganSet;
-using Hk.Core.Util;
-using System;
+using Hk.Core.Util.Datas;
+using Hk.Core.Util.Extentions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
-using Hk.Core.Util.Datas;
-using Hk.Core.Util.Extentions;
-using Hk.Core.Business.BaseBusiness;
 
 namespace Hk.Core.Business.OrganSet
 {
-    public class PBDM_ORGANBusiness : BaseBusiness<PBDM_ORGAN>
+    public class PBDM_ORGANBusiness : BaseBusiness<PBDM_ORGAN,string>
     {
+        public PBDM_ORGANBusiness(IDbContextCore dbContext) : base(dbContext)
+        {
+        }
         #region 外部接口
 
         /// <summary>
@@ -22,7 +24,7 @@ namespace Hk.Core.Business.OrganSet
         /// <returns></returns>
         public List<PBDM_ORGAN> GetDataList(string condition, string keyword, Pagination pagination)
         {
-            var q = GetIQueryable();
+            var q = Get();
 
             //模糊查询
             if (!condition.IsNullOrEmpty() && !keyword.IsNullOrEmpty())
@@ -38,7 +40,7 @@ namespace Hk.Core.Business.OrganSet
         /// <returns></returns>
         public PBDM_ORGAN GetTheData(string id)
         {
-            return GetEntity(id);
+            return GetSingle(id);
         }
 
         /// <summary>
@@ -47,7 +49,7 @@ namespace Hk.Core.Business.OrganSet
         /// <param name="newData">数据</param>
         public void AddData(PBDM_ORGAN newData)
         {
-            Insert(newData);
+            Add(newData);
         }
 
         /// <summary>
@@ -64,7 +66,8 @@ namespace Hk.Core.Business.OrganSet
         /// <param name="theData">删除的数据</param>
         public void DeleteData(List<string> ids)
         {
-            Delete(ids);
+            ids.ForEach(x => { Delete(x); });
+          
         }
 
         #endregion

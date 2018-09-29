@@ -121,6 +121,59 @@
           "lib/netstandard2.0/AutoMapper.dll": {}
         }
       },
+      "Citms.EntityFrameworkCore.Oracle/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "2.0.3",
+          "Oracle.ManagedDataAccess.Core": "2.12.0-beta2"
+        },
+        "compile": {
+          "lib/netstandard2.0/Citms.EntityFrameworkCore.Oracle.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Citms.EntityFrameworkCore.Oracle.dll": {}
+        }
+      },
+      "CoContra/1.1.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections.Immutable": "1.4.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/CoContra.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/CoContra.dll": {}
+        }
+      },
+      "EntityFrameworkCore.Triggers/1.1.1": {
+        "type": "package",
+        "dependencies": {
+          "CoContra": "1.1.0",
+          "EntityFrameworkCore.TypedOriginalValues": "1.1.0",
+          "Microsoft.EntityFrameworkCore": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/EntityFrameworkCore.Triggers.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/EntityFrameworkCore.Triggers.dll": {}
+        }
+      },
+      "EntityFrameworkCore.TypedOriginalValues/1.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "2.0.0",
+          "System.Reflection.Emit": "4.3.0",
+          "System.Reflection.Emit.ILGeneration": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/EntityFrameworkCore.TypedOriginalValues.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/EntityFrameworkCore.TypedOriginalValues.dll": {}
+        }
+      },
       "Google.Protobuf/3.5.1": {
         "type": "package",
         "dependencies": {
@@ -146,7 +199,7 @@
           "lib/netstandard2.0/IdentityModel.dll": {}
         }
       },
-      "LinqKit.Core/1.1.14": {
+      "LinqKit.Core/1.1.15": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/LinqKit.Core.dll": {}
@@ -1570,6 +1623,20 @@
           "lib/netstandard2.0/MySql.Data.EntityFrameworkCore.dll": {}
         }
       },
+      "MySqlConnector/0.44.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Buffers": "4.4.0",
+          "System.Memory": "4.5.0",
+          "System.Threading.Tasks.Extensions": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/MySqlConnector.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/MySqlConnector.dll": {}
+        }
+      },
       "NETStandard.Library/2.0.3": {
         "type": "package",
         "dependencies": {
@@ -1635,6 +1702,15 @@
           "lib/netstandard2.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {}
         }
       },
+      "Oracle.ManagedDataAccess.Core/2.12.0-beta2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Oracle.ManagedDataAccess.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Oracle.ManagedDataAccess.dll": {}
+        }
+      },
       "Pipelines.Sockets.Unofficial/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -1646,6 +1722,33 @@
         },
         "runtime": {
           "lib/netstandard2.0/Pipelines.Sockets.Unofficial.dll": {}
+        }
+      },
+      "Pomelo.EntityFrameworkCore.MySql/2.1.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "2.1.2",
+          "MySqlConnector": "0.44.1",
+          "Pomelo.JsonObject": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Pomelo.EntityFrameworkCore.MySql.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Pomelo.EntityFrameworkCore.MySql.dll": {}
+        }
+      },
+      "Pomelo.JsonObject/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.5.0",
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/Pomelo.JsonObject.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Pomelo.JsonObject.dll": {}
         }
       },
       "Remotion.Linq/2.2.0": {
@@ -2581,6 +2684,20 @@
           }
         }
       },
+      "System.Runtime.Loader/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.IO": "4.3.0",
+          "System.Reflection": "4.3.0",
+          "System.Runtime": "4.3.0"
+        },
+        "compile": {
+          "ref/netstandard1.5/System.Runtime.Loader.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.5/System.Runtime.Loader.dll": {}
+        }
+      },
       "System.Runtime.Numerics/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -3157,27 +3274,61 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "Hk.Core.DataRepository/1.0.0": {
+      "Z.EntityFramework.Plus.EFCore/1.8.10": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Z.EntityFramework.Plus.EFCore.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Z.EntityFramework.Plus.EFCore.dll": {}
+        }
+      },
+      "Hk.Core.Data/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Hk.Core.Util": "1.0.0"
+          "Citms.EntityFrameworkCore.Oracle": "1.0.0",
+          "EntityFrameworkCore.Triggers": "1.1.1",
+          "Hk.Core.Util": "1.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.1.3",
+          "Pomelo.EntityFrameworkCore.MySql": "2.1.2",
+          "Z.EntityFramework.Plus.EFCore": "1.8.10"
         },
         "compile": {
-          "bin/placeholder/Hk.Core.DataRepository.dll": {}
+          "bin/placeholder/Hk.Core.Data.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Hk.Core.DataRepository.dll": {}
+          "bin/placeholder/Hk.Core.Data.dll": {}
         }
       },
       "Hk.Core.Entity/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Hk.Core.Data": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Hk.Core.Entity.dll": {}
         },
         "runtime": {
           "bin/placeholder/Hk.Core.Entity.dll": {}
+        }
+      },
+      "Hk.Core.IRepositorys/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Hk.Core.Data": "1.0.0",
+          "Hk.Core.Entity": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Hk.Core.IRepositorys.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hk.Core.IRepositorys.dll": {}
         }
       },
       "Hk.Core.Util/1.0.0": {
@@ -3191,7 +3342,7 @@
           "Autofac": "4.8.1",
           "Autofac.Extensions.DependencyInjection": "4.2.2",
           "IdentityModel": "3.9.0",
-          "LINQKit.Core": "1.1.14",
+          "LINQKit.Core": "1.1.15",
           "Microsoft.AspNetCore": "2.1.3",
           "Microsoft.AspNetCore.Hosting": "2.1.1",
           "Microsoft.AspNetCore.Http.Abstractions": "2.1.1",
@@ -3204,7 +3355,8 @@
           "Npgsql": "3.2.6",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "2.0.1",
           "StackExchange.Redis": "2.0.505",
-          "System.Linq.Dynamic.Core": "1.0.8.18"
+          "System.Linq.Dynamic.Core": "1.0.8.18",
+          "System.Runtime.Loader": "4.3.0"
         },
         "compile": {
           "bin/placeholder/Hk.Core.Util.dll": {}
@@ -3332,6 +3484,48 @@
         "lib/netstandard2.0/AutoMapper.xml"
       ]
     },
+    "Citms.EntityFrameworkCore.Oracle/1.0.0": {
+      "sha512": "XrrzF3E7uOqvfWvgAmrgd9kwgHyK4X3OTYWVWQWwIh9fwf7L96A17dUd3DyabrTZpfSBLgpcQPnxryD+9IYD8A==",
+      "type": "package",
+      "path": "citms.entityframeworkcore.oracle/1.0.0",
+      "files": [
+        "citms.entityframeworkcore.oracle.1.0.0.nupkg.sha512",
+        "citms.entityframeworkcore.oracle.nuspec",
+        "lib/netstandard2.0/Citms.EntityFrameworkCore.Oracle.dll"
+      ]
+    },
+    "CoContra/1.1.0": {
+      "sha512": "eLaQgVcOAxCeDpj9vYRXntnLT+VFwI40ALxj7PJeMZp0sJqpsdDKWChnK3PbDCdNt2DBrmQVb0o/m4ls7WidBg==",
+      "type": "package",
+      "path": "cocontra/1.1.0",
+      "files": [
+        "cocontra.1.1.0.nupkg.sha512",
+        "cocontra.nuspec",
+        "lib/net461/CoContra.dll",
+        "lib/netstandard2.0/CoContra.dll"
+      ]
+    },
+    "EntityFrameworkCore.Triggers/1.1.1": {
+      "sha512": "N28AzXoAzATccCD8OBNvI6RjeuxmFiAQuQe3e01gUlJJuxJ+JFoQMqY8osqVvXx9QVzigpEUKfLRMAw5fsk8tg==",
+      "type": "package",
+      "path": "entityframeworkcore.triggers/1.1.1",
+      "files": [
+        "entityframeworkcore.triggers.1.1.1.nupkg.sha512",
+        "entityframeworkcore.triggers.nuspec",
+        "lib/net461/EntityFrameworkCore.Triggers.dll",
+        "lib/netstandard2.0/EntityFrameworkCore.Triggers.dll"
+      ]
+    },
+    "EntityFrameworkCore.TypedOriginalValues/1.1.0": {
+      "sha512": "G+3E37H/5UAJsjCylTRM9i3pwLDD5hhZcfqk52yvXwa9F/018H1qG79q6Cj2sFUEd2YObzF/fFlHQv0C3qdRAw==",
+      "type": "package",
+      "path": "entityframeworkcore.typedoriginalvalues/1.1.0",
+      "files": [
+        "entityframeworkcore.typedoriginalvalues.1.1.0.nupkg.sha512",
+        "entityframeworkcore.typedoriginalvalues.nuspec",
+        "lib/netstandard2.0/EntityFrameworkCore.TypedOriginalValues.dll"
+      ]
+    },
     "Google.Protobuf/3.5.1": {
       "sha512": "f2k1VNaB9bfvEsvARzzEL1TZiIpL33KKK3JMH7UANlPlJVptuvsk4qpBZEnz0pORWZOdUHlVwMQuUzFqjJYCxA==",
       "type": "package",
@@ -3364,10 +3558,10 @@
         "lib/netstandard2.0/IdentityModel.xml"
       ]
     },
-    "LinqKit.Core/1.1.14": {
-      "sha512": "goD/N3wQ/UDACzxjgfSMubuyUDSbgZMWFdyk7kyT2Gr9PURJSRuwIWaMhDtP27Y/FNuLiBsfh6cvPDCGB71D8A==",
+    "LinqKit.Core/1.1.15": {
+      "sha512": "+PQAuVVtBPC/qdF57MSc63B41k5TjfDl32LDdgH7RzcXO+UpgLpotvXG2Oj0SdQL8ikO/NnHobkdK+Hb3i5VCA==",
       "type": "package",
-      "path": "linqkit.core/1.1.14",
+      "path": "linqkit.core/1.1.15",
       "files": [
         "lib/net35/LinqKit.Core.dll",
         "lib/net35/LinqKit.Core.xml",
@@ -3386,7 +3580,7 @@
         "lib/uap10.0/LinqKit.Core.dll",
         "lib/uap10.0/LinqKit.Core.pri",
         "lib/uap10.0/LinqKit.Core.xml",
-        "linqkit.core.1.1.14.nupkg.sha512",
+        "linqkit.core.1.1.15.nupkg.sha512",
         "linqkit.core.nuspec"
       ]
     },
@@ -4726,6 +4920,21 @@
         "mysql.data.entityframeworkcore.nuspec"
       ]
     },
+    "MySqlConnector/0.44.1": {
+      "sha512": "AdVMqv8KVA878+AF8EkXqjac3ih1tsOzBchYHasoW69vn2Ldez0ucbzB43dmLVkmTa1sQtLtoDbk3n9S34tZyg==",
+      "type": "package",
+      "path": "mysqlconnector/0.44.1",
+      "files": [
+        ".signature.p7s",
+        "lib/net45/MySqlConnector.dll",
+        "lib/net461/MySqlConnector.dll",
+        "lib/netcoreapp2.1/MySqlConnector.dll",
+        "lib/netstandard1.3/MySqlConnector.dll",
+        "lib/netstandard2.0/MySqlConnector.dll",
+        "mysqlconnector.0.44.1.nupkg.sha512",
+        "mysqlconnector.nuspec"
+      ]
+    },
     "NETStandard.Library/2.0.3": {
       "sha512": "st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "type": "package",
@@ -4921,6 +5130,19 @@
         "npgsql.entityframeworkcore.postgresql.nuspec"
       ]
     },
+    "Oracle.ManagedDataAccess.Core/2.12.0-beta2": {
+      "sha512": "Rwi2ys28cMuE+X+fKd8Yp5O9yqHlvEj7EAtG5k1fXwQ8zqWkB79KD3U0Ff/HFYxlg492AD2R4QWtIUQYGyXZBQ==",
+      "type": "package",
+      "path": "oracle.manageddataaccess.core/2.12.0-beta2",
+      "files": [
+        "ODP.NET-Core-12.2-Beta2-Documentation.pdf",
+        "info.txt",
+        "lib/netstandard2.0/Oracle.ManagedDataAccess.dll",
+        "oracle.manageddataaccess.core.2.12.0-beta2.nupkg.sha512",
+        "oracle.manageddataaccess.core.nuspec",
+        "readme.txt"
+      ]
+    },
     "Pipelines.Sockets.Unofficial/1.0.0": {
       "sha512": "kTXPvlD+R++0IeWfyg1gNx4APrtVxASTUIhkGw4yaLIJCCw/kUjIhyS6JdcknTZ1qU0CCFnCLU/UPRVNWMvp0g==",
       "type": "package",
@@ -4933,6 +5155,27 @@
         "lib/netstandard2.0/Pipelines.Sockets.Unofficial.xml",
         "pipelines.sockets.unofficial.1.0.0.nupkg.sha512",
         "pipelines.sockets.unofficial.nuspec"
+      ]
+    },
+    "Pomelo.EntityFrameworkCore.MySql/2.1.2": {
+      "sha512": "LyM3NFH3Tj1ppHZ9QdGoMxA8Ga+kouC7r7QwgPFxWwzsMOsns8Y935u6YQjDBNaPlClTDJSm1V7aOnidxtAMPw==",
+      "type": "package",
+      "path": "pomelo.entityframeworkcore.mysql/2.1.2",
+      "files": [
+        ".signature.p7s",
+        "lib/netstandard2.0/Pomelo.EntityFrameworkCore.MySql.dll",
+        "pomelo.entityframeworkcore.mysql.2.1.2.nupkg.sha512",
+        "pomelo.entityframeworkcore.mysql.nuspec"
+      ]
+    },
+    "Pomelo.JsonObject/2.0.0": {
+      "sha512": "5udTrGULDbHLx3Xb2DAqeeMTPxPu9TmeS6RAanMeRXOKZn3FRrBVd+Vg8TeTB0QIk1Q0su8mgsmN39O4iYca1Q==",
+      "type": "package",
+      "path": "pomelo.jsonobject/2.0.0",
+      "files": [
+        "lib/netstandard2.0/Pomelo.JsonObject.dll",
+        "pomelo.jsonobject.2.0.0.nupkg.sha512",
+        "pomelo.jsonobject.nuspec"
       ]
     },
     "Remotion.Linq/2.2.0": {
@@ -7659,6 +7902,36 @@
         "system.runtime.interopservices.runtimeinformation.nuspec"
       ]
     },
+    "System.Runtime.Loader/4.3.0": {
+      "sha512": "DHMaRn8D8YCK2GG2pw+UzNxn/OHVfaWx7OTLBD/hPegHZZgcZh3H6seWegrC4BYwsfuGrywIuT+MQs+rPqRLTQ==",
+      "type": "package",
+      "path": "system.runtime.loader/4.3.0",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net462/_._",
+        "lib/netstandard1.5/System.Runtime.Loader.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/netstandard1.5/System.Runtime.Loader.dll",
+        "ref/netstandard1.5/System.Runtime.Loader.xml",
+        "ref/netstandard1.5/de/System.Runtime.Loader.xml",
+        "ref/netstandard1.5/es/System.Runtime.Loader.xml",
+        "ref/netstandard1.5/fr/System.Runtime.Loader.xml",
+        "ref/netstandard1.5/it/System.Runtime.Loader.xml",
+        "ref/netstandard1.5/ja/System.Runtime.Loader.xml",
+        "ref/netstandard1.5/ko/System.Runtime.Loader.xml",
+        "ref/netstandard1.5/ru/System.Runtime.Loader.xml",
+        "ref/netstandard1.5/zh-hans/System.Runtime.Loader.xml",
+        "ref/netstandard1.5/zh-hant/System.Runtime.Loader.xml",
+        "system.runtime.loader.4.3.0.nupkg.sha512",
+        "system.runtime.loader.nuspec"
+      ]
+    },
     "System.Runtime.Numerics/4.3.0": {
       "sha512": "yMH+MfdzHjy17l2KESnPiF2dwq7T+xLnSJar7slyimAkUh/gTrS9/UQOtv7xarskJ2/XDSNvfLGOBQPjL7PaHQ==",
       "type": "package",
@@ -9030,15 +9303,38 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
-    "Hk.Core.DataRepository/1.0.0": {
+    "Z.EntityFramework.Plus.EFCore/1.8.10": {
+      "sha512": "83yUA19zKory138umfkFMzjrFz885ONesD2SYuHdh2MoLEfxkGlqV53+EFjtNENpI3Zmb3AtzFgPA5kQBud0/Q==",
+      "type": "package",
+      "path": "z.entityframework.plus.efcore/1.8.10",
+      "files": [
+        ".signature.p7s",
+        "lib/netstandard1.3/Z.EntityFramework.Plus.EFCore.deps.json",
+        "lib/netstandard1.3/Z.EntityFramework.Plus.EFCore.dll",
+        "lib/netstandard1.3/Z.EntityFramework.Plus.EFCore.pdb",
+        "lib/netstandard1.3/Z.EntityFramework.Plus.EFCore.xml",
+        "lib/netstandard2.0/Z.EntityFramework.Plus.EFCore.deps.json",
+        "lib/netstandard2.0/Z.EntityFramework.Plus.EFCore.dll",
+        "lib/netstandard2.0/Z.EntityFramework.Plus.EFCore.pdb",
+        "lib/netstandard2.0/Z.EntityFramework.Plus.EFCore.xml",
+        "z.entityframework.plus.efcore.1.8.10.nupkg.sha512",
+        "z.entityframework.plus.efcore.nuspec"
+      ]
+    },
+    "Hk.Core.Data/1.0.0": {
       "type": "project",
-      "path": "../Hk.Core.DataRepository/02.Hk.Core.DataRepository.csproj",
-      "msbuildProject": "../Hk.Core.DataRepository/02.Hk.Core.DataRepository.csproj"
+      "path": "../Hk.Core.Data/02.Hk.Core.Data.csproj",
+      "msbuildProject": "../Hk.Core.Data/02.Hk.Core.Data.csproj"
     },
     "Hk.Core.Entity/1.0.0": {
       "type": "project",
       "path": "../Hk.Core.Entity/03.Hk.Core.Entity.csproj",
       "msbuildProject": "../Hk.Core.Entity/03.Hk.Core.Entity.csproj"
+    },
+    "Hk.Core.IRepositorys/1.0.0": {
+      "type": "project",
+      "path": "../Hk.Core.IRepositorys/08.Hk.Core.IRepositorys.csproj",
+      "msbuildProject": "../Hk.Core.IRepositorys/08.Hk.Core.IRepositorys.csproj"
     },
     "Hk.Core.Util/1.0.0": {
       "type": "project",
@@ -9048,8 +9344,9 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "Hk.Core.DataRepository >= 1.0.0",
+      "Hk.Core.Data >= 1.0.0",
       "Hk.Core.Entity >= 1.0.0",
+      "Hk.Core.IRepositorys >= 1.0.0",
       "Hk.Core.Util >= 1.0.0",
       "NETStandard.Library >= 2.0.3"
     ]
@@ -9086,11 +9383,14 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.DataRepository\\02.Hk.Core.DataRepository.csproj": {
-              "projectPath": "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.DataRepository\\02.Hk.Core.DataRepository.csproj"
+            "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Data\\02.Hk.Core.Data.csproj": {
+              "projectPath": "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Data\\02.Hk.Core.Data.csproj"
             },
             "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Entity\\03.Hk.Core.Entity.csproj": {
               "projectPath": "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Entity\\03.Hk.Core.Entity.csproj"
+            },
+            "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.IRepositorys\\08.Hk.Core.IRepositorys.csproj": {
+              "projectPath": "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.IRepositorys\\08.Hk.Core.IRepositorys.csproj"
             },
             "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Util\\01.Hk.Core.Util.csproj": {
               "projectPath": "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Util\\01.Hk.Core.Util.csproj"

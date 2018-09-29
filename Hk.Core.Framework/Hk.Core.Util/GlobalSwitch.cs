@@ -34,7 +34,7 @@ namespace Hk.Core.Util
         /// <summary>
         /// 运行模式
         /// </summary>
-        public static RunModel RunModel { get; } = RunModel.Publish;
+        public static RunModel RunModel { get; } = RunModel.LocalTest;
 
         /// <summary>
         /// 网站文件根路径

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Hk.Core.Business.BaseBusiness;
+using Hk.Core.Data.DbContextCore;
 using Hk.Core.Entity.Base_SysManage;
 using Hk.Core.Util.Datas;
 using Hk.Core.Util.Extentions;
@@ -13,8 +14,11 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace Hk.Core.Business.Base_SysManage
 {
-    public class RapidDevelopmentBusiness : BaseBusiness<Base_DatabaseLink>
+    public class RapidDevelopmentBusiness : BaseBusiness<Base_DatabaseLink,string>
     {
+        public RapidDevelopmentBusiness(IDbContextCore dbContext) : base(dbContext)
+        {
+        }
         static RapidDevelopmentBusiness()
         {
             _contentRootPath = AutofacHelper.GetService<IHostingEnvironment>().ContentRootPath;
@@ -28,7 +32,7 @@ namespace Hk.Core.Business.Base_SysManage
         /// <returns></returns>
         public List<Base_DatabaseLink> GetAllDbLink()
         {
-            return GetList();
+            return Get().ToList();
         }
 
         /// <summary>
@@ -577,7 +581,7 @@ namespace Hk.Core.Web
         private Base_DatabaseLink GetTheLink(string linkId)
         {
             Base_DatabaseLink resObj = new Base_DatabaseLink();
-            var theModule = GetIQueryable().Where(x => x.Id == linkId).FirstOrDefault();
+            var theModule = Get().FirstOrDefault(x => x.Id == linkId);
             resObj = theModule ?? resObj;
 
             return resObj;
@@ -594,5 +598,7 @@ namespace Hk.Core.Web
         #region 数据模型
 
         #endregion
+
+
     }
 }

@@ -1,6 +1,9 @@
-﻿using Hk.Core.Business.Base_SysManage;
+﻿using Hk.Core.Data.DbContextCore;
+using Hk.Core.Data.DbContextCore.DbTypeContext;
 using Hk.Core.Util.Dependency;
+using Hk.Core.Util.Helper;
 using Microsoft.Extensions.DependencyInjection;
+using DbContextOption = Hk.Core.Data.Options.DbContextOption;
 
 namespace Hk.Core.Web.Config
 {
@@ -25,6 +28,19 @@ namespace Hk.Core.Web.Config
                         .AllowCredentials();//指定处理cookie
                 });
             });
+            #endregion
+
+            #region 配置DbContextOption
+            //database connectionstring
+            var dbConnectionString = ConfigHelper.GetConnectionString("BaseDb");
+            //配置DbContextOption
+            services.Configure<DbContextOption>(options =>
+            {
+                options.ConnectionString = dbConnectionString;
+                options.ModelAssemblyName = "Hk.Core.Entity";
+            });
+            services.AddTransient<IDbContextCore, SqlServerDbContext>(); //注入EF上下文
+
             #endregion
         }
     }
