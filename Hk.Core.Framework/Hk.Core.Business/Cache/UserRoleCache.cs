@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Hk.Core.IRepositorys;
+using Hk.Core.Util.Helper;
+using System.Collections.Generic;
 using System.Linq;
-using Hk.Core.DataRepository;
-using Hk.Core.Entity.Base_SysManage;
 
 namespace Hk.Core.Business.Cache
 {
@@ -10,8 +10,9 @@ namespace Hk.Core.Business.Cache
         public UserRoleCache()
             : base("UserRoleCache", userId =>
             {
-                var list = DbFactory.GetRepository()
-                    .GetIQueryable<Base_UserRoleMap>()
+                IBaseUserRoleMapRepository baseUserRoleMapRepository =
+                    Ioc.DefaultContainer.GetService<IBaseUserRoleMapRepository>();
+                var list = baseUserRoleMapRepository.Get()
                     .Where(x => x.UserId == userId)
                     .Select(x => x.RoleId)
                     .ToList();

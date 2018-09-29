@@ -7,13 +7,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using Hk.Core.Data.DbContextCore;
+using Hk.Core.IRepositorys;
+using Hk.Core.Util.Helper;
 
 namespace Hk.Core.Business.Base_SysManage
 {
     public class Base_AppSecretBusiness : BaseBusiness<Base_AppSecret,string>
     {
+        private IBasePermissionAppIdRepository _appIdRepository;
         public Base_AppSecretBusiness(IDbContextCore dbContext) : base(dbContext)
         {
+            _appIdRepository = Ioc.DefaultContainer.GetService<IBasePermissionAppIdRepository>();
         }
         #region 外部接口
 
@@ -75,22 +79,22 @@ namespace Hk.Core.Business.Base_SysManage
         /// </summary>
         /// <param name="appId">应用Id</param>
         /// <param name="permissions">权限值</param>
-        //public void SavePermission(string appId, List<string> permissions)
-        //{
-        //    Delete(x => x.AppId == appId);
+        public void SavePermission(string appId, List<string> permissions)
+        {
+            _appIdRepository.Delete(x => x.AppId == appId);
 
-        //    List<Base_PermissionAppId> insertList = new List<Base_PermissionAppId>();
-        //    permissions.ForEach(newPermission =>
-        //    {
-        //        insertList.Add(new Base_PermissionAppId
-        //        {
-        //            AppId = appId,
-        //            PermissionValue = newPermission
-        //        });
-        //    });
+            List<Base_PermissionAppId> insertList = new List<Base_PermissionAppId>();
+            permissions.ForEach(newPermission =>
+            {
+                insertList.Add(new Base_PermissionAppId
+                {
+                    AppId = appId,
+                    PermissionValue = newPermission
+                });
+            });
 
-        //    AddRange(insertList);
-        //}
+            _appIdRepository.AddRange(insertList);
+        }
 
         #endregion
 

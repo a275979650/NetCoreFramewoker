@@ -93,7 +93,7 @@ namespace Hk.Core.Business.Base_SysManage
 
         public void SetUserRole(string userId, List<string> roleIds)
         {
-            _baseUserRoleMapRepository.Delete(userId);
+            _baseUserRoleMapRepository.Delete(x => x.UserId == userId);
             var insertList = roleIds.Select(x => new Base_UserRoleMap
             {
                 Id = GuidHelper.GenerateKey(),

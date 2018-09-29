@@ -9296,8 +9296,8 @@
     },
     "Hk.Core.Data/1.0.0": {
       "type": "project",
-      "path": "../Hk.Core.Data/Hk.Core.Data.csproj",
-      "msbuildProject": "../Hk.Core.Data/Hk.Core.Data.csproj"
+      "path": "../Hk.Core.Data/02.Hk.Core.Data.csproj",
+      "msbuildProject": "../Hk.Core.Data/02.Hk.Core.Data.csproj"
     },
     "Hk.Core.Util/1.0.0": {
       "type": "project",
@@ -9343,8 +9343,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Data\\Hk.Core.Data.csproj": {
-              "projectPath": "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Data\\Hk.Core.Data.csproj"
+            "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Data\\02.Hk.Core.Data.csproj": {
+              "projectPath": "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Data\\02.Hk.Core.Data.csproj"
             }
           }
         }

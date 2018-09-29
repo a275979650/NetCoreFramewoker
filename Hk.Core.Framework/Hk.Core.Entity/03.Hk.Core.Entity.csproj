@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Hk.Core.Data\Hk.Core.Data.csproj" />
+    <ProjectReference Include="..\Hk.Core.Data\02.Hk.Core.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>

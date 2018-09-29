@@ -1,13 +1,11 @@
+using Hk.Core.Business.BaseBusiness;
+using Hk.Core.Data.DbContextCore;
 using Hk.Core.Entity.OrganSet;
-using Hk.Core.Util;
-using System;
+using Hk.Core.Util.Datas;
+using Hk.Core.Util.Extentions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
-using Hk.Core.Util.Datas;
-using Hk.Core.Util.Extentions;
-using Hk.Core.Business.BaseBusiness;
-using Hk.Core.Data.DbContextCore;
 
 namespace Hk.Core.Business.OrganSet
 {

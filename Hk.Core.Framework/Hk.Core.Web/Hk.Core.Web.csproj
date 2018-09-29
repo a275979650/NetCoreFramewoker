@@ -12,12 +12,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Hk.Core.Business\04.Hk.Core.Business.csproj" />
-    <ProjectReference Include="..\Hk.Core.DataRepository\02.Hk.Core.DataRepository.csproj" />
-    <ProjectReference Include="..\Hk.Core.Data\Hk.Core.Data.csproj" />
+    <ProjectReference Include="..\Hk.Core.Data\02.Hk.Core.Data.csproj" />
     <ProjectReference Include="..\Hk.Core.Entity\03.Hk.Core.Entity.csproj" />
-    <ProjectReference Include="..\Hk.Core.IRepositorys\Hk.Core.IRepositorys.csproj" />
+    <ProjectReference Include="..\Hk.Core.IRepositorys\08.Hk.Core.IRepositorys.csproj" />
     <ProjectReference Include="..\Hk.Core.Logs\05.Hk.Core.Logs.csproj" />
-    <ProjectReference Include="..\Hk.Core.Repositorys\Hk.Core.Repositorys.csproj" />
+    <ProjectReference Include="..\Hk.Core.Repositorys\09.Hk.Core.Repositorys.csproj" />
     <ProjectReference Include="..\Hk.Core.Util\01.Hk.Core.Util.csproj" />
     <ProjectReference Include="..\HK.Core.Webs\07.HK.Core.Webs.csproj" />
   </ItemGroup>

@@ -3304,19 +3304,6 @@
           "bin/placeholder/Hk.Core.Data.dll": {}
         }
       },
-      "Hk.Core.DataRepository/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "Hk.Core.Util": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Hk.Core.DataRepository.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Hk.Core.DataRepository.dll": {}
-        }
-      },
       "Hk.Core.Entity/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -9336,13 +9323,8 @@
     },
     "Hk.Core.Data/1.0.0": {
       "type": "project",
-      "path": "../Hk.Core.Data/Hk.Core.Data.csproj",
-      "msbuildProject": "../Hk.Core.Data/Hk.Core.Data.csproj"
-    },
-    "Hk.Core.DataRepository/1.0.0": {
-      "type": "project",
-      "path": "../Hk.Core.DataRepository/02.Hk.Core.DataRepository.csproj",
-      "msbuildProject": "../Hk.Core.DataRepository/02.Hk.Core.DataRepository.csproj"
+      "path": "../Hk.Core.Data/02.Hk.Core.Data.csproj",
+      "msbuildProject": "../Hk.Core.Data/02.Hk.Core.Data.csproj"
     },
     "Hk.Core.Entity/1.0.0": {
       "type": "project",
@@ -9351,8 +9333,8 @@
     },
     "Hk.Core.IRepositorys/1.0.0": {
       "type": "project",
-      "path": "../Hk.Core.IRepositorys/Hk.Core.IRepositorys.csproj",
-      "msbuildProject": "../Hk.Core.IRepositorys/Hk.Core.IRepositorys.csproj"
+      "path": "../Hk.Core.IRepositorys/08.Hk.Core.IRepositorys.csproj",
+      "msbuildProject": "../Hk.Core.IRepositorys/08.Hk.Core.IRepositorys.csproj"
     },
     "Hk.Core.Util/1.0.0": {
       "type": "project",
@@ -9363,7 +9345,6 @@
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "Hk.Core.Data >= 1.0.0",
-      "Hk.Core.DataRepository >= 1.0.0",
       "Hk.Core.Entity >= 1.0.0",
       "Hk.Core.IRepositorys >= 1.0.0",
       "Hk.Core.Util >= 1.0.0",
@@ -9402,17 +9383,14 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.DataRepository\\02.Hk.Core.DataRepository.csproj": {
-              "projectPath": "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.DataRepository\\02.Hk.Core.DataRepository.csproj"
-            },
-            "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Data\\Hk.Core.Data.csproj": {
-              "projectPath": "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Data\\Hk.Core.Data.csproj"
+            "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Data\\02.Hk.Core.Data.csproj": {
+              "projectPath": "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Data\\02.Hk.Core.Data.csproj"
             },
             "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Entity\\03.Hk.Core.Entity.csproj": {
               "projectPath": "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Entity\\03.Hk.Core.Entity.csproj"
             },
-            "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.IRepositorys\\Hk.Core.IRepositorys.csproj": {
-              "projectPath": "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.IRepositorys\\Hk.Core.IRepositorys.csproj"
+            "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.IRepositorys\\08.Hk.Core.IRepositorys.csproj": {
+              "projectPath": "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.IRepositorys\\08.Hk.Core.IRepositorys.csproj"
             },
             "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Util\\01.Hk.Core.Util.csproj": {
               "projectPath": "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Util\\01.Hk.Core.Util.csproj"

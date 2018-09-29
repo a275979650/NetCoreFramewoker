@@ -1,18 +1,17 @@
-﻿using System;
-using  System.Linq;
+﻿using Hk.Core.Business.Base_SysManage;
 using Hk.Core.Entity;
+using Hk.Core.Entity.Base_SysManage;
 using Hk.Core.IRepositorys;
+using Hk.Core.Util;
+using Hk.Core.Util.Cache;
 using Hk.Core.Util.Extentions;
 using Hk.Core.Util.Helper;
 using Microsoft.AspNetCore.Hosting;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml.Linq;
-using Hk.Core.Business.BaseBusiness;
-using Hk.Core.Business.Base_SysManage;
-using Hk.Core.Entity.Base_SysManage;
-using Hk.Core.Util;
-using Hk.Core.Util.Cache;
 
 namespace Hk.Core.Business.Common
 {

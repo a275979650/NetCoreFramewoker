@@ -1,5 +1,4 @@
 using Hk.Core.Business.Base_SysManage;
-using Hk.Core.DataRepository;
 using Hk.Core.Entity.Base_SysManage;
 using Hk.Core.Logs;
 using Hk.Core.Logs.Extensions;
@@ -68,22 +67,6 @@ namespace Hk.Core.Web
 
 
         }
-
-        private void InitEF()
-        {
-            Task.Run(() =>
-            {
-                try
-                {
-                    var a = DbFactory.GetRepository(null, null, null).GetIQueryable<Base_User>().ToList();
-                }
-                catch(Exception ex)
-                {
-                    var log = Log.GetLog().Caption("EF初始化异常");
-                    ex.Log(log);
-                }
-            });
-        }
         /// <summary>
         /// 开发环境配置
         /// </summary>
@@ -102,7 +85,6 @@ namespace Hk.Core.Web
             //app.UseErrorLog();
             app.UseStaticFiles();//支持静态文件
             ConfigRoute(app);
-            InitEF();
         }
         /// <summary>
         /// 路由配置,支持区域

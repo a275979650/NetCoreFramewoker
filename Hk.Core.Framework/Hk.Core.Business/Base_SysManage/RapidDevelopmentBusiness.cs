@@ -581,7 +581,7 @@ namespace Hk.Core.Web
         private Base_DatabaseLink GetTheLink(string linkId)
         {
             Base_DatabaseLink resObj = new Base_DatabaseLink();
-            var theModule = Get().Where(x => x.Id == linkId).FirstOrDefault();
+            var theModule = Get().FirstOrDefault(x => x.Id == linkId);
             resObj = theModule ?? resObj;
 
             return resObj;

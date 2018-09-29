@@ -27,7 +27,6 @@
           "HK.Core.Webs": "1.0.0",
           "Hk.Core.Business": "1.0.0",
           "Hk.Core.Data": "1.0.0",
-          "Hk.Core.DataRepository": "1.0.0",
           "Hk.Core.Entity": "1.0.0",
           "Hk.Core.IRepositorys": "1.0.0",
           "Hk.Core.Logs": "1.0.0",
@@ -2025,7 +2024,6 @@
       "Hk.Core.Business/1.0.0": {
         "dependencies": {
           "Hk.Core.Data": "1.0.0",
-          "Hk.Core.DataRepository": "1.0.0",
           "Hk.Core.Entity": "1.0.0",
           "Hk.Core.IRepositorys": "1.0.0",
           "Hk.Core.Util": "1.0.0"
@@ -2051,17 +2049,6 @@
         },
         "compile": {
           "Hk.Core.Data.dll": {}
-        }
-      },
-      "Hk.Core.DataRepository/1.0.0": {
-        "dependencies": {
-          "Hk.Core.Util": "1.0.0"
-        },
-        "runtime": {
-          "Hk.Core.DataRepository.dll": {}
-        },
-        "compile": {
-          "Hk.Core.DataRepository.dll": {}
         }
       },
       "Hk.Core.Entity/1.0.0": {
@@ -5336,11 +5323,6 @@
       "sha512": ""
     },
     "Hk.Core.Data/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Hk.Core.DataRepository/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

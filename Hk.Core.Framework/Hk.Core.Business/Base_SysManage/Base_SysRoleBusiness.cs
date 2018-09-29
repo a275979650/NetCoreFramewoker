@@ -93,7 +93,7 @@ namespace Hk.Core.Business.Base_SysManage
         /// <param name="permissions">权限值</param>
         public void SavePermission(string roleId, List<string> permissions)
         {
-            _basePermissionRoleRepository.Delete(roleId);
+            _basePermissionRoleRepository.Delete(x=>x.RoleId==roleId);
             List<Base_PermissionRole> insertList = new List<Base_PermissionRole>();
             permissions.ForEach(newPermission =>
             {

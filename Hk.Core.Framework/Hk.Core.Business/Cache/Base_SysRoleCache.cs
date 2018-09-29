@@ -1,6 +1,7 @@
-﻿using System.Linq;
-using Hk.Core.DataRepository;
-using Hk.Core.Entity.Base_SysManage;
+﻿using Hk.Core.Entity.Base_SysManage;
+using Hk.Core.IRepositorys;
+using Hk.Core.Util.Helper;
+using System.Linq;
 
 namespace Hk.Core.Business.Cache
 {
@@ -9,7 +10,9 @@ namespace Hk.Core.Business.Cache
         public Base_SysRoleCache()
             : base("UserRoleCache", roleId =>
             {
-                return DbFactory.GetRepository().GetIQueryable<Base_SysRole>().Where(x => x.RoleId == roleId).FirstOrDefault();
+                IBaseSysRoleRepository baseSysRoleRepository =
+                    Ioc.DefaultContainer.GetService<IBaseSysRoleRepository>();
+                return baseSysRoleRepository.Get().FirstOrDefault(x => x.RoleId == roleId);
             })
         {
 
