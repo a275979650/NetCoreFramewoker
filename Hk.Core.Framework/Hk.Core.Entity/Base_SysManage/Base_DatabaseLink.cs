@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Hk.Core.Data.Models;
 
 namespace Hk.Core.Entity.Base_SysManage
 {
@@ -8,14 +9,14 @@ namespace Hk.Core.Entity.Base_SysManage
     /// 数据库连接
     /// </summary>
     [Table("Base_DatabaseLink")]
-    public class Base_DatabaseLink
+    public class Base_DatabaseLink:BaseModel<string>
     {
 
         /// <summary>
         /// 代理主键
         /// </summary>
         [Key]
-        public String Id { get; set; }
+        public override string Id { get; set; }
 
         /// <summary>
         /// 连接名

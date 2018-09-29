@@ -1,17 +1,22 @@
-﻿using System;
-using Hk.Core.Business.Base_SysManage;
+﻿using Hk.Core.Business.Base_SysManage;
+using Hk.Core.Data.DbContextCore;
 using Hk.Core.Entity.Base_SysManage;
 using Hk.Core.Util.Datas;
 using Hk.Core.Util.Extentions;
 using Hk.Core.Web.Common;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
 {
     [Area("Base_SysManage")]
     public class Base_SysRoleController : BaseMvcController
     {
-        Base_SysRoleBusiness _base_SysRoleBusiness = new Base_SysRoleBusiness();
+        private Base_SysRoleBusiness _base_SysRoleBusiness;
+        public Base_SysRoleController(IDbContextCore dbContext)
+        {
+            _base_SysRoleBusiness = new Base_SysRoleBusiness(dbContext);
+        }
 
         #region 视图功能
 
@@ -120,7 +125,6 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
 
             return Success();
         }
-
         #endregion
     }
 }

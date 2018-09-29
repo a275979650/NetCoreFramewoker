@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Hk.Core.Business\04.Hk.Core.Business.csproj" />
+    <ProjectReference Include="..\Hk.Core.Data\Hk.Core.Data.csproj" />
+    <ProjectReference Include="..\Hk.Core.Entity\03.Hk.Core.Entity.csproj" />
+    <ProjectReference Include="..\Hk.Core.IRepositorys\Hk.Core.IRepositorys.csproj" />
+  </ItemGroup>
+
+</Project>

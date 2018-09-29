@@ -13,7 +13,7 @@ namespace Hk.Core.Util.Helper
         /// <summary>
         /// 默认容器
         /// </summary>
-        internal static readonly Container DefaultContainer = new Container();
+        public static readonly Container DefaultContainer = new Container();
 
         /// <summary>
         /// 创建容器

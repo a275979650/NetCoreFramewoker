@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Hk.Core.Data.Models;
 
 namespace Hk.Core.Entity.Base_SysManage
 {
@@ -8,14 +9,14 @@ namespace Hk.Core.Entity.Base_SysManage
     /// 角色权限表
     /// </summary>
     [Table("Base_PermissionRole")]
-    public class Base_PermissionRole
+    public class Base_PermissionRole:BaseModel<string>
     {
 
         /// <summary>
         /// 逻辑主键
         /// </summary>
         [Key]
-        public String Id { get; set; }
+        public override string Id { get; set; }
 
         /// <summary>
         /// 角色主键Id

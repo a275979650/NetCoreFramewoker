@@ -8,7 +8,6 @@ using Hk.Core.Util.Events.Default;
 using Hk.Core.Util.Extentions;
 using Hk.Core.Util.Filter;
 using Hk.Core.Util.Logs.Extensions;
-using Hk.Core.Web.Test;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -46,7 +45,7 @@ namespace Hk.Core.Web
             {
                 options.Filters.Add<GlobalExceptionFilter>();
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);      
-            services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();            
+            services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddSingleton(Configuration);
             services.AddEventBus();
             services.AddNLog();

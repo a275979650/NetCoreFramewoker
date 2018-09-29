@@ -11,7 +11,7 @@ using Hk.Core.Data.DbContextCore;
 
 namespace Hk.Core.Business.OrganSet
 {
-    public class PBDM_ORGANBusiness : BaseBusinessT<PBDM_ORGAN,string>
+    public class PBDM_ORGANBusiness : BaseBusiness<PBDM_ORGAN,string>
     {
         public PBDM_ORGANBusiness(IDbContextCore dbContext) : base(dbContext)
         {

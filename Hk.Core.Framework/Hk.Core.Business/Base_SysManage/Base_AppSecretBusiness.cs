@@ -6,11 +6,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
+using Hk.Core.Data.DbContextCore;
 
 namespace Hk.Core.Business.Base_SysManage
 {
-    public class Base_AppSecretBusiness : BaseBusiness<Base_AppSecret>
+    public class Base_AppSecretBusiness : BaseBusiness<Base_AppSecret,string>
     {
+        public Base_AppSecretBusiness(IDbContextCore dbContext) : base(dbContext)
+        {
+        }
         #region 外部接口
 
         /// <summary>
@@ -21,7 +25,7 @@ namespace Hk.Core.Business.Base_SysManage
         /// <returns></returns>
         public List<Base_AppSecret> GetDataList(string condition, string keyword, Pagination pagination)
         {
-            var q = GetIQueryable();
+            var q = Get();
 
             //模糊查询
             if (!condition.IsNullOrEmpty() && !keyword.IsNullOrEmpty())
@@ -37,7 +41,7 @@ namespace Hk.Core.Business.Base_SysManage
         /// <returns></returns>
         public Base_AppSecret GetTheData(string id)
         {
-            return GetEntity(id);
+            return GetSingle(id);
         }
 
         /// <summary>
@@ -46,7 +50,7 @@ namespace Hk.Core.Business.Base_SysManage
         /// <param name="newData">数据</param>
         public void AddData(Base_AppSecret newData)
         {
-            Insert(newData);
+            Add(newData);
         }
 
         /// <summary>
@@ -63,7 +67,7 @@ namespace Hk.Core.Business.Base_SysManage
         /// <param name="theData">删除的数据</param>
         public void DeleteData(List<string> ids)
         {
-            Delete(ids);
+            ids.ForEach(x=>Delete(x));
         }
 
         /// <summary>
@@ -71,23 +75,22 @@ namespace Hk.Core.Business.Base_SysManage
         /// </summary>
         /// <param name="appId">应用Id</param>
         /// <param name="permissions">权限值</param>
-        public void SavePermission(string appId, List<string> permissions)
-        {
-            Service.Delete<Base_PermissionAppId>(x => x.AppId == appId);
+        //public void SavePermission(string appId, List<string> permissions)
+        //{
+        //    Delete(x => x.AppId == appId);
 
-            List<Base_PermissionAppId> insertList = new List<Base_PermissionAppId>();
-            permissions.ForEach(newPermission =>
-            {
-                insertList.Add(new Base_PermissionAppId
-                {
-                    Id = Guid.NewGuid().ToSequentialGuid(),
-                    AppId = appId,
-                    PermissionValue = newPermission
-                });
-            });
+        //    List<Base_PermissionAppId> insertList = new List<Base_PermissionAppId>();
+        //    permissions.ForEach(newPermission =>
+        //    {
+        //        insertList.Add(new Base_PermissionAppId
+        //        {
+        //            AppId = appId,
+        //            PermissionValue = newPermission
+        //        });
+        //    });
 
-            Service.Insert(insertList);
-        }
+        //    AddRange(insertList);
+        //}
 
         #endregion
 
@@ -98,5 +101,6 @@ namespace Hk.Core.Business.Base_SysManage
         #region 数据模型
 
         #endregion
+
     }
 }

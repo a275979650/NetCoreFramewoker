@@ -1,4 +1,5 @@
 ﻿using Hk.Core.Business.Base_SysManage;
+using Hk.Core.Data.DbContextCore;
 using Hk.Core.Util.Datas;
 using Hk.Core.Util.Extentions;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +9,12 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
     [Area("Base_SysManage")]
     public class RapidDevelopmentController : BaseMvcController
     {
-        RapidDevelopmentBusiness _rapidDevelopmentBus = new RapidDevelopmentBusiness();
+        private RapidDevelopmentBusiness _rapidDevelopmentBus;
+
+        public RapidDevelopmentController(IDbContextCore dbContext)
+        {
+            _rapidDevelopmentBus = new RapidDevelopmentBusiness(dbContext);
+        }
 
         #region 视图功能
 

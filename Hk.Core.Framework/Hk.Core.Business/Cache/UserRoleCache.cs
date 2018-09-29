@@ -5,7 +5,7 @@ using Hk.Core.Entity.Base_SysManage;
 
 namespace Hk.Core.Business.Cache
 {
-    class UserRoleCache : BaseCache<List<string>>
+    public class UserRoleCache : BaseCache<List<string>>
     {
         public UserRoleCache()
             : base("UserRoleCache", userId =>

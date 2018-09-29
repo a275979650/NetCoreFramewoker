@@ -1,5 +1,6 @@
 ﻿using System;
 using Hk.Core.Business.Base_SysManage;
+using Hk.Core.Data.DbContextCore;
 using Hk.Core.Entity.Base_SysManage;
 using Hk.Core.Util.Datas;
 using Hk.Core.Util.Extentions;
@@ -10,8 +11,12 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
     [Area("Base_SysManage")]
     public class Base_DatabaseLinkController : BaseMvcController
     {
-        Base_DatabaseLinkBusiness _base_DatabaseLinkBusiness = new Base_DatabaseLinkBusiness();
+        private Base_DatabaseLinkBusiness _base_DatabaseLinkBusiness;
 
+        public Base_DatabaseLinkController(IDbContextCore dbContext)
+        {
+            _base_DatabaseLinkBusiness = new Base_DatabaseLinkBusiness(dbContext);
+        }
         #region 视图功能
 
         public ActionResult Index()

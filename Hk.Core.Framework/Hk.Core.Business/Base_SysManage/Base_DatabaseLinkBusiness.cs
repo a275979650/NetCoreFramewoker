@@ -1,15 +1,19 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Dynamic.Core;
-using Hk.Core.Business.BaseBusiness;
+﻿using Hk.Core.Business.BaseBusiness;
 using Hk.Core.Entity.Base_SysManage;
 using Hk.Core.Util.Datas;
 using Hk.Core.Util.Extentions;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Dynamic.Core;
+using Hk.Core.Data.DbContextCore;
 
 namespace Hk.Core.Business.Base_SysManage
 {
-    public class Base_DatabaseLinkBusiness : BaseBusiness<Base_DatabaseLink>
+    public class Base_DatabaseLinkBusiness : BaseBusiness<Base_DatabaseLink,string>
     {
+        public Base_DatabaseLinkBusiness(IDbContextCore dbContext) : base(dbContext)
+        {
+        }
         #region 外部接口
 
         /// <summary>
@@ -20,7 +24,7 @@ namespace Hk.Core.Business.Base_SysManage
         /// <returns></returns>
         public List<Base_DatabaseLink> GetDataList(string condition, string keyword, Pagination pagination)
         {
-            var q = GetIQueryable();
+            var q = Get();
 
             //模糊查询
             if (!condition.IsNullOrEmpty() && !keyword.IsNullOrEmpty())
@@ -36,7 +40,7 @@ namespace Hk.Core.Business.Base_SysManage
         /// <returns></returns>
         public Base_DatabaseLink GetTheData(string id)
         {
-            return GetEntity(id);
+            return GetSingle(id);
         }
 
         /// <summary>
@@ -45,7 +49,7 @@ namespace Hk.Core.Business.Base_SysManage
         /// <param name="newData">数据</param>
         public void AddData(Base_DatabaseLink newData)
         {
-            Insert(newData);
+            Add(newData);
         }
 
         /// <summary>
@@ -62,7 +66,7 @@ namespace Hk.Core.Business.Base_SysManage
         /// <param name="theData">删除的数据</param>
         public void DeleteData(List<string> ids)
         {
-            Delete(ids);
+            ids.ForEach(x=>Delete(x));
         }
 
         #endregion
@@ -74,5 +78,7 @@ namespace Hk.Core.Business.Base_SysManage
         #region 数据模型
 
         #endregion
+
+
     }
 }

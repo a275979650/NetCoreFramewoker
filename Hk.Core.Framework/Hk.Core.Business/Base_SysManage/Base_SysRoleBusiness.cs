@@ -6,11 +6,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
+using Autofac.Core;
+using Hk.Core.Data.DbContextCore;
+using Hk.Core.IRepositorys;
 using Hk.Core.Util.Extentions;
+using Hk.Core.Util.Helper;
+
 namespace Hk.Core.Business.Base_SysManage
 {
-    public class Base_SysRoleBusiness : BaseBusiness<Base_SysRole>
+    public class Base_SysRoleBusiness : BaseBusiness<Base_SysRole,string>
     {
+        private IBasePermissionRoleRepository _basePermissionRoleRepository;
+        public Base_SysRoleBusiness(IDbContextCore dbContext) : base(dbContext)
+        {
+            _basePermissionRoleRepository = Ioc.DefaultContainer.GetService<IBasePermissionRoleRepository>();
+        }
         static Base_SysRoleCache _cache { get; } = new Base_SysRoleCache();
         #region 外部接口
 
@@ -22,7 +32,7 @@ namespace Hk.Core.Business.Base_SysManage
         /// <returns></returns>
         public List<Base_SysRole> GetDataList(string condition, string keyword, Pagination pagination)
         {
-            var q = GetIQueryable();
+            var q = Get();
 
             //模糊查询
             if (!condition.IsNullOrEmpty() && !keyword.IsNullOrEmpty())
@@ -38,7 +48,7 @@ namespace Hk.Core.Business.Base_SysManage
         /// <returns></returns>
         public Base_SysRole GetTheData(string id)
         {
-            return GetEntity(id);
+            return GetSingle(id);
         }
 
         public static string GetRoleName(string userId)
@@ -52,7 +62,7 @@ namespace Hk.Core.Business.Base_SysManage
         /// <param name="newData">数据</param>
         public void AddData(Base_SysRole newData)
         {
-            Insert(newData);
+            Add(newData);
         }
 
         /// <summary>
@@ -70,9 +80,9 @@ namespace Hk.Core.Business.Base_SysManage
         /// <param name="theData">删除的数据</param>
         public void DeleteData(List<string> ids)
         {
-            var roleIds = GetIQueryable().Where(x => ids.Contains(x.RoleId)).Select(x => x.RoleId).ToList();
+            var roleIds = Get().Where(x => ids.Contains(x.RoleId)).Select(x => x.RoleId).ToList();
             //删除角色
-            Delete(ids);
+           ids.ForEach(x=>Delete(x));
             _cache.UpdateCache(roleIds);
         }
 
@@ -83,7 +93,7 @@ namespace Hk.Core.Business.Base_SysManage
         /// <param name="permissions">权限值</param>
         public void SavePermission(string roleId, List<string> permissions)
         {
-            Service.Delete<Base_PermissionRole>(x => x.RoleId == roleId);
+            _basePermissionRoleRepository.Delete(roleId);
             List<Base_PermissionRole> insertList = new List<Base_PermissionRole>();
             permissions.ForEach(newPermission =>
             {
@@ -95,7 +105,7 @@ namespace Hk.Core.Business.Base_SysManage
                 });
             });
 
-            Service.Insert(insertList);
+            _basePermissionRoleRepository.AddRange(insertList);
         }
 
         #endregion
@@ -107,5 +117,7 @@ namespace Hk.Core.Business.Base_SysManage
         #region 数据模型
 
         #endregion
+
+
     }
 }

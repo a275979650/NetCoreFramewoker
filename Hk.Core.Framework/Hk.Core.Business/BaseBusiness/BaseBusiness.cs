@@ -4,9 +4,9 @@ using Hk.Core.Data.Repositories;
 
 namespace Hk.Core.Business.BaseBusiness
 {
-    public class BaseBusinessT<T,TKey>:BaseRepository<T,TKey> where T : BaseModel<TKey>
+    public class BaseBusiness<T,TKey>:BaseRepository<T,TKey> where T : BaseModel<TKey>
     {
-        public BaseBusinessT(IDbContextCore dbContext) : base(dbContext)
+        public BaseBusiness(IDbContextCore dbContext) : base(dbContext)
         {
         }
     }

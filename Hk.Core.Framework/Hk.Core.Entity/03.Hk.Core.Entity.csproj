@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Base_SysManage\Base_UserModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Hk.Core.Data\Hk.Core.Data.csproj" />
   </ItemGroup>
 

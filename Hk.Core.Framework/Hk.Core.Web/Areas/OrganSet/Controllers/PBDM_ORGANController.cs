@@ -1,12 +1,10 @@
-using Hk.Core.Data.Options;
+using Hk.Core.Business.OrganSet;
+using Hk.Core.Data.DbContextCore;
 using Hk.Core.Entity.OrganSet;
 using Hk.Core.Util.Datas;
 using Hk.Core.Util.Extentions;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 using System;
-using Hk.Core.Business.OrganSet;
-using Hk.Core.Data.DbContextCore;
 
 namespace Hk.Core.Web
 {

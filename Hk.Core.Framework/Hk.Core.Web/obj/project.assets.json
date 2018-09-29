@@ -211,7 +211,7 @@
           "lib/netstandard2.0/IdentityModel.dll": {}
         }
       },
-      "LinqKit.Core/1.1.14": {
+      "LinqKit.Core/1.1.15": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/LinqKit.Core.dll": {}
@@ -1721,17 +1721,24 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.WebUtilities.dll": {}
         }
       },
-      "Microsoft.CodeAnalysis.Analyzers/1.1.0": {
-        "type": "package"
-      },
-      "Microsoft.CodeAnalysis.Common/2.8.0": {
+      "Microsoft.CodeAnalysis/2.9.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.CodeAnalysis.Analyzers": "1.1.0",
+          "Microsoft.CodeAnalysis.CSharp.Workspaces": "[2.9.0]",
+          "Microsoft.CodeAnalysis.VisualBasic.Workspaces": "[2.9.0]"
+        }
+      },
+      "Microsoft.CodeAnalysis.Analyzers/2.6.1": {
+        "type": "package"
+      },
+      "Microsoft.CodeAnalysis.Common/2.9.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CodeAnalysis.Analyzers": "2.6.1",
           "System.AppContext": "4.3.0",
           "System.Collections": "4.3.0",
           "System.Collections.Concurrent": "4.3.0",
-          "System.Collections.Immutable": "1.3.1",
+          "System.Collections.Immutable": "1.5.0",
           "System.Console": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
           "System.Diagnostics.FileVersionInfo": "4.3.0",
@@ -1745,7 +1752,7 @@
           "System.Linq": "4.3.0",
           "System.Linq.Expressions": "4.3.0",
           "System.Reflection": "4.3.0",
-          "System.Reflection.Metadata": "1.4.2",
+          "System.Reflection.Metadata": "1.6.0",
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -1759,6 +1766,7 @@
           "System.Text.Encoding.Extensions": "4.3.0",
           "System.Threading": "4.3.0",
           "System.Threading.Tasks": "4.3.0",
+          "System.Threading.Tasks.Extensions": "4.3.0",
           "System.Threading.Tasks.Parallel": "4.3.0",
           "System.Threading.Thread": "4.3.0",
           "System.ValueTuple": "4.3.0",
@@ -1772,31 +1780,154 @@
         },
         "runtime": {
           "lib/netstandard1.3/Microsoft.CodeAnalysis.dll": {}
+        },
+        "resource": {
+          "lib/netstandard1.3/cs/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netstandard1.3/de/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netstandard1.3/es/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netstandard1.3/fr/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netstandard1.3/it/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netstandard1.3/ja/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/netstandard1.3/ko/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/netstandard1.3/pl/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netstandard1.3/pt-BR/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netstandard1.3/ru/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netstandard1.3/tr/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/netstandard1.3/zh-Hans/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/netstandard1.3/zh-Hant/Microsoft.CodeAnalysis.resources.dll": {
+            "locale": "zh-Hant"
+          }
         }
       },
-      "Microsoft.CodeAnalysis.CSharp/2.8.0": {
+      "Microsoft.CodeAnalysis.CSharp/2.9.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.CodeAnalysis.Common": "[2.8.0]"
+          "Microsoft.CodeAnalysis.Common": "[2.9.0]"
         },
         "compile": {
           "lib/netstandard1.3/Microsoft.CodeAnalysis.CSharp.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/Microsoft.CodeAnalysis.CSharp.dll": {}
+        },
+        "resource": {
+          "lib/netstandard1.3/cs/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netstandard1.3/de/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netstandard1.3/es/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netstandard1.3/fr/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netstandard1.3/it/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netstandard1.3/ja/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/netstandard1.3/ko/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/netstandard1.3/pl/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netstandard1.3/pt-BR/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netstandard1.3/ru/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netstandard1.3/tr/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/netstandard1.3/zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/netstandard1.3/zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll": {
+            "locale": "zh-Hant"
+          }
         }
       },
-      "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
+      "Microsoft.CodeAnalysis.CSharp.Workspaces/2.9.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.CodeAnalysis.CSharp": "[2.8.0]",
-          "Microsoft.CodeAnalysis.Workspaces.Common": "[2.8.0]"
+          "Microsoft.CodeAnalysis.CSharp": "[2.9.0]",
+          "Microsoft.CodeAnalysis.Workspaces.Common": "[2.9.0]"
         },
         "compile": {
           "lib/netstandard1.3/Microsoft.CodeAnalysis.CSharp.Workspaces.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/Microsoft.CodeAnalysis.CSharp.Workspaces.dll": {}
+        },
+        "resource": {
+          "lib/netstandard1.3/cs/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netstandard1.3/de/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netstandard1.3/es/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netstandard1.3/fr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netstandard1.3/it/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netstandard1.3/ja/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/netstandard1.3/ko/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/netstandard1.3/pl/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netstandard1.3/pt-BR/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netstandard1.3/ru/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netstandard1.3/tr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/netstandard1.3/zh-Hans/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/netstandard1.3/zh-Hant/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll": {
+            "locale": "zh-Hant"
+          }
         }
       },
       "Microsoft.CodeAnalysis.Razor/2.1.1": {
@@ -1813,10 +1944,117 @@
           "lib/netstandard2.0/Microsoft.CodeAnalysis.Razor.dll": {}
         }
       },
-      "Microsoft.CodeAnalysis.Workspaces.Common/2.8.0": {
+      "Microsoft.CodeAnalysis.VisualBasic/2.9.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.CodeAnalysis.Common": "[2.8.0]",
+          "Microsoft.CodeAnalysis.Common": "2.9.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.CodeAnalysis.VisualBasic.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.CodeAnalysis.VisualBasic.dll": {}
+        },
+        "resource": {
+          "lib/netstandard1.3/cs/Microsoft.CodeAnalysis.VisualBasic.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netstandard1.3/de/Microsoft.CodeAnalysis.VisualBasic.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netstandard1.3/es/Microsoft.CodeAnalysis.VisualBasic.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netstandard1.3/fr/Microsoft.CodeAnalysis.VisualBasic.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netstandard1.3/it/Microsoft.CodeAnalysis.VisualBasic.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netstandard1.3/ja/Microsoft.CodeAnalysis.VisualBasic.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/netstandard1.3/ko/Microsoft.CodeAnalysis.VisualBasic.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/netstandard1.3/pl/Microsoft.CodeAnalysis.VisualBasic.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netstandard1.3/pt-BR/Microsoft.CodeAnalysis.VisualBasic.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netstandard1.3/ru/Microsoft.CodeAnalysis.VisualBasic.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netstandard1.3/tr/Microsoft.CodeAnalysis.VisualBasic.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/netstandard1.3/zh-Hans/Microsoft.CodeAnalysis.VisualBasic.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/netstandard1.3/zh-Hant/Microsoft.CodeAnalysis.VisualBasic.resources.dll": {
+            "locale": "zh-Hant"
+          }
+        }
+      },
+      "Microsoft.CodeAnalysis.VisualBasic.Workspaces/2.9.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CodeAnalysis.VisualBasic": "[2.9.0]",
+          "Microsoft.CodeAnalysis.Workspaces.Common": "[2.9.0]"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.CodeAnalysis.VisualBasic.Workspaces.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.CodeAnalysis.VisualBasic.Workspaces.dll": {}
+        },
+        "resource": {
+          "lib/netstandard1.3/cs/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netstandard1.3/de/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netstandard1.3/es/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netstandard1.3/fr/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netstandard1.3/it/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netstandard1.3/ja/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/netstandard1.3/ko/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/netstandard1.3/pl/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netstandard1.3/pt-BR/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netstandard1.3/ru/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netstandard1.3/tr/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/netstandard1.3/zh-Hans/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/netstandard1.3/zh-Hant/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll": {
+            "locale": "zh-Hant"
+          }
+        }
+      },
+      "Microsoft.CodeAnalysis.Workspaces.Common/2.9.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CodeAnalysis.Common": "[2.9.0]",
           "System.Composition": "1.0.31",
           "System.Diagnostics.Contracts": "4.3.0",
           "System.Linq.Parallel": "4.3.0",
@@ -1829,6 +2067,47 @@
         },
         "runtime": {
           "lib/netstandard1.3/Microsoft.CodeAnalysis.Workspaces.dll": {}
+        },
+        "resource": {
+          "lib/netstandard1.3/cs/Microsoft.CodeAnalysis.Workspaces.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netstandard1.3/de/Microsoft.CodeAnalysis.Workspaces.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netstandard1.3/es/Microsoft.CodeAnalysis.Workspaces.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netstandard1.3/fr/Microsoft.CodeAnalysis.Workspaces.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netstandard1.3/it/Microsoft.CodeAnalysis.Workspaces.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netstandard1.3/ja/Microsoft.CodeAnalysis.Workspaces.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/netstandard1.3/ko/Microsoft.CodeAnalysis.Workspaces.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/netstandard1.3/pl/Microsoft.CodeAnalysis.Workspaces.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netstandard1.3/pt-BR/Microsoft.CodeAnalysis.Workspaces.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netstandard1.3/ru/Microsoft.CodeAnalysis.Workspaces.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netstandard1.3/tr/Microsoft.CodeAnalysis.Workspaces.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/netstandard1.3/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/netstandard1.3/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll": {
+            "locale": "zh-Hant"
+          }
         }
       },
       "Microsoft.CSharp/4.5.0": {
@@ -4393,6 +4672,20 @@
           }
         }
       },
+      "System.Runtime.Loader/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.IO": "4.3.0",
+          "System.Reflection": "4.3.0",
+          "System.Runtime": "4.3.0"
+        },
+        "compile": {
+          "ref/netstandard1.5/System.Runtime.Loader.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.5/System.Runtime.Loader.dll": {}
+        }
+      },
       "System.Runtime.Numerics/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -5072,6 +5365,7 @@
           "Hk.Core.Data": "1.0.0",
           "Hk.Core.DataRepository": "1.0.0",
           "Hk.Core.Entity": "1.0.0",
+          "Hk.Core.IRepositorys": "1.0.0",
           "Hk.Core.Util": "1.0.0"
         },
         "compile": {
@@ -5125,6 +5419,20 @@
           "bin/placeholder/Hk.Core.Entity.dll": {}
         }
       },
+      "Hk.Core.IRepositorys/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Hk.Core.Data": "1.0.0",
+          "Hk.Core.Entity": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Hk.Core.IRepositorys.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hk.Core.IRepositorys.dll": {}
+        }
+      },
       "Hk.Core.Logs/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -5139,6 +5447,22 @@
         },
         "runtime": {
           "bin/placeholder/Hk.Core.Logs.dll": {}
+        }
+      },
+      "Hk.Core.Repositorys/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Hk.Core.Business": "1.0.0",
+          "Hk.Core.Data": "1.0.0",
+          "Hk.Core.Entity": "1.0.0",
+          "Hk.Core.IRepositorys": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Hk.Core.Repositorys.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hk.Core.Repositorys.dll": {}
         }
       },
       "Hk.Core.Security/1.0.0": {
@@ -5165,7 +5489,7 @@
           "Autofac": "4.8.1",
           "Autofac.Extensions.DependencyInjection": "4.2.2",
           "IdentityModel": "3.9.0",
-          "LINQKit.Core": "1.1.14",
+          "LINQKit.Core": "1.1.15",
           "Microsoft.AspNetCore": "2.1.3",
           "Microsoft.AspNetCore.Hosting": "2.1.1",
           "Microsoft.AspNetCore.Http.Abstractions": "2.1.1",
@@ -5178,7 +5502,8 @@
           "Npgsql": "3.2.6",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "2.0.1",
           "StackExchange.Redis": "2.0.505",
-          "System.Linq.Dynamic.Core": "1.0.8.18"
+          "System.Linq.Dynamic.Core": "1.0.8.18",
+          "System.Runtime.Loader": "4.3.0"
         },
         "compile": {
           "bin/placeholder/Hk.Core.Util.dll": {}
@@ -5428,10 +5753,10 @@
         "lib/netstandard2.0/IdentityModel.xml"
       ]
     },
-    "LinqKit.Core/1.1.14": {
-      "sha512": "goD/N3wQ/UDACzxjgfSMubuyUDSbgZMWFdyk7kyT2Gr9PURJSRuwIWaMhDtP27Y/FNuLiBsfh6cvPDCGB71D8A==",
+    "LinqKit.Core/1.1.15": {
+      "sha512": "+PQAuVVtBPC/qdF57MSc63B41k5TjfDl32LDdgH7RzcXO+UpgLpotvXG2Oj0SdQL8ikO/NnHobkdK+Hb3i5VCA==",
       "type": "package",
-      "path": "linqkit.core/1.1.14",
+      "path": "linqkit.core/1.1.15",
       "files": [
         "lib/net35/LinqKit.Core.dll",
         "lib/net35/LinqKit.Core.xml",
@@ -5450,7 +5775,7 @@
         "lib/uap10.0/LinqKit.Core.dll",
         "lib/uap10.0/LinqKit.Core.pri",
         "lib/uap10.0/LinqKit.Core.xml",
-        "linqkit.core.1.1.14.nupkg.sha512",
+        "linqkit.core.1.1.15.nupkg.sha512",
         "linqkit.core.nuspec"
       ]
     },
@@ -6623,58 +6948,109 @@
         "microsoft.aspnetcore.webutilities.nuspec"
       ]
     },
-    "Microsoft.CodeAnalysis.Analyzers/1.1.0": {
-      "sha512": "HS3iRWZKcUw/8eZ/08GXKY2Bn7xNzQPzf8gRPHGSowX7u7XXu9i9YEaBeBNKUXWfI7qjvT2zXtLUvbN0hds8vg==",
+    "Microsoft.CodeAnalysis/2.9.0": {
+      "sha512": "aSPsUf5rriB4+Gc/HhtmJpNXGiB0k3NDhy58vOKkyOG2ccgyMzAl/lvNhEpebY/iGshczriC6PzSuC3IQsr8mg==",
       "type": "package",
-      "path": "microsoft.codeanalysis.analyzers/1.1.0",
+      "path": "microsoft.codeanalysis/2.9.0",
       "files": [
+        ".signature.p7s",
+        "ThirdPartyNotices.rtf",
+        "microsoft.codeanalysis.2.9.0.nupkg.sha512",
+        "microsoft.codeanalysis.nuspec"
+      ]
+    },
+    "Microsoft.CodeAnalysis.Analyzers/2.6.1": {
+      "sha512": "xfHR7ArfbqrwIepisNVUwHHTgezhs5w1GUvxybRJoJVYMmJOW9r7lK7TM7VRPFttPfzuJzaLCGR9lTukmzTckg==",
+      "type": "package",
+      "path": "microsoft.codeanalysis.analyzers/2.6.1",
+      "files": [
+        ".signature.p7s",
         "ThirdPartyNotices.rtf",
         "analyzers/dotnet/cs/Microsoft.CodeAnalysis.Analyzers.dll",
         "analyzers/dotnet/cs/Microsoft.CodeAnalysis.CSharp.Analyzers.dll",
         "analyzers/dotnet/vb/Microsoft.CodeAnalysis.Analyzers.dll",
         "analyzers/dotnet/vb/Microsoft.CodeAnalysis.VisualBasic.Analyzers.dll",
-        "microsoft.codeanalysis.analyzers.1.1.0.nupkg.sha512",
+        "microsoft.codeanalysis.analyzers.2.6.1.nupkg.sha512",
         "microsoft.codeanalysis.analyzers.nuspec",
         "tools/install.ps1",
         "tools/uninstall.ps1"
       ]
     },
-    "Microsoft.CodeAnalysis.Common/2.8.0": {
-      "sha512": "lYUBqh3OD3iEQqxt9KB472VzgOnEKoUVG4Lx5Xw4oJe9dZtITkHFtct+T73jH3FOASFI1NSzzP5MBM0c9zZspA==",
+    "Microsoft.CodeAnalysis.Common/2.9.0": {
+      "sha512": "gWTphgR8eHu39XcrfhxE8WwD35C/vaR06QiKM1TaCbjmgPafZ9G3TY7eeT44BfHVMQEGYZmjV5NZNQLm2F7ZTQ==",
       "type": "package",
-      "path": "microsoft.codeanalysis.common/2.8.0",
+      "path": "microsoft.codeanalysis.common/2.9.0",
       "files": [
         ".signature.p7s",
         "lib/netstandard1.3/Microsoft.CodeAnalysis.dll",
         "lib/netstandard1.3/Microsoft.CodeAnalysis.pdb",
         "lib/netstandard1.3/Microsoft.CodeAnalysis.xml",
-        "microsoft.codeanalysis.common.2.8.0.nupkg.sha512",
+        "lib/netstandard1.3/cs/Microsoft.CodeAnalysis.resources.dll",
+        "lib/netstandard1.3/de/Microsoft.CodeAnalysis.resources.dll",
+        "lib/netstandard1.3/es/Microsoft.CodeAnalysis.resources.dll",
+        "lib/netstandard1.3/fr/Microsoft.CodeAnalysis.resources.dll",
+        "lib/netstandard1.3/it/Microsoft.CodeAnalysis.resources.dll",
+        "lib/netstandard1.3/ja/Microsoft.CodeAnalysis.resources.dll",
+        "lib/netstandard1.3/ko/Microsoft.CodeAnalysis.resources.dll",
+        "lib/netstandard1.3/pl/Microsoft.CodeAnalysis.resources.dll",
+        "lib/netstandard1.3/pt-BR/Microsoft.CodeAnalysis.resources.dll",
+        "lib/netstandard1.3/ru/Microsoft.CodeAnalysis.resources.dll",
+        "lib/netstandard1.3/tr/Microsoft.CodeAnalysis.resources.dll",
+        "lib/netstandard1.3/zh-Hans/Microsoft.CodeAnalysis.resources.dll",
+        "lib/netstandard1.3/zh-Hant/Microsoft.CodeAnalysis.resources.dll",
+        "microsoft.codeanalysis.common.2.9.0.nupkg.sha512",
         "microsoft.codeanalysis.common.nuspec"
       ]
     },
-    "Microsoft.CodeAnalysis.CSharp/2.8.0": {
-      "sha512": "+4CHAwHMwLO5GRqPJ7Khv2Ny//omhukPKP3Ny/d2XDpt11bX35zb9pTziwZN0eNvxj6a46joIdHEYQ1JsekI3w==",
+    "Microsoft.CodeAnalysis.CSharp/2.9.0": {
+      "sha512": "RNACUadFXlT3/Y4XIVI1+g3hpGgToYJyVTRBVFmhE8gtRA2snM5dPKv2e4Qz7K/3Ap7Ky+YgIKCO4YsmWqal/A==",
       "type": "package",
-      "path": "microsoft.codeanalysis.csharp/2.8.0",
+      "path": "microsoft.codeanalysis.csharp/2.9.0",
       "files": [
         ".signature.p7s",
         "lib/netstandard1.3/Microsoft.CodeAnalysis.CSharp.dll",
         "lib/netstandard1.3/Microsoft.CodeAnalysis.CSharp.pdb",
         "lib/netstandard1.3/Microsoft.CodeAnalysis.CSharp.xml",
-        "microsoft.codeanalysis.csharp.2.8.0.nupkg.sha512",
+        "lib/netstandard1.3/cs/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "lib/netstandard1.3/de/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "lib/netstandard1.3/es/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "lib/netstandard1.3/fr/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "lib/netstandard1.3/it/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "lib/netstandard1.3/ja/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "lib/netstandard1.3/ko/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "lib/netstandard1.3/pl/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "lib/netstandard1.3/pt-BR/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "lib/netstandard1.3/ru/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "lib/netstandard1.3/tr/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "lib/netstandard1.3/zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "lib/netstandard1.3/zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll",
+        "microsoft.codeanalysis.csharp.2.9.0.nupkg.sha512",
         "microsoft.codeanalysis.csharp.nuspec"
       ]
     },
-    "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
-      "sha512": "hpSNX6kgb13ABbOmxAD2sj/7J7IN3HWz1AWcmEuouTZM+OeWLSHDmPGlN4eaUDPMCoe1DY7v16D3V0BY+q7BTw==",
+    "Microsoft.CodeAnalysis.CSharp.Workspaces/2.9.0": {
+      "sha512": "Kis5VedBJjtdlYlI9erCAnqz2fVgRWLHCDYMIKRXsD4CVWrwrm8sCq3qmY9Drmit85StquRPFw5z8YMhDCB7RQ==",
       "type": "package",
-      "path": "microsoft.codeanalysis.csharp.workspaces/2.8.0",
+      "path": "microsoft.codeanalysis.csharp.workspaces/2.9.0",
       "files": [
         ".signature.p7s",
         "lib/netstandard1.3/Microsoft.CodeAnalysis.CSharp.Workspaces.dll",
         "lib/netstandard1.3/Microsoft.CodeAnalysis.CSharp.Workspaces.pdb",
         "lib/netstandard1.3/Microsoft.CodeAnalysis.CSharp.Workspaces.xml",
-        "microsoft.codeanalysis.csharp.workspaces.2.8.0.nupkg.sha512",
+        "lib/netstandard1.3/cs/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "lib/netstandard1.3/de/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "lib/netstandard1.3/es/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "lib/netstandard1.3/fr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "lib/netstandard1.3/it/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "lib/netstandard1.3/ja/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "lib/netstandard1.3/ko/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "lib/netstandard1.3/pl/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "lib/netstandard1.3/pt-BR/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "lib/netstandard1.3/ru/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "lib/netstandard1.3/tr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "lib/netstandard1.3/zh-Hans/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "lib/netstandard1.3/zh-Hant/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+        "microsoft.codeanalysis.csharp.workspaces.2.9.0.nupkg.sha512",
         "microsoft.codeanalysis.csharp.workspaces.nuspec"
       ]
     },
@@ -6692,10 +7068,62 @@
         "microsoft.codeanalysis.razor.nuspec"
       ]
     },
-    "Microsoft.CodeAnalysis.Workspaces.Common/2.8.0": {
-      "sha512": "xt6VmGncJW14z3O0/k7+0cO8w9tB3O6CUL6sM6LesgGmD6zZPbWKY9KpRgV7RewA1flLuXBaUknRjwj0kLA6/g==",
+    "Microsoft.CodeAnalysis.VisualBasic/2.9.0": {
+      "sha512": "4nxVFgxywDHttOSLh9z36QGUdsTFz80A/M+qc2bgZ3GBuTR9+FeDPIap8DQrBcDZWO1Kb+0QC6b65jZvgcZP5g==",
       "type": "package",
-      "path": "microsoft.codeanalysis.workspaces.common/2.8.0",
+      "path": "microsoft.codeanalysis.visualbasic/2.9.0",
+      "files": [
+        ".signature.p7s",
+        "lib/netstandard1.3/Microsoft.CodeAnalysis.VisualBasic.dll",
+        "lib/netstandard1.3/Microsoft.CodeAnalysis.VisualBasic.pdb",
+        "lib/netstandard1.3/Microsoft.CodeAnalysis.VisualBasic.xml",
+        "lib/netstandard1.3/cs/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "lib/netstandard1.3/de/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "lib/netstandard1.3/es/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "lib/netstandard1.3/fr/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "lib/netstandard1.3/it/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "lib/netstandard1.3/ja/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "lib/netstandard1.3/ko/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "lib/netstandard1.3/pl/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "lib/netstandard1.3/pt-BR/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "lib/netstandard1.3/ru/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "lib/netstandard1.3/tr/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "lib/netstandard1.3/zh-Hans/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "lib/netstandard1.3/zh-Hant/Microsoft.CodeAnalysis.VisualBasic.resources.dll",
+        "microsoft.codeanalysis.visualbasic.2.9.0.nupkg.sha512",
+        "microsoft.codeanalysis.visualbasic.nuspec"
+      ]
+    },
+    "Microsoft.CodeAnalysis.VisualBasic.Workspaces/2.9.0": {
+      "sha512": "dL9+IJPk7mZ9LFY0saaXk1adKbEDhHe+U+1fG4F7o4NsvZqcOS/6sRcEWl253gi2ZoFoonDDB3sffhrlg1ITIQ==",
+      "type": "package",
+      "path": "microsoft.codeanalysis.visualbasic.workspaces/2.9.0",
+      "files": [
+        ".signature.p7s",
+        "lib/netstandard1.3/Microsoft.CodeAnalysis.VisualBasic.Workspaces.dll",
+        "lib/netstandard1.3/Microsoft.CodeAnalysis.VisualBasic.Workspaces.pdb",
+        "lib/netstandard1.3/Microsoft.CodeAnalysis.VisualBasic.Workspaces.xml",
+        "lib/netstandard1.3/cs/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll",
+        "lib/netstandard1.3/de/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll",
+        "lib/netstandard1.3/es/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll",
+        "lib/netstandard1.3/fr/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll",
+        "lib/netstandard1.3/it/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll",
+        "lib/netstandard1.3/ja/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll",
+        "lib/netstandard1.3/ko/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll",
+        "lib/netstandard1.3/pl/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll",
+        "lib/netstandard1.3/pt-BR/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll",
+        "lib/netstandard1.3/ru/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll",
+        "lib/netstandard1.3/tr/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll",
+        "lib/netstandard1.3/zh-Hans/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll",
+        "lib/netstandard1.3/zh-Hant/Microsoft.CodeAnalysis.VisualBasic.Workspaces.resources.dll",
+        "microsoft.codeanalysis.visualbasic.workspaces.2.9.0.nupkg.sha512",
+        "microsoft.codeanalysis.visualbasic.workspaces.nuspec"
+      ]
+    },
+    "Microsoft.CodeAnalysis.Workspaces.Common/2.9.0": {
+      "sha512": "KGkaumh6O0gS0RBWHHIfx34u5sm7vhgTDaFOcKm60tELh6Jy6OYNtdB/Iyefvvwb+PaZIcUg+9hbGBQ1GdCHqA==",
+      "type": "package",
+      "path": "microsoft.codeanalysis.workspaces.common/2.9.0",
       "files": [
         ".signature.p7s",
         "lib/net46/Microsoft.CodeAnalysis.Workspaces.Desktop.dll",
@@ -6704,10 +7132,49 @@
         "lib/net46/Microsoft.CodeAnalysis.Workspaces.dll",
         "lib/net46/Microsoft.CodeAnalysis.Workspaces.pdb",
         "lib/net46/Microsoft.CodeAnalysis.Workspaces.xml",
+        "lib/net46/cs/Microsoft.CodeAnalysis.Workspaces.Desktop.resources.dll",
+        "lib/net46/cs/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "lib/net46/de/Microsoft.CodeAnalysis.Workspaces.Desktop.resources.dll",
+        "lib/net46/de/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "lib/net46/es/Microsoft.CodeAnalysis.Workspaces.Desktop.resources.dll",
+        "lib/net46/es/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "lib/net46/fr/Microsoft.CodeAnalysis.Workspaces.Desktop.resources.dll",
+        "lib/net46/fr/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "lib/net46/it/Microsoft.CodeAnalysis.Workspaces.Desktop.resources.dll",
+        "lib/net46/it/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "lib/net46/ja/Microsoft.CodeAnalysis.Workspaces.Desktop.resources.dll",
+        "lib/net46/ja/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "lib/net46/ko/Microsoft.CodeAnalysis.Workspaces.Desktop.resources.dll",
+        "lib/net46/ko/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "lib/net46/pl/Microsoft.CodeAnalysis.Workspaces.Desktop.resources.dll",
+        "lib/net46/pl/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "lib/net46/pt-BR/Microsoft.CodeAnalysis.Workspaces.Desktop.resources.dll",
+        "lib/net46/pt-BR/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "lib/net46/ru/Microsoft.CodeAnalysis.Workspaces.Desktop.resources.dll",
+        "lib/net46/ru/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "lib/net46/tr/Microsoft.CodeAnalysis.Workspaces.Desktop.resources.dll",
+        "lib/net46/tr/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "lib/net46/zh-Hans/Microsoft.CodeAnalysis.Workspaces.Desktop.resources.dll",
+        "lib/net46/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "lib/net46/zh-Hant/Microsoft.CodeAnalysis.Workspaces.Desktop.resources.dll",
+        "lib/net46/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll",
         "lib/netstandard1.3/Microsoft.CodeAnalysis.Workspaces.dll",
         "lib/netstandard1.3/Microsoft.CodeAnalysis.Workspaces.pdb",
         "lib/netstandard1.3/Microsoft.CodeAnalysis.Workspaces.xml",
-        "microsoft.codeanalysis.workspaces.common.2.8.0.nupkg.sha512",
+        "lib/netstandard1.3/cs/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "lib/netstandard1.3/de/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "lib/netstandard1.3/es/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "lib/netstandard1.3/fr/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "lib/netstandard1.3/it/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "lib/netstandard1.3/ja/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "lib/netstandard1.3/ko/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "lib/netstandard1.3/pl/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "lib/netstandard1.3/pt-BR/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "lib/netstandard1.3/ru/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "lib/netstandard1.3/tr/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "lib/netstandard1.3/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "lib/netstandard1.3/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll",
+        "microsoft.codeanalysis.workspaces.common.2.9.0.nupkg.sha512",
         "microsoft.codeanalysis.workspaces.common.nuspec"
       ]
     },
@@ -11754,6 +12221,36 @@
         "system.runtime.interopservices.runtimeinformation.nuspec"
       ]
     },
+    "System.Runtime.Loader/4.3.0": {
+      "sha512": "DHMaRn8D8YCK2GG2pw+UzNxn/OHVfaWx7OTLBD/hPegHZZgcZh3H6seWegrC4BYwsfuGrywIuT+MQs+rPqRLTQ==",
+      "type": "package",
+      "path": "system.runtime.loader/4.3.0",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net462/_._",
+        "lib/netstandard1.5/System.Runtime.Loader.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/netstandard1.5/System.Runtime.Loader.dll",
+        "ref/netstandard1.5/System.Runtime.Loader.xml",
+        "ref/netstandard1.5/de/System.Runtime.Loader.xml",
+        "ref/netstandard1.5/es/System.Runtime.Loader.xml",
+        "ref/netstandard1.5/fr/System.Runtime.Loader.xml",
+        "ref/netstandard1.5/it/System.Runtime.Loader.xml",
+        "ref/netstandard1.5/ja/System.Runtime.Loader.xml",
+        "ref/netstandard1.5/ko/System.Runtime.Loader.xml",
+        "ref/netstandard1.5/ru/System.Runtime.Loader.xml",
+        "ref/netstandard1.5/zh-hans/System.Runtime.Loader.xml",
+        "ref/netstandard1.5/zh-hant/System.Runtime.Loader.xml",
+        "system.runtime.loader.4.3.0.nupkg.sha512",
+        "system.runtime.loader.nuspec"
+      ]
+    },
     "System.Runtime.Numerics/4.3.0": {
       "sha512": "yMH+MfdzHjy17l2KESnPiF2dwq7T+xLnSJar7slyimAkUh/gTrS9/UQOtv7xarskJ2/XDSNvfLGOBQPjL7PaHQ==",
       "type": "package",
@@ -13468,10 +13965,20 @@
       "path": "../Hk.Core.Entity/03.Hk.Core.Entity.csproj",
       "msbuildProject": "../Hk.Core.Entity/03.Hk.Core.Entity.csproj"
     },
+    "Hk.Core.IRepositorys/1.0.0": {
+      "type": "project",
+      "path": "../Hk.Core.IRepositorys/Hk.Core.IRepositorys.csproj",
+      "msbuildProject": "../Hk.Core.IRepositorys/Hk.Core.IRepositorys.csproj"
+    },
     "Hk.Core.Logs/1.0.0": {
       "type": "project",
       "path": "../Hk.Core.Logs/05.Hk.Core.Logs.csproj",
       "msbuildProject": "../Hk.Core.Logs/05.Hk.Core.Logs.csproj"
+    },
+    "Hk.Core.Repositorys/1.0.0": {
+      "type": "project",
+      "path": "../Hk.Core.Repositorys/Hk.Core.Repositorys.csproj",
+      "msbuildProject": "../Hk.Core.Repositorys/Hk.Core.Repositorys.csproj"
     },
     "Hk.Core.Security/1.0.0": {
       "type": "project",
@@ -13496,9 +14003,12 @@
       "Hk.Core.Data >= 1.0.0",
       "Hk.Core.DataRepository >= 1.0.0",
       "Hk.Core.Entity >= 1.0.0",
+      "Hk.Core.IRepositorys >= 1.0.0",
       "Hk.Core.Logs >= 1.0.0",
+      "Hk.Core.Repositorys >= 1.0.0",
       "Hk.Core.Util >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.1.1",
+      "Microsoft.CodeAnalysis >= 2.9.0",
       "Microsoft.NETCore.App >= 2.1.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.1.1"
     ]
@@ -13547,8 +14057,14 @@
             "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Entity\\03.Hk.Core.Entity.csproj": {
               "projectPath": "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Entity\\03.Hk.Core.Entity.csproj"
             },
+            "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.IRepositorys\\Hk.Core.IRepositorys.csproj": {
+              "projectPath": "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.IRepositorys\\Hk.Core.IRepositorys.csproj"
+            },
             "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Logs\\05.Hk.Core.Logs.csproj": {
               "projectPath": "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Logs\\05.Hk.Core.Logs.csproj"
+            },
+            "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Repositorys\\Hk.Core.Repositorys.csproj": {
+              "projectPath": "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Repositorys\\Hk.Core.Repositorys.csproj"
             },
             "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Util\\01.Hk.Core.Util.csproj": {
               "projectPath": "F:\\SVN\\gitPro\\Hk.Core.Framework\\Hk.Core.Util\\01.Hk.Core.Util.csproj"
@@ -13573,6 +14089,10 @@
             "target": "Package",
             "version": "[2.1.1, )",
             "autoReferenced": true
+          },
+          "Microsoft.CodeAnalysis": {
+            "target": "Package",
+            "version": "[2.9.0, )"
           },
           "Microsoft.NETCore.App": {
             "target": "Package",
