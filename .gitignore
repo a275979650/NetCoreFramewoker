@@ -260,6 +260,7 @@ paket-files/
 __pycache__/
 *.pyc
 /Hk.Core.Framework/.vs
-obj
-bin
+/Hk.Core.Framework/*.user
+/Hk.Core.Framework/*.bin
+/Hk.Core.Framework/*.obj
 
