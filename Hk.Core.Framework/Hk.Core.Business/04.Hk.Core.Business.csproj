@@ -8,6 +8,11 @@
 
   <ItemGroup>
     <Compile Remove="BaseBusiness\BaseBusiness.T.cs" />
+    <Compile Remove="Base_SysManage\CheckSignBusiness.cs" />
+    <Compile Remove="Base_SysManage\HomeBusiness.cs" />
+    <Compile Remove="Base_SysManage\HomeBusinessConfig.cs" />
+    <Compile Remove="Base_SysManage\IHomebusiness.cs" />
+    <Compile Remove="BusinessModule.cs" />
   </ItemGroup>
 
   <ItemGroup>

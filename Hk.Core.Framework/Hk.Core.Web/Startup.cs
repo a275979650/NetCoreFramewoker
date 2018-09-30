@@ -49,7 +49,7 @@ namespace Hk.Core.Web
             services.AddEventBus();
             services.AddNLog();
             services.AddOptions();
-            return services.AddUtil(new HomeBusinessConfig());
+            return services.AddUtil();
         }
 
         /// <summary>

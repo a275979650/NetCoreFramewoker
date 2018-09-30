@@ -1,5 +1,6 @@
 ﻿using Hk.Core.Business.Base_SysManage;
 using Hk.Core.Business.Common;
+using Hk.Core.IRepositorys;
 using Hk.Core.Util.Extentions;
 using Hk.Core.Util.Model;
 using Microsoft.AspNetCore.Mvc;
@@ -8,12 +9,11 @@ namespace Hk.Core.Web
 {
     public class HomeController : BaseMvcController
     {
-        public HomeController(IHomebusiness homebus)
+        private IBaseUserRepository _baseUserRepository;
+        public HomeController(IBaseUserRepository baseUserRepository)
         {
-            _homeBus = homebus;
+            _baseUserRepository = baseUserRepository;
         }
-
-        private IHomebusiness _homeBus { get; }
 
         #region 视图功能
 
@@ -63,7 +63,7 @@ namespace Hk.Core.Web
         [IgnoreLogin]
         public IActionResult SubmitLogin(string userName, string password)
         {
-            AjaxResult res = _homeBus.SubmitLogin(userName, password);
+            AjaxResult res = _baseUserRepository.SubmitLogin(userName, password);
 
             return Content(res.ToJson());
         }
