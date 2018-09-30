@@ -259,3 +259,8 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/Hk.Core.Framework/.vs
+/Hk.Core.Framework/*.user
+/Hk.Core.Framework/*.bin
+/Hk.Core.Framework/*.obj
+
