@@ -1,5 +1,4 @@
 using Hk.Core.Business.Base_SysManage;
-using Hk.Core.Entity.Base_SysManage;
 using Hk.Core.Logs;
 using Hk.Core.Logs.Extensions;
 using Hk.Core.Util.Dependency;
@@ -14,8 +13,6 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Hk.Core.Web
 {
