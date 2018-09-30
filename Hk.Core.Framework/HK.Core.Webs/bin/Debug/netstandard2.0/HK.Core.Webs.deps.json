@@ -10,7 +10,6 @@
       "HK.Core.Webs/1.0.0": {
         "dependencies": {
           "Hk.Core.Logs": "1.0.0",
-          "Microsoft.AspNetCore.Mvc.Core": "2.1.2",
           "NETStandard.Library": "2.0.3"
         },
         "runtime": {
