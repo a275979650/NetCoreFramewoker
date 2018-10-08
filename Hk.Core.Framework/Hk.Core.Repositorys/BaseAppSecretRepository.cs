@@ -1,25 +1,26 @@
-﻿using Hk.Core.Business.BaseBusiness;
+﻿using Hk.Core.Data.DbContextCore;
+using Hk.Core.Data.Repositories;
+using Hk.Core.Entity;
 using Hk.Core.Entity.Base_SysManage;
+using Hk.Core.IRepositorys;
 using Hk.Core.Util.Extentions;
 using Hk.Core.Util.Helper;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Text;
-using Hk.Core.Data.DbContextCore;
+using Hk.Core.Util.Datas;
 
-namespace Hk.Core.Business.Base_SysManage
+namespace Hk.Core.Repositorys
 {
-    public class CheckSignBusiness : BaseBusiness<Base_AppSecret,string>
+    public class BaseAppSecretRepository:BaseRepository<Base_AppSecret,string>,IBaseAppSecretRepository
     {
-        public CheckSignBusiness(IDbContextCore dbContext) : base(dbContext)
+        public BaseAppSecretRepository(IDbContextCore dbContext) : base(dbContext)
         {
         }
-        /// <summary>
-        /// 判断是否有权限操作接口
-        /// </summary>
-        /// <returns></returns>
+
         public bool IsSecurity(HttpContext context)
         {
             try
@@ -37,14 +38,72 @@ namespace Hk.Core.Business.Base_SysManage
             }
         }
 
-        /// <summary>
-        /// 获取应用密钥
-        /// </summary>
-        /// <param name="appId">应用Id</param>
-        /// <returns></returns>
         public string GetAppSecret(string appId)
         {
-            return Get().Where(x => x.AppId == appId).FirstOrDefault()?.AppSecret;
+            return Get().FirstOrDefault(x => x.AppId == appId)?.AppSecret;
+        }
+
+        public List<Base_AppSecret> GetDataList(string condition, string keyword, Pagination pagination)
+        {
+            var q = Get();
+
+            //模糊查询
+            if (!condition.IsNullOrEmpty() && !keyword.IsNullOrEmpty())
+                q = q.Where($@"{condition}.Contains(@0)", keyword);
+
+            return q.GetPagination(pagination).ToList();
+        }
+
+        public Base_AppSecret GetTheData(string id)
+        {
+            return GetSingle(id);
+        }
+
+        public void AddData(Base_AppSecret newData)
+        {
+            Add(newData);
+        }
+
+        public void UpdateData(Base_AppSecret theData)
+        {
+            Update(theData);
+        }
+
+        public void DeleteData(List<string> ids)
+        {
+            ids.ForEach(x => Delete(x));
+        }
+
+        public void SavePermission(string appId, List<string> permissions)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 构建安全的请求参数(默认签名规则)
+        /// </summary>
+        /// <param name="businessParams">业务参数（不包含校验参数）</param>
+        /// <param name="appId">应用Id</param>
+        /// <param name="appSecret">应用密钥</param>
+        public static Dictionary<string, object> BuildSafeHttpParam(Dictionary<string, object> businessParams, string appId, string appSecret)
+        {
+            Dictionary<string, object> requestParames = new Dictionary<string, object>();
+
+            if (businessParams != null)
+            {
+                foreach (var aParam in businessParams)
+                {
+                    requestParames.Add(aParam.Key, aParam.Value);
+                }
+            }
+
+            requestParames.Add("time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            requestParames.Add("appId", appId);
+
+            string sign = BuildSign(requestParames, appSecret);
+            requestParames.Add("sign", sign);
+
+            return requestParames;
         }
 
         /// <summary>
@@ -56,7 +115,6 @@ namespace Hk.Core.Business.Base_SysManage
         {
             return HttpHelper.GetAllRequestParams(context);
         }
-
         /// <summary>
         /// 检验签名是否有效
         /// </summary>
@@ -93,33 +151,6 @@ namespace Hk.Core.Business.Base_SysManage
         }
 
         /// <summary>
-        /// 构建安全的请求参数(默认签名规则)
-        /// </summary>
-        /// <param name="businessParams">业务参数（不包含校验参数）</param>
-        /// <param name="appId">应用Id</param>
-        /// <param name="appSecret">应用密钥</param>
-        public static Dictionary<string, object> BuildSafeHttpParam(Dictionary<string, object> businessParams, string appId, string appSecret)
-        {
-            Dictionary<string, object> requestParames = new Dictionary<string, object>();
-
-            if (businessParams != null)
-            {
-                foreach (var aParam in businessParams)
-                {
-                    requestParames.Add(aParam.Key, aParam.Value);
-                }
-            }
-
-            requestParames.Add("time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-            requestParames.Add("appId", appId);
-
-            string sign = BuildSign(requestParames, appSecret);
-            requestParames.Add("sign", sign);
-
-            return requestParames;
-        }
-
-        /// <summary>
         /// 构造签名
         /// </summary>
         /// <param name="needParames">需要的参数（不包括sign）</param>
@@ -144,49 +175,5 @@ namespace Hk.Core.Business.Base_SysManage
 
             return sign;
         }
-
-        /// <summary>
-        /// 基于ASCII码排序规则的String比较器
-        /// </summary>
-        class AsciiComparer : IComparer<string>
-        {
-            public int Compare(string a, string b)
-            {
-                if (a == b)
-                    return 0;
-                else if (string.IsNullOrEmpty(a))
-                    return -1;
-                else if (string.IsNullOrEmpty(b))
-                    return 1;
-                if (a.Length <= b.Length)
-                {
-                    for (int i = 0; i < a.Length; i++)
-                    {
-                        if (a[i] < b[i])
-                            return -1;
-                        else if (a[i] > b[i])
-                            return 1;
-                        else
-                            continue;
-                    }
-                    return a.Length == b.Length ? 0 : -1;
-                }
-                else
-                {
-                    for (int i = 0; i < b.Length; i++)
-                    {
-                        if (a[i] < b[i])
-                            return -1;
-                        else if (a[i] > b[i])
-                            return 1;
-                        else
-                            continue;
-                    }
-                    return 1;
-                }
-            }
-        }
-
-
     }
 }

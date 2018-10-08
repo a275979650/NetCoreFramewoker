@@ -1,5 +1,4 @@
-﻿using Hk.Core.Business.Base_SysManage;
-using Hk.Core.Entity;
+﻿using Hk.Core.Entity;
 using Hk.Core.Entity.Base_SysManage;
 using Hk.Core.IRepositorys;
 using Hk.Core.Util;
@@ -17,10 +16,10 @@ namespace Hk.Core.Business.Common
 {
     public class PermissionManager
     {
-        private string _cacheKey { get; } = "Permission";
+        private string CacheKey { get; } = "Permission";
         private string BuildCacheKey(string key)
         {
-            return $"{GlobalSwitch.ProjectName}_{_cacheKey}_{key}";
+            return $"{GlobalSwitch.ProjectName}_{CacheKey}_{key}";
         }
         private string _permissionConfigFile
         {
@@ -30,18 +29,16 @@ namespace Hk.Core.Business.Common
                 return Path.Combine(rootPath, "Config", "Permission.config");
             }
         }
-        private List<PermissionEntity> _allPermissionModules { get; set; }
-        private List<string> _allPermissionValues { get; set; }
-       //private IBaseUnitTestRepository _baseUnitTestRepository;
-        private IPermissionRoleRepository _permissionRoleRepository;
-        private IBasePermissionAppIdRepository _appIdRepository;
-        private IBaseUserRepository _baseUserRepository;
-        private IBaseUserRoleMapRepository _baseUserRoleMapRepository;
-        private IBasePermissionUserRepository _basePermissionUserRepository;
-        private IBasePermissionRoleRepository _basePermissionRoleRepository;
+        private List<PermissionEntity> AllPermissionModules { get; set; }
+        private List<string> AllPermissionValues { get; set; }
+        private readonly IPermissionRoleRepository _permissionRoleRepository;
+        private readonly IBasePermissionAppIdRepository _appIdRepository;
+        private readonly IBaseUserRepository _baseUserRepository;
+        private readonly IBaseUserRoleMapRepository _baseUserRoleMapRepository;
+        private readonly IBasePermissionUserRepository _basePermissionUserRepository;
+        private readonly IBasePermissionRoleRepository _basePermissionRoleRepository;
         public PermissionManager()
         {
-            //_baseUnitTestRepository = Ioc.DefaultContainer.GetService<IBaseUnitTestRepository>();
             _permissionRoleRepository = Ioc.DefaultContainer.GetService<IPermissionRoleRepository>(); 
             _appIdRepository = Ioc.DefaultContainer.GetService<IBasePermissionAppIdRepository>();
             _baseUserRepository = Ioc.DefaultContainer.GetService<IBaseUserRepository>();
@@ -222,8 +219,8 @@ namespace Hk.Core.Business.Common
 
            
             var userPermissions = _basePermissionUserRepository.Get().Where(x => x.UserId == userId).Select(x => x.PermissionValue).ToList();
-            var theUser = _baseUserRepository.Get().Where(x => x.UserId == userId).FirstOrDefault();
-            var roleIdList = Base_UserBusiness.GetUserRoleIds(userId);
+            var theUser = _baseUserRepository.Get().FirstOrDefault(x => x.UserId == userId);
+            var roleIdList = _baseUserRepository.GetUserRoleIds(userId);
             var rolePermissions = _basePermissionRoleRepository.Get().Where(x => roleIdList.Contains(x.RoleId)).GroupBy(x => x.PermissionValue).Select(x => x.Key).ToList();
             var existsPermissions = userPermissions.Concat(rolePermissions).Distinct();
 
@@ -265,7 +262,7 @@ namespace Hk.Core.Business.Common
         /// <returns></returns>
         public List<PermissionEntity> GetAllPermissionModules()
         {
-            return _allPermissionModules.DeepClone();
+            return AllPermissionModules.DeepClone();
         }
 
         /// <summary>
@@ -274,7 +271,7 @@ namespace Hk.Core.Business.Common
         /// <returns></returns>
         public List<string> GetAllPermissionValues()
         {
-            return _allPermissionValues.DeepClone();
+            return AllPermissionValues.DeepClone();
         }
 
         #endregion
@@ -302,7 +299,7 @@ namespace Hk.Core.Business.Common
                 });
             });
 
-            _allPermissionModules =  resList;
+            AllPermissionModules =  resList;
         }
         private void InitAllPermissionValues()
         {
@@ -316,7 +313,7 @@ namespace Hk.Core.Business.Common
                 });
             });
 
-            _allPermissionValues = resList;
+            AllPermissionValues = resList;
         }
         private List<PermissionEntity> GetPermissionModules(List<string> hasPermissions)
         {

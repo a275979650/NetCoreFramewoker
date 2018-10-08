@@ -1,21 +1,21 @@
-﻿using System;
-using Hk.Core.Business.Base_SysManage;
-using Hk.Core.Data.DbContextCore;
+﻿using Hk.Core.Data.DbContextCore;
 using Hk.Core.Entity.Base_SysManage;
+using Hk.Core.IRepositorys;
 using Hk.Core.Util.Datas;
 using Hk.Core.Util.Extentions;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
 {
     [Area("Base_SysManage")]
     public class Base_DatabaseLinkController : BaseMvcController
     {
-        private Base_DatabaseLinkBusiness _base_DatabaseLinkBusiness;
+        private readonly IBaseDatabaseLinkRepository _baseDatabaseLinkRepository;
 
-        public Base_DatabaseLinkController(IDbContextCore dbContext)
+        public Base_DatabaseLinkController(IBaseDatabaseLinkRepository baseDatabaseLinkRepository)
         {
-            _base_DatabaseLinkBusiness = new Base_DatabaseLinkBusiness(dbContext);
+            _baseDatabaseLinkRepository = baseDatabaseLinkRepository;
         }
         #region 视图功能
 
@@ -26,7 +26,7 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
 
         public ActionResult Form(string id)
         {
-            var theData = id.IsNullOrEmpty() ? new Base_DatabaseLink() : _base_DatabaseLinkBusiness.GetTheData(id);
+            var theData = id.IsNullOrEmpty() ? new Base_DatabaseLink() : _baseDatabaseLinkRepository.GetTheData(id);
 
             return View(theData);
         }
@@ -43,7 +43,7 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
         /// <returns></returns>
         public ActionResult GetDataList(string condition, string keyword, Pagination pagination)
         {
-            var dataList = _base_DatabaseLinkBusiness.GetDataList(condition, keyword, pagination);
+            var dataList = _baseDatabaseLinkRepository.GetDataList(condition, keyword, pagination);
 
             return Content(pagination.BuildTableResult_DataGrid(dataList).ToJson());
         }
@@ -62,11 +62,11 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
             {
                 theData.Id = Guid.NewGuid().ToSequentialGuid();
 
-                _base_DatabaseLinkBusiness.AddData(theData);
+                _baseDatabaseLinkRepository.AddData(theData);
             }
             else
             {
-                _base_DatabaseLinkBusiness.UpdateData(theData);
+                _baseDatabaseLinkRepository.UpdateData(theData);
             }
 
             return Success();
@@ -78,7 +78,7 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
         /// <param name="theData">删除的数据</param>
         public ActionResult DeleteData(string ids)
         {
-            _base_DatabaseLinkBusiness.DeleteData(ids.ToList<string>());
+            _baseDatabaseLinkRepository.DeleteData(ids.ToList<string>());
 
             return Success("删除成功！");
         }

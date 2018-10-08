@@ -43,6 +43,7 @@ namespace Hk.Core.Data.DbContextCore
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // 添加实体的配置
             MappingEntityTypes(modelBuilder);
             base.OnModelCreating(modelBuilder);
         }
@@ -56,6 +57,7 @@ namespace Hk.Core.Data.DbContextCore
             var list = types?.Where(t =>
                 t.IsClass && !t.IsGenericType && !t.IsAbstract &&
                 t.GetInterfaces().Any(m => m.IsAssignableFrom(typeof(BaseModel<>)))).ToList();
+
             if (list != null && list.Any())
             {
                 list.ForEach(t =>

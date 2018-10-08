@@ -7,7 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="BaseBusiness\BaseBusiness.T.cs" />
+    <Compile Remove="OrganSet\**" />
+    <EmbeddedResource Remove="OrganSet\**" />
+    <None Remove="OrganSet\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Base_UserModel.cs" />
+    <Compile Remove="BusinessModule.cs" />
   </ItemGroup>
 
   <ItemGroup>

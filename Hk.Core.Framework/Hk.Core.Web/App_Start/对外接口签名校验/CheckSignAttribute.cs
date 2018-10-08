@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Hk.Core.Business.Base_SysManage;
-using Hk.Core.Data.DbContextCore;
+﻿using Hk.Core.IRepositorys;
 using Hk.Core.Util;
 using Hk.Core.Util.Enum;
 using Hk.Core.Util.Extentions;
@@ -10,6 +7,8 @@ using Hk.Core.Util.Model;
 using Hk.Core.Web.Common;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using System;
+using System.Collections.Generic;
 
 namespace Hk.Core.Web
 {
@@ -18,11 +17,11 @@ namespace Hk.Core.Web
     /// </summary>
     public class CheckSignAttribute : Attribute, IActionFilter
     {
-        private CheckSignBusiness _checkSignBusiness { get; }
+        private readonly IBaseAppSecretRepository _baseAppSecretRepository;
 
         public CheckSignAttribute()
         {
-            _checkSignBusiness = new CheckSignBusiness(Ioc.DefaultContainer.GetService<IDbContextCore>());
+            _baseAppSecretRepository = Ioc.DefaultContainer.GetService<IBaseAppSecretRepository>();
         }
         /// <summary>
         /// Action执行之前执行
@@ -45,7 +44,7 @@ namespace Hk.Core.Web
                 return;
 
             //需要签名
-            if (!_checkSignBusiness.IsSecurity(filterContext.HttpContext))
+            if (!_baseAppSecretRepository.IsSecurity(filterContext.HttpContext))
             {
                 AjaxResult res = new AjaxResult
                 {

@@ -1,13 +1,10 @@
-﻿using Hk.Core.Business.Base_SysManage;
-using Hk.Core.Entity.Base_SysManage;
+﻿using Hk.Core.Entity.Base_SysManage;
+using Hk.Core.IRepositorys;
 using Hk.Core.Util.Datas;
 using Hk.Core.Util.Extentions;
 using Hk.Core.Web.Common;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using Hk.Core.Business.Common;
-using Hk.Core.Data.DbContextCore;
-using Hk.Core.IRepositorys;
 
 
 namespace Hk.Core.Web
@@ -15,10 +12,10 @@ namespace Hk.Core.Web
     [Area("Base_SysManage")]
     public class Base_AppSecretController : BaseMvcController
     {
-        private Base_AppSecretBusiness _base_AppSecretBusiness { get; }
-        public Base_AppSecretController(IDbContextCore dbContext)
+        private readonly IBaseAppSecretRepository _baseAppSecretRepository;
+        public Base_AppSecretController(IBaseAppSecretRepository baseAppSecretRepository)
         {
-            _base_AppSecretBusiness = new Base_AppSecretBusiness(dbContext);
+            _baseAppSecretRepository = baseAppSecretRepository;
         }
 
 
@@ -31,7 +28,7 @@ namespace Hk.Core.Web
 
         public IActionResult Form(string id)
         {
-            var theData = id.IsNullOrEmpty() ? new Base_AppSecret() : _base_AppSecretBusiness.GetTheData(id);
+            var theData = id.IsNullOrEmpty() ? new Base_AppSecret() : _baseAppSecretRepository.GetTheData(id);
 
             return View(theData);
         }
@@ -55,7 +52,7 @@ namespace Hk.Core.Web
         /// <returns></returns>
         public IActionResult GetDataList(string condition, string keyword, Pagination pagination)
         {
-            var dataList = _base_AppSecretBusiness.GetDataList(condition, keyword, pagination);
+            var dataList = _baseAppSecretRepository.GetDataList(condition, keyword, pagination);
 
             return Content(pagination.BuildTableResult_DataGrid(dataList).ToJson());
         }
@@ -74,11 +71,11 @@ namespace Hk.Core.Web
             {
                 theData.Id = Guid.NewGuid().ToSequentialGuid();
 
-                _base_AppSecretBusiness.AddData(theData);
+                _baseAppSecretRepository.AddData(theData);
             }
             else
             {
-                _base_AppSecretBusiness.UpdateData(theData);
+                _baseAppSecretRepository.UpdateData(theData);
             }
 
             return Success();
@@ -90,7 +87,7 @@ namespace Hk.Core.Web
         /// <param name="theData">删除的数据</param>
         public IActionResult DeleteData(string ids)
         {
-            _base_AppSecretBusiness.DeleteData(ids.ToList<string>());
+            _baseAppSecretRepository.DeleteData(ids.ToList<string>());
 
             return Success("删除成功！");
         }

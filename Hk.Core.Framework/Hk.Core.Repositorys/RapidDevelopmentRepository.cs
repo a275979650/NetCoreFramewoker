@@ -3,43 +3,30 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Hk.Core.Business.BaseBusiness;
 using Hk.Core.Data.DbContextCore;
+using Hk.Core.Data.Repositories;
 using Hk.Core.Entity.Base_SysManage;
+using Hk.Core.IRepositorys;
 using Hk.Core.Util.Datas;
 using Hk.Core.Util.Extentions;
 using Hk.Core.Util.Helper;
 using Hk.Core.Util.Model;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Hk.Core.Business.Base_SysManage
+namespace Hk.Core.Repositorys
 {
-    public class RapidDevelopmentBusiness : BaseBusiness<Base_DatabaseLink,string>
+    public class RapidDevelopmentRepository:BaseRepository<Base_DatabaseLink,string>, IRapidDevelopmentRepository
     {
-        public RapidDevelopmentBusiness(IDbContextCore dbContext) : base(dbContext)
+        public RapidDevelopmentRepository(IDbContextCore dbContext, IHostingEnvironment hostingEnvironment) : base(dbContext)
         {
-        }
-        static RapidDevelopmentBusiness()
-        {
-            _contentRootPath = AutofacHelper.GetService<IHostingEnvironment>().ContentRootPath;
+            _contentRootPath = hostingEnvironment.ContentRootPath;
         }
 
-        #region 外部接口
-
-        /// <summary>
-        /// 获取所有数据库连接
-        /// </summary>
-        /// <returns></returns>
         public List<Base_DatabaseLink> GetAllDbLink()
         {
             return Get().ToList();
         }
 
-        /// <summary>
-        /// 获取数据库所有表
-        /// </summary>
-        /// <param name="linkId">数据库连接Id</param>
-        /// <returns></returns>
         public List<DbTableInfo> GetDbTableList(string linkId)
         {
             if (linkId.IsNullOrEmpty())
@@ -48,52 +35,10 @@ namespace Hk.Core.Business.Base_SysManage
                 return GetTheDbHelper(linkId).GetDbAllTables();
         }
 
-        /// <summary>
-        /// 生成代码
-        /// </summary>
-        /// <param name="linkId">连接Id</param>
-        /// <param name="areaName">区域名</param>
-        /// <param name="tables">表列表</param>
-        /// <param name="buildType">需要生成类型</param>
         public void BuildCode(string linkId, string areaName, string tables, string buildType)
         {
-            //内部成员初始化
-            _dbHelper = GetTheDbHelper(linkId);
-            GetDbTableList(linkId).ForEach(aTable => { _dbTableInfoDic.Add(aTable.TableName, aTable); });
-
-            List<string> tableList = tables.ToList<string>();
-            List<string> buildTypeList = buildType.ToList<string>();
-            tableList.ForEach(aTable =>
-            {
-                var tableFieldInfo = _dbHelper.GetDbTableInfo(aTable);
-                //实体层
-                if (buildTypeList.Exists(x => x.ToLower() == "entity"))
-                {
-                    BuildEntity(tableFieldInfo, areaName, aTable);
-                }
-
-                //业务层
-                if (buildTypeList.Exists(x => x.ToLower() == "business"))
-                {
-                    BuildBusiness(areaName, aTable);
-                }
-
-                //控制器
-                if (buildTypeList.Exists(x => x.ToLower() == "controller"))
-                {
-                    BuildController(areaName, aTable);
-                }
-
-                //视图
-                if (buildTypeList.Exists(x => x.ToLower() == "view"))
-                {
-                    BuildView(tableFieldInfo, areaName, aTable);
-                }
-            });
+            throw new System.NotImplementedException();
         }
-
-        #endregion
-
         #region 私有成员
 
         /// <summary>
@@ -591,14 +536,8 @@ namespace Hk.Core.Web
 
         private Dictionary<string, DbTableInfo> _dbTableInfoDic { get; set; } = new Dictionary<string, DbTableInfo>();
 
-        private static string _contentRootPath { get; }
+        private string _contentRootPath;
 
         #endregion
-
-        #region 数据模型
-
-        #endregion
-
-
     }
 }

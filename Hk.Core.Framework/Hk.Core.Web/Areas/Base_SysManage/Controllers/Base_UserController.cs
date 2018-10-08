@@ -1,21 +1,21 @@
-﻿using Hk.Core.Business.Base_SysManage;
-using Hk.Core.Data.DbContextCore;
+﻿using Hk.Core.Data.DbContextCore;
 using Hk.Core.Entity.Base_SysManage;
 using Hk.Core.Util.Datas;
 using Hk.Core.Util.Extentions;
 using Hk.Core.Web.Common;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using Hk.Core.IRepositorys;
 
 namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
 {
     [Area("Base_SysManage")]
     public class Base_UserController : BaseMvcController
     {
-        private Base_UserBusiness _base_UserBusiness;
-        public Base_UserController(IDbContextCore dbContext)
+        private readonly IBaseUserRepository _baseUserRepository;
+        public Base_UserController(IBaseUserRepository baseUserRepository)
         {
-            _base_UserBusiness = new Base_UserBusiness(dbContext);
+            _baseUserRepository = baseUserRepository;
         }
 
         #region 视图功能
@@ -27,7 +27,7 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
 
         public ActionResult Form(string id)
         {
-            var theData = id.IsNullOrEmpty() ? new Base_User() : _base_UserBusiness.GetTheData(id);
+            var theData = id.IsNullOrEmpty() ? new Base_User() : _baseUserRepository.GetTheData(id);
 
             return View(theData);
         }
@@ -56,7 +56,7 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
         /// <returns></returns>
         public ActionResult GetDataList(string condition, string keyword, Pagination pagination)
         {
-            var dataList = _base_UserBusiness.GetDataList(condition, keyword, pagination);
+            var dataList = _baseUserRepository.GetDataList(condition, keyword, pagination);
 
             return Content(pagination.BuildTableResult_DataGrid(dataList).ToJson());
         }
@@ -80,14 +80,14 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
                 theData.Id = Guid.NewGuid().ToSequentialGuid();
                 theData.UserId = Guid.NewGuid().ToSequentialGuid();
 
-                _base_UserBusiness.AddData(theData);
+                _baseUserRepository.AddData(theData);
             }
             else
             {
-                _base_UserBusiness.UpdateData(theData);
+                _baseUserRepository.UpdateData(theData);
             }
 
-            _base_UserBusiness.SetUserRole(theData.UserId, roleIdList);
+            _baseUserRepository.SetUserRole(theData.UserId, roleIdList);
             PermissionManage.UpdateUserPermissionCache(theData.UserId);
 
             return Success();
@@ -99,7 +99,7 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
         /// <param name="theData">删除的数据</param>
         public ActionResult DeleteData(string ids)
         {
-            _base_UserBusiness.DeleteData(ids.ToList<string>());
+            _baseUserRepository.DeleteData(ids.ToList<string>());
 
             return Success("删除成功！");
         }
@@ -111,7 +111,7 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
         /// <param name="newPwd">新密码</param>
         public ActionResult ChangePwd(string oldPwd, string newPwd)
         {
-            var res = _base_UserBusiness.ChangePwd(oldPwd, newPwd);
+            var res = _baseUserRepository.ChangePwd(oldPwd, newPwd);
 
             return Content(res.ToJson());
         }

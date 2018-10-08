@@ -1,4 +1,3 @@
-using Hk.Core.Business.Base_SysManage;
 using Hk.Core.Logs;
 using Hk.Core.Logs.Extensions;
 using Hk.Core.Util.Dependency;
@@ -46,7 +45,7 @@ namespace Hk.Core.Web
             services.AddEventBus();
             services.AddNLog();
             services.AddOptions();
-            return services.AddUtil(new HomeBusinessConfig());
+            return services.AddUtil();
         }
 
         /// <summary>

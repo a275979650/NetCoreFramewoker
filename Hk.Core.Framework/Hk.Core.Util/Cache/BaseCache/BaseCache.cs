@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Hk.Core.Util;
-using Hk.Core.Util.Cache;
 using Hk.Core.Util.Extentions;
 
-namespace Hk.Core.Business.Cache
+namespace Hk.Core.Util.Cache.BaseCache
 {
-    public class BaseCache<T> : IBaseCache<T> where T:class ,new()
+    public class BaseCache<T> : IBaseCache<T> where T : class
     {
         #region 构造函数
 

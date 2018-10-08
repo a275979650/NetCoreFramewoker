@@ -1,5 +1,5 @@
-﻿using Hk.Core.Business.Base_SysManage;
-using Hk.Core.Data.DbContextCore;
+﻿using Hk.Core.Data.DbContextCore;
+using Hk.Core.IRepositorys;
 using Hk.Core.Util.Datas;
 using Hk.Core.Util.Extentions;
 using Microsoft.AspNetCore.Mvc;
@@ -9,11 +9,11 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
     [Area("Base_SysManage")]
     public class RapidDevelopmentController : BaseMvcController
     {
-        private RapidDevelopmentBusiness _rapidDevelopmentBus;
+        private readonly IRapidDevelopmentRepository _rapidDevelopmentRepository;
 
-        public RapidDevelopmentController(IDbContextCore dbContext)
+        public RapidDevelopmentController(IRapidDevelopmentRepository rapidDevelopmentRepository)
         {
-            _rapidDevelopmentBus = new RapidDevelopmentBusiness(dbContext);
+            _rapidDevelopmentRepository = rapidDevelopmentRepository;
         }
 
         #region 视图功能
@@ -38,7 +38,7 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
         /// <returns></returns>
         public ActionResult GetAllDbLink()
         {
-            var dataList = _rapidDevelopmentBus.GetAllDbLink();
+            var dataList = _rapidDevelopmentRepository.GetAllDbLink();
 
             return Content(dataList.ToJson());
         }
@@ -57,7 +57,7 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
                 RecordCount = int.MaxValue
             };
 
-            return Content(pagination.BuildTableResult_DataGrid(_rapidDevelopmentBus.GetDbTableList(linkId)).ToJson());
+            return Content(pagination.BuildTableResult_DataGrid(_rapidDevelopmentRepository.GetDbTableList(linkId)).ToJson());
         }
 
         #endregion
@@ -73,7 +73,7 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
         /// <param name="buildType">需要生成类型</param>
         public ActionResult BuildCode(string linkId, string areaName, string tables, string buildType)
         {
-            _rapidDevelopmentBus.BuildCode(linkId, areaName, tables, buildType);
+            _rapidDevelopmentRepository.BuildCode(linkId, areaName, tables, buildType);
 
             return Success("生成成功！");
         }

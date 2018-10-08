@@ -1,6 +1,5 @@
-﻿using Hk.Core.Business.Base_SysManage;
-using Hk.Core.Data.DbContextCore;
-using Hk.Core.Entity.Base_SysManage;
+﻿using Hk.Core.Entity.Base_SysManage;
+using Hk.Core.IRepositorys;
 using Hk.Core.Util.Datas;
 using Hk.Core.Util.Extentions;
 using Hk.Core.Web.Common;
@@ -12,10 +11,13 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
     [Area("Base_SysManage")]
     public class Base_SysRoleController : BaseMvcController
     {
-        private Base_SysRoleBusiness _base_SysRoleBusiness;
-        public Base_SysRoleController(IDbContextCore dbContext)
+        private readonly IBaseSysRoleRepository _baseSysRoleRepository;
+        private readonly IBasePermissionRoleRepository _basePermissionRoleRepository;
+        public Base_SysRoleController(IBaseSysRoleRepository baseSysRoleRepository,
+            IBasePermissionRoleRepository basePermissionRoleRepository)
         {
-            _base_SysRoleBusiness = new Base_SysRoleBusiness(dbContext);
+            _baseSysRoleRepository = baseSysRoleRepository;
+            _basePermissionRoleRepository = basePermissionRoleRepository;
         }
 
         #region 视图功能
@@ -27,7 +29,7 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
 
         public ActionResult Form(string id)
         {
-            var theData = id.IsNullOrEmpty() ? new Base_SysRole() : _base_SysRoleBusiness.GetTheData(id);
+            var theData = id.IsNullOrEmpty() ? new Base_SysRole() : _baseSysRoleRepository.GetTheData(id);
 
             return View(theData);
         }
@@ -48,10 +50,11 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
         /// </summary>
         /// <param name="condition">查询类型</param>
         /// <param name="keyword">关键字</param>
+        /// <param name="pagination"></param>
         /// <returns></returns>
         public ActionResult GetDataList(string condition, string keyword, Pagination pagination)
         {
-            var dataList = _base_SysRoleBusiness.GetDataList(condition, keyword, pagination);
+            var dataList = _baseSysRoleRepository.GetDataList(condition, keyword, pagination);
 
             return Content(pagination.BuildTableResult_DataGrid(dataList).ToJson());
         }
@@ -68,7 +71,7 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
                 PageIndex = 1,
                 PageRows = int.MaxValue
             };
-            var dataList = _base_SysRoleBusiness.GetDataList(null, null, pagination);
+            var dataList = _baseSysRoleRepository.GetDataList(null, null, pagination);
 
             return Content(dataList.ToJson());
         }
@@ -88,11 +91,11 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
                 theData.Id = Guid.NewGuid().ToSequentialGuid();
                 theData.RoleId = Guid.NewGuid().ToSequentialGuid();
 
-                _base_SysRoleBusiness.AddData(theData);
+                _baseSysRoleRepository.AddData(theData);
             }
             else
             {
-                _base_SysRoleBusiness.UpdateData(theData);
+                _baseSysRoleRepository.UpdateData(theData);
             }
 
             return Success();
@@ -104,7 +107,7 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
         /// <param name="theData">删除的数据</param>
         public ActionResult DeleteData(string ids)
         {
-            _base_SysRoleBusiness.DeleteData(ids.ToList<string>());
+            _baseSysRoleRepository.DeleteData(ids.ToList<string>());
 
             PermissionManage.ClearUserPermissionCache();
 
@@ -119,7 +122,7 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
         /// <returns></returns>
         public ActionResult SavePermission(string roleId, string permissions)
         {
-            _base_SysRoleBusiness.SavePermission(roleId, permissions.ToList<string>());
+            _basePermissionRoleRepository.SavePermission(roleId, permissions.ToList<string>());
 
             PermissionManage.ClearUserPermissionCache();
 
