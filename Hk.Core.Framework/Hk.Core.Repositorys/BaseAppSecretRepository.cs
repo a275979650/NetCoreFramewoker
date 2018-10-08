@@ -9,7 +9,9 @@ using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Text;
+using Hk.Core.Util.Datas;
 
 namespace Hk.Core.Repositorys
 {
@@ -40,6 +42,43 @@ namespace Hk.Core.Repositorys
         {
             return Get().FirstOrDefault(x => x.AppId == appId)?.AppSecret;
         }
+
+        public List<Base_AppSecret> GetDataList(string condition, string keyword, Pagination pagination)
+        {
+            var q = Get();
+
+            //模糊查询
+            if (!condition.IsNullOrEmpty() && !keyword.IsNullOrEmpty())
+                q = q.Where($@"{condition}.Contains(@0)", keyword);
+
+            return q.GetPagination(pagination).ToList();
+        }
+
+        public Base_AppSecret GetTheData(string id)
+        {
+            return GetSingle(id);
+        }
+
+        public void AddData(Base_AppSecret newData)
+        {
+            Add(newData);
+        }
+
+        public void UpdateData(Base_AppSecret theData)
+        {
+            Update(theData);
+        }
+
+        public void DeleteData(List<string> ids)
+        {
+            ids.ForEach(x => Delete(x));
+        }
+
+        public void SavePermission(string appId, List<string> permissions)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// 构建安全的请求参数(默认签名规则)
         /// </summary>

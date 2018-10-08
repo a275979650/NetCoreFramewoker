@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DbContextCore\Base_UserModel.cs" />
+    <Compile Remove="Models\IEntityMappingConfiguration.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Citms.EntityFrameworkCore.Oracle" Version="1.0.0" />
     <PackageReference Include="EntityFrameworkCore.Triggers" Version="1.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.3" />

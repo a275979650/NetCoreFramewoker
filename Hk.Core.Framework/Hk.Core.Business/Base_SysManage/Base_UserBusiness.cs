@@ -1,18 +1,19 @@
 ﻿using Hk.Core.Business.BaseBusiness;
 using Hk.Core.Business.Cache;
 using Hk.Core.Business.Common;
+using Hk.Core.Data.DbContextCore;
 using Hk.Core.Entity.Base_SysManage;
+using Hk.Core.IRepositorys;
 using Hk.Core.Util.Datas;
+using Hk.Core.Util.Extentions;
+using Hk.Core.Util.Helper;
 using Hk.Core.Util.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
-using Hk.Core.Data.DbContextCore;
-using Hk.Core.IRepositorys;
-using Hk.Core.Util.Extentions;
-using Hk.Core.Util.Helper;
+
 
 namespace Hk.Core.Business.Base_SysManage
 {
@@ -21,6 +22,7 @@ namespace Hk.Core.Business.Base_SysManage
         private IBaseUserRoleMapRepository _baseUserRoleMapRepository;
         private IBasePermissionUserRepository _basePermissionUserRepository;
         private IBasePermissionRoleRepository _basePermissionRoleRepository;
+        private IBaseSysRoleRepository _baseSysRoleRepository;
         private static Base_UserModelCache _cache { get; } = new Base_UserModelCache(Ioc.DefaultContainer.GetService<IDbContextCore>());
         private static UserRoleCache _userRoleCache { get; } = new UserRoleCache();
         public Base_UserBusiness(IDbContextCore dbContext) : base(dbContext)
@@ -28,6 +30,7 @@ namespace Hk.Core.Business.Base_SysManage
             _baseUserRoleMapRepository = Ioc.DefaultContainer.GetService<IBaseUserRoleMapRepository>();
             _basePermissionUserRepository = Ioc.DefaultContainer.GetService<IBasePermissionUserRepository>();
             _basePermissionRoleRepository = Ioc.DefaultContainer.GetService<IBasePermissionRoleRepository>();
+            _baseSysRoleRepository = Ioc.DefaultContainer.GetService<IBaseSysRoleRepository>();
         }
         #region 外部接口
 
@@ -40,10 +43,8 @@ namespace Hk.Core.Business.Base_SysManage
         public List<Base_UserModel> GetDataList(string condition, string keyword, Pagination pagination)
         {
             var whereExpre = LinqHelper.True<Base_UserModel>();
-            Expression<Func<Base_User, Base_UserModel>> selectExpre = a => new Base_UserModel
-            {
+            Expression<Func<Base_User, Base_UserModel>> selectExpre = user => new Base_UserModel{};
 
-            };
 
             selectExpre = selectExpre.BuildExtendSelectExpre();
 
@@ -61,7 +62,6 @@ namespace Hk.Core.Business.Base_SysManage
 
             return list;
         }
-
         /// <summary>
         /// 获取指定的单条数据
         /// </summary>

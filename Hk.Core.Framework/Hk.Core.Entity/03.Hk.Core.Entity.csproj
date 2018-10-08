@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Base_SysManage\Base_UserModel.cs" />
+    <Compile Remove="Base_SysManage\BaseUserModelConfiguration.cs" />
+    <Compile Remove="Base_UserModel.cs" />
   </ItemGroup>
 
   <ItemGroup>

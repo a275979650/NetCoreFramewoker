@@ -8,10 +8,15 @@
 
   <ItemGroup>
     <Compile Remove="BaseBusiness\BaseBusiness.T.cs" />
+    <Compile Remove="Base_SysManage\Base_AppSecretBusiness.cs" />
+    <Compile Remove="Base_SysManage\Base_DatabaseLinkBusiness.cs" />
+    <Compile Remove="Base_SysManage\Base_SysRoleBusiness.cs" />
+    <Compile Remove="Base_SysManage\Base_UserModel.cs" />
     <Compile Remove="Base_SysManage\CheckSignBusiness.cs" />
     <Compile Remove="Base_SysManage\HomeBusiness.cs" />
     <Compile Remove="Base_SysManage\HomeBusinessConfig.cs" />
     <Compile Remove="Base_SysManage\IHomebusiness.cs" />
+    <Compile Remove="Base_SysManage\RapidDevelopmentBusiness.cs" />
     <Compile Remove="BusinessModule.cs" />
   </ItemGroup>
 

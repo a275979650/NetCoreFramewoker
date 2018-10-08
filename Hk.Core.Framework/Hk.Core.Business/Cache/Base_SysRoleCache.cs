@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Hk.Core.Business.Cache
 {
-    class Base_SysRoleCache : BaseCache<Base_SysRole>
+    public class Base_SysRoleCache : BaseCache<Base_SysRole>
     {
         public Base_SysRoleCache()
             : base("UserRoleCache", roleId =>

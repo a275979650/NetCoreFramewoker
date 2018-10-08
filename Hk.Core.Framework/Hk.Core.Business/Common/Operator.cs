@@ -1,4 +1,5 @@
 ﻿using Hk.Core.Business.Base_SysManage;
+using Hk.Core.Entity.Base_SysManage;
 using Hk.Core.Util;
 using Hk.Core.Util.Enum;
 using Hk.Core.Util.Extentions;
