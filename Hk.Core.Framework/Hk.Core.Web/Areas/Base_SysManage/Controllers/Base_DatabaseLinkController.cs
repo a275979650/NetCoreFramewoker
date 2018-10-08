@@ -13,7 +13,7 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
     {
         private readonly IBaseDatabaseLinkRepository _baseDatabaseLinkRepository;
 
-        public Base_DatabaseLinkController(IDbContextCore dbContext,IBaseDatabaseLinkRepository baseDatabaseLinkRepository)
+        public Base_DatabaseLinkController(IBaseDatabaseLinkRepository baseDatabaseLinkRepository)
         {
             _baseDatabaseLinkRepository = baseDatabaseLinkRepository;
         }

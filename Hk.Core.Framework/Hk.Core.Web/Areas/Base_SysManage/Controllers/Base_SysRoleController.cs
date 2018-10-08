@@ -13,7 +13,8 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
     {
         private readonly IBaseSysRoleRepository _baseSysRoleRepository;
         private readonly IBasePermissionRoleRepository _basePermissionRoleRepository;
-        public Base_SysRoleController(IBaseSysRoleRepository baseSysRoleRepository,IBasePermissionRoleRepository basePermissionRoleRepository)
+        public Base_SysRoleController(IBaseSysRoleRepository baseSysRoleRepository,
+            IBasePermissionRoleRepository basePermissionRoleRepository)
         {
             _baseSysRoleRepository = baseSysRoleRepository;
             _basePermissionRoleRepository = basePermissionRoleRepository;

@@ -22,7 +22,7 @@ namespace Hk.Core.Repositorys
         private readonly IBasePermissionUserRepository _basePermissionUserRepository;
         private readonly IBasePermissionRoleRepository _basePermissionRoleRepository;
         private readonly Base_UserModelCache _cache;
-        private UserRoleCache _userRoleCache { get; } = new UserRoleCache();
+        private readonly UserRoleCache _userRoleCache;
         public BaseUserRepository(IDbContextCore dbContext, 
             IBaseUserRoleMapRepository baseUserRoleMapRepository,
             IBasePermissionUserRepository basePermissionUserRepository, 
@@ -31,6 +31,7 @@ namespace Hk.Core.Repositorys
             _baseUserRoleMapRepository = baseUserRoleMapRepository;
             _basePermissionRoleRepository = basePermissionRoleRepository;
             _basePermissionUserRepository = basePermissionUserRepository;
+            _userRoleCache = new UserRoleCache(baseUserRoleMapRepository);
             _cache = new Base_UserModelCache(this);
         }
 

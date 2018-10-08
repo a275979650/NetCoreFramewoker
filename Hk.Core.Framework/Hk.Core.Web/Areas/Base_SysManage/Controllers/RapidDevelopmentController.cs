@@ -11,7 +11,7 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
     {
         private readonly IRapidDevelopmentRepository _rapidDevelopmentRepository;
 
-        public RapidDevelopmentController(IDbContextCore dbContext,IRapidDevelopmentRepository rapidDevelopmentRepository)
+        public RapidDevelopmentController(IRapidDevelopmentRepository rapidDevelopmentRepository)
         {
             _rapidDevelopmentRepository = rapidDevelopmentRepository;
         }

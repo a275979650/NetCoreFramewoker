@@ -13,7 +13,7 @@ namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
     public class Base_UserController : BaseMvcController
     {
         private readonly IBaseUserRepository _baseUserRepository;
-        public Base_UserController(IDbContextCore dbContext,IBaseUserRepository baseUserRepository)
+        public Base_UserController(IBaseUserRepository baseUserRepository)
         {
             _baseUserRepository = baseUserRepository;
         }
