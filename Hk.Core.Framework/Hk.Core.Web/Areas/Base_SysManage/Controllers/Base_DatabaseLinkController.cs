@@ -1,11 +1,10 @@
-﻿using System;
-using Hk.Core.Business.Base_SysManage;
-using Hk.Core.Data.DbContextCore;
+﻿using Hk.Core.Data.DbContextCore;
 using Hk.Core.Entity.Base_SysManage;
 using Hk.Core.IRepositorys;
 using Hk.Core.Util.Datas;
 using Hk.Core.Util.Extentions;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Hk.Core.Web.Areas.Base_SysManage.Controllers
 {

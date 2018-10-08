@@ -11,12 +11,14 @@
     <Compile Remove="Base_SysManage\Base_AppSecretBusiness.cs" />
     <Compile Remove="Base_SysManage\Base_DatabaseLinkBusiness.cs" />
     <Compile Remove="Base_SysManage\Base_SysRoleBusiness.cs" />
+    <Compile Remove="Base_SysManage\Base_UserBusiness.cs" />
     <Compile Remove="Base_SysManage\Base_UserModel.cs" />
     <Compile Remove="Base_SysManage\CheckSignBusiness.cs" />
     <Compile Remove="Base_SysManage\HomeBusiness.cs" />
     <Compile Remove="Base_SysManage\HomeBusinessConfig.cs" />
     <Compile Remove="Base_SysManage\IHomebusiness.cs" />
     <Compile Remove="Base_SysManage\RapidDevelopmentBusiness.cs" />
+    <Compile Remove="Base_UserModel.cs" />
     <Compile Remove="BusinessModule.cs" />
   </ItemGroup>
 
@@ -25,6 +27,10 @@
     <ProjectReference Include="..\Hk.Core.Entity\03.Hk.Core.Entity.csproj" />
     <ProjectReference Include="..\Hk.Core.IRepositorys\08.Hk.Core.IRepositorys.csproj" />
     <ProjectReference Include="..\Hk.Core.Util\01.Hk.Core.Util.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Base_SysManage\" />
   </ItemGroup>
 
 </Project>

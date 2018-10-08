@@ -1,11 +1,10 @@
 ﻿using Hk.Core.Entity.Base_SysManage;
-using Hk.Core.IRepositorys;
 using Hk.Core.Util.Helper;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
-namespace Hk.Core.Business
+namespace Hk.Core.IRepositorys
 {
     public class Base_UserModel : Base_User
     {

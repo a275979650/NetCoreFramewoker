@@ -1,5 +1,4 @@
-﻿using Hk.Core.Business.Base_SysManage;
-using Hk.Core.Business.Common;
+﻿using Hk.Core.Business.Common;
 using Hk.Core.IRepositorys;
 using Hk.Core.Util.Extentions;
 using Hk.Core.Util.Model;

@@ -1,5 +1,4 @@
-﻿using Hk.Core.Business.Base_SysManage;
-using Hk.Core.Entity;
+﻿using Hk.Core.Entity;
 using Hk.Core.Entity.Base_SysManage;
 using Hk.Core.IRepositorys;
 using Hk.Core.Util;
@@ -222,8 +221,8 @@ namespace Hk.Core.Business.Common
 
            
             var userPermissions = _basePermissionUserRepository.Get().Where(x => x.UserId == userId).Select(x => x.PermissionValue).ToList();
-            var theUser = _baseUserRepository.Get().Where(x => x.UserId == userId).FirstOrDefault();
-            var roleIdList = Base_UserBusiness.GetUserRoleIds(userId);
+            var theUser = _baseUserRepository.Get().FirstOrDefault(x => x.UserId == userId);
+            var roleIdList = _baseUserRepository.GetUserRoleIds(userId);
             var rolePermissions = _basePermissionRoleRepository.Get().Where(x => roleIdList.Contains(x.RoleId)).GroupBy(x => x.PermissionValue).Select(x => x.Key).ToList();
             var existsPermissions = userPermissions.Concat(rolePermissions).Distinct();
 

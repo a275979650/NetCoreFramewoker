@@ -1,8 +1,9 @@
-﻿using Hk.Core.Business.Base_SysManage;
-using Hk.Core.Entity.Base_SysManage;
+﻿using System.Collections.Generic;
+using Hk.Core.IRepositorys;
 using Hk.Core.Util;
 using Hk.Core.Util.Enum;
 using Hk.Core.Util.Extentions;
+using Hk.Core.Util.Helper;
 using Hk.Core.Util.Webs.WebApp;
 
 namespace Hk.Core.Business.Common
@@ -12,6 +13,7 @@ namespace Hk.Core.Business.Common
     /// </summary>
     public static class Operator
     {
+        private static IBaseUserRepository _baseUserRepository = Ioc.DefaultContainer.GetService<IBaseUserRepository>();
         /// <summary>
         /// 当前操作者UserId
         /// </summary>
@@ -26,7 +28,7 @@ namespace Hk.Core.Business.Common
             }
         }
 
-        public static Base_UserModel Property { get => Base_UserBusiness.GetTheUser(UserId); }
+        public static Base_UserModel Property => _baseUserRepository.GetTheUser(UserId);
 
         #region 操作方法
 
@@ -65,6 +67,15 @@ namespace Hk.Core.Business.Common
             return UserId == "Admin";
         }
 
+        public static Base_UserModel GetCurrentUser()
+        {
+            return _baseUserRepository.GetCurrentUser();
+        }
+
+        public static List<string> GetUserRoleIds(string userId)
+        {
+            return _baseUserRepository.GetUserRoleIds(userId);
+        }
         #endregion
     }
 }

@@ -1,20 +1,20 @@
-﻿using System.Linq;
-using Hk.Core.Business.Base_SysManage;
-using Hk.Core.Data.DbContextCore;
+﻿using Hk.Core.Data.DbContextCore;
+using Hk.Core.IRepositorys;
 using Hk.Core.Util.Datas;
 using Hk.Core.Util.Extentions;
+using System.Linq;
 
 
 namespace Hk.Core.Business.Cache
 {
     public class Base_UserModelCache : BaseCache<Base_UserModel>
     {
-        public Base_UserModelCache(IDbContextCore dbContext)
+        public Base_UserModelCache(IBaseUserRepository baseUserRepository)
             : base("Base_UserModel", userId =>
             {
                 if (userId.IsNullOrEmpty())
                     return null;
-                return new Base_UserBusiness(dbContext).GetDataList("UserId", userId, new Pagination()).FirstOrDefault();
+                return baseUserRepository.GetDataList("UserId", userId, new Pagination()).FirstOrDefault();
             })
         {
 
