@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Hk.Core.Util.Exceptions;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Hk.Core.Util.Helper
@@ -143,7 +145,6 @@ namespace Hk.Core.Util.Helper
                 return string.Empty;
             return $"{value.Substring(0, 1).ToLower()}{value.Substring(1)}";
         }
-
         #endregion
     }
 }

@@ -34,10 +34,49 @@ namespace Hk.Core.Repositorys
             else
                 return GetTheDbHelper(linkId).GetDbAllTables();
         }
-
+        /// <summary>
+        /// 生成代码
+        /// </summary>
+        /// <param name="linkId">连接Id</param>
+        /// <param name="areaName">区域名</param>
+        /// <param name="tables">表列表</param>
+        /// <param name="buildType">需要生成类型</param>
         public void BuildCode(string linkId, string areaName, string tables, string buildType)
         {
-            throw new System.NotImplementedException();
+            //内部成员初始化
+            _dbHelper = GetTheDbHelper(linkId);
+            GetDbTableList(linkId).ForEach(aTable => { _dbTableInfoDic.Add(aTable.TableName, aTable); });
+
+            List<string> tableList = tables.ToList<string>();
+            List<string> buildTypeList = buildType.ToList<string>();
+            tableList.ForEach(aTable =>
+            {
+                var tableFieldInfo = _dbHelper.GetDbTableInfo(aTable);
+                //实体层
+                if (buildTypeList.Exists(x => x.ToLower() == "entity"))
+                {
+                    BuildEntity(tableFieldInfo, areaName, aTable);
+                }
+
+                //业务层
+                if (buildTypeList.Exists(x => x.ToLower() == "business"))
+                {;
+                    BuildIRepository(areaName,aTable);
+                    BuildRepository(areaName,aTable);
+                }
+
+                //控制器
+                if (buildTypeList.Exists(x => x.ToLower() == "controller"))
+                {
+                    BuildController(areaName, aTable);
+                }
+
+                //视图
+                if (buildTypeList.Exists(x => x.ToLower() == "view"))
+                {
+                    BuildView(tableFieldInfo, areaName, aTable);
+                }
+            });
         }
         #region 私有成员
 
@@ -50,7 +89,7 @@ namespace Hk.Core.Repositorys
         private void BuildEntity(List<TableInfo> tableInfo, string areaName, string tableName)
         {
             string entityPath = _contentRootPath.Replace("Hk.Core.Web", "Hk.Core.Entity");
-            string filePath = Path.Combine(entityPath, areaName, $"{tableName}.cs");
+            string filePath = Path.Combine(entityPath, areaName, $"{tableName.ToCamelFirstNameUpper()}.cs");
             string nameSpace = $@"Hk.Core.Entity.{areaName}";
 
             _dbHelper.SaveEntityToFile(tableInfo, tableName, _dbTableInfoDic[tableName].Description, filePath,
@@ -58,26 +97,87 @@ namespace Hk.Core.Repositorys
         }
 
         /// <summary>
-        /// 生成业务逻辑代码
+        /// 生成存储接口
         /// </summary>
-        /// <param name="areaName">区域名</param>
-        /// <param name="entityName">实体名</param>
-        private void BuildBusiness(string areaName, string entityName)
+        /// <param name="areaName"></param>
+        /// <param name="entityName"></param>
+        private void BuildIRepository(string areaName, string entityName)
         {
+            entityName = entityName.ToCamelFirstNameUpper();
+            #region 代码构造
             string code =
-                $@"using Hk.Core.Entity.{areaName};
-using Hk.Core.Util;
-using System;
-using System.Collections.Generic;
+                $@"using System.Collections.Generic;
+using Hk.Core.Data.Repositories;
+using Hk.Core.Entity.{areaName};
+using Hk.Core.Util.Datas;
+using Hk.Core.Util.Dependency;
+namespace Hk.Core.IRepositorys.{areaName}
+{{
+    public interface I{entityName}Repository:IRepository<{entityName},string>,IScopeDependency
+    {{
+        /// <summary>
+        /// 获取数据列表
+        /// </summary>
+        /// <param name=""condition"">查询类型</param>
+        /// <param name=""keyword"">关键字</param>
+        /// <returns></returns>
+        List<{entityName}> GetDataList(string condition, string keyword, Pagination pagination);
+        /// <summary>
+        /// 获取指定的单条数据
+        /// </summary>
+        /// <param name=""id"">主键</param>
+        /// <returns></returns>
+        {entityName} GetTheData(string id);
+        /// <summary>
+        /// 添加数据
+        /// </summary>
+        /// <param name=""newData"">数据</param>
+        void AddData({entityName} newData);
+        /// <summary>
+        /// 更新数据
+        /// </summary>
+        void UpdateData({entityName} theData);
+        /// <summary>
+        /// 删除数据
+        /// </summary>
+        /// <param name=""theData"">删除的数据</param>
+        void DeleteData(List<string> ids);
+    }}
+}}";
+
+
+            #endregion
+            string businessPath = _contentRootPath.Replace("Hk.Core.Web", "Hk.Core.IRepositorys");
+            string filePath = Path.Combine(businessPath, areaName, $"I{entityName}Repository.cs");
+
+            FileHelper.WriteTxt(code, filePath, FileMode.Create);
+        }
+        /// <summary>
+        /// 生成存储实现
+        /// </summary>
+        /// <param name="areaName"></param>
+        /// <param name="entityName"></param>
+        private void BuildRepository(string areaName, string entityName)
+        {
+            entityName = entityName.ToCamelFirstNameUpper();
+            #region 代码构造
+            string code =
+$@"using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
+using Hk.Core.Data.DbContextCore;
+using Hk.Core.Data.Repositories;
+using Hk.Core.Entity.{areaName};
+using Hk.Core.IRepositorys.{areaName};
 using Hk.Core.Util.Datas;
 using Hk.Core.Util.Extentions;
-using Hk.Core.Business.BaseBusiness;
-namespace Hk.Core.Business.{areaName}
+namespace Hk.Core.Repositorys.{areaName}
 {{
-    public class {entityName}Business : BaseBusiness<{entityName}>
+    public class {entityName}Repository:BaseRepository<{entityName},string>,I{entityName}Repository
     {{
+        public {entityName}Repository(IDbContextCore dbContext) : base(dbContext)
+        {{
+        }}
         #region 外部接口
 
         /// <summary>
@@ -88,7 +188,7 @@ namespace Hk.Core.Business.{areaName}
         /// <returns></returns>
         public List<{entityName}> GetDataList(string condition, string keyword, Pagination pagination)
         {{
-            var q = GetIQueryable();
+            var q = Get();
 
             //模糊查询
             if (!condition.IsNullOrEmpty() && !keyword.IsNullOrEmpty())
@@ -104,7 +204,7 @@ namespace Hk.Core.Business.{areaName}
         /// <returns></returns>
         public {entityName} GetTheData(string id)
         {{
-            return GetEntity(id);
+             return GetSingle(id);
         }}
 
         /// <summary>
@@ -113,7 +213,7 @@ namespace Hk.Core.Business.{areaName}
         /// <param name=""newData"">数据</param>
         public void AddData({entityName} newData)
         {{
-            Insert(newData);
+            Add(newData);
         }}
 
         /// <summary>
@@ -130,7 +230,7 @@ namespace Hk.Core.Business.{areaName}
         /// <param name=""theData"">删除的数据</param>
         public void DeleteData(List<string> ids)
         {{
-            Delete(ids);
+            ids.ForEach(x => Delete(x));
         }}
 
         #endregion
@@ -138,18 +238,17 @@ namespace Hk.Core.Business.{areaName}
         #region 私有成员
 
         #endregion
-
-        #region 数据模型
-
-        #endregion
     }}
 }}";
-            string businessPath = _contentRootPath.Replace("Hk.Core.Web", "Hk.Core.Business");
-            string filePath = Path.Combine(businessPath, areaName, $"{entityName}Business.cs");
+
+
+            #endregion
+
+            string businessPath = _contentRootPath.Replace("Hk.Core.Web", "Hk.Core.Repositorys");
+            string filePath = Path.Combine(businessPath, areaName, $"{entityName}Repository.cs");
 
             FileHelper.WriteTxt(code, filePath, FileMode.Create);
         }
-
         /// <summary>
         /// 生成控制器代码
         /// </summary>
@@ -157,22 +256,28 @@ namespace Hk.Core.Business.{areaName}
         /// <param name="entityName">实体名</param>
         private void BuildController(string areaName, string entityName)
         {
-            string varBusiness = $@"_{entityName.ToFirstLowerStr()}Business";
+            string varName = $@"_{entityName.ToCamelFirstNameLower()}Repository";
+            string interfaceName = $"I{entityName.ToCamelFirstNameUpper()}Repository";
+            string valName = $"{entityName.ToCamelFirstNameLower()}Repository";
+            entityName = entityName.ToCamelFirstNameUpper();
+            #region 代码构造
             string code =
-                $@"using Hk.Core.Business.{areaName};
+$@"using System;
+using Hk.Core.IRepositorys.{areaName};
 using Hk.Core.Entity.{areaName};
-using Hk.Core.Util;
-using Microsoft.AspNetCore.Mvc;
-using System;
 using Hk.Core.Util.Datas;
 using Hk.Core.Util.Extentions;
+using Microsoft.AspNetCore.Mvc;
 namespace Hk.Core.Web
 {{
     [Area(""{areaName}"")]
     public class {entityName}Controller : BaseMvcController
     {{
-        {entityName}Business {varBusiness} = new {entityName}Business();
-
+        private readonly {interfaceName} {varName};
+        public {entityName}Controller({interfaceName} {valName})
+        {{
+            {varName} = {valName};
+        }}
         #region 视图功能
 
         public IActionResult Index()
@@ -182,7 +287,7 @@ namespace Hk.Core.Web
 
         public IActionResult Form(string id)
         {{
-            var theData = id.IsNullOrEmpty() ? new {entityName}() : {varBusiness}.GetTheData(id);
+            var theData = id.IsNullOrEmpty() ? new {entityName}() : {varName}.GetTheData(id);
 
             return View(theData);
         }}
@@ -199,7 +304,7 @@ namespace Hk.Core.Web
         /// <returns></returns>
         public IActionResult GetDataList(string condition, string keyword, Pagination pagination)
         {{
-            var dataList = {varBusiness}.GetDataList(condition, keyword, pagination);
+            var dataList = {varName}.GetDataList(condition, keyword, pagination);
 
             return Content(pagination.BuildTableResult_DataGrid(dataList).ToJson());
         }}
@@ -218,11 +323,11 @@ namespace Hk.Core.Web
             {{
                 theData.Id = Guid.NewGuid().ToSequentialGuid();
 
-                {varBusiness}.AddData(theData);
+                {varName}.AddData(theData);
             }}
             else
             {{
-                {varBusiness}.UpdateData(theData);
+                {varName}.UpdateData(theData);
             }}
 
             return Success();
@@ -234,7 +339,7 @@ namespace Hk.Core.Web
         /// <param name=""theData"">删除的数据</param>
         public IActionResult DeleteData(string ids)
         {{
-            {varBusiness}.DeleteData(ids.ToList<string>());
+            {varName}.DeleteData(ids.ToList<string>());
 
             return Success(""删除成功！"");
         }}
@@ -242,6 +347,10 @@ namespace Hk.Core.Web
         #endregion
     }}
 }}";
+
+
+            #endregion
+
             string filePath = Path.Combine(_contentRootPath, "Areas", areaName, "Controllers",
                 $"{entityName}Controller.cs");
 
@@ -256,6 +365,7 @@ namespace Hk.Core.Web
         /// <param name="entityName">实体名</param>
         private void BuildView(List<TableInfo> tableInfoList, string areaName, string entityName)
         {
+            entityName = entityName.ToCamelFirstNameUpper();
             //生成Index页面
             StringBuilder searchConditionSelectHtml = new StringBuilder();
             StringBuilder tableColsBuilder = new StringBuilder();
@@ -276,7 +386,7 @@ namespace Hk.Core.Web
                 //数据表格列
                 string end = (index == tableInfoList.Count - 2) ? "" : ",";
                 string newCol = $@"
-                {{ title: '{aField.Description}', field: '{aField.Name}', width: 200 }}{end}";
+                {{ title: '{aField.Description}', field: '{aField.Name.ToCamelFirstNameUpper()}', width: 200 }}{end}";
                 tableColsBuilder.Append(newCol);
 
                 //Form页面中的Html
@@ -293,7 +403,7 @@ namespace Hk.Core.Web
                 formStringBuilder.AppendLine("<td>");
                 formStringBuilder.AppendLine(
                     $@"   <input name=""{aField.Name}"" value=""@obj.{
-                            aField.Name
+                            aField.Name.ToCamelFirstNameUpper()
                         }"" class=""easyui-textbox"" data-options=""width:'200px',required:true"">");
                 formStringBuilder.AppendLine("</td>");
                 if (tableInfoList.Count > 10)
@@ -319,8 +429,10 @@ namespace Hk.Core.Web
             int maxHeight = (tableInfoList.Count - 1) * 35 + 200;
             maxHeight = maxHeight > 800 ? 800 : maxHeight;
             int maxWidth = tableInfoList.Count > 10 ? 800 : 500;
+
+            #region index代码构造
             string indexHtml =
-                $@"@{{
+$@"@{{
     Layout = ""~/Views/Shared/_Layout_List.cshtml"";
 }}
 
@@ -429,8 +541,8 @@ namespace Hk.Core.Web
 
             dialogComfirm('确认删除吗？', function () {{
                 $.postJSON(rootUrl + '{areaName}/{
-                        entityName
-                    }/DeleteData', {{ ids: JSON.stringify(ids) }}, function (resJson) {{
+                       entityName
+                   }/DeleteData', {{ ids: JSON.stringify(ids) }}, function (resJson) {{
                     if (resJson.Success) {{
                         $('#dataTable').datagrid('clearSelections').datagrid('clearChecked');
                         $('#dataTable').datagrid('reload');
@@ -444,13 +556,17 @@ namespace Hk.Core.Web
         }});
     }});
 </script>";
+
+
+            #endregion
+
             string indexPath = Path.Combine(_contentRootPath, "Areas", areaName, "Views", entityName, "Index.cshtml");
 
             FileHelper.WriteTxt(indexHtml, indexPath, FileMode.Create);
 
-            //生成Form页面
+            #region Form页面代码构造
             string formHtml =
-                $@"@using Hk.Core.Entity.{areaName};
+                $@" @using Hk.Core.Entity.{areaName};
 @using Hk.Core.Util;
 @using Hk.Core.Util.Extentions
 @{{
@@ -500,6 +616,11 @@ namespace Hk.Core.Web
     }});
 </script>
 ";
+
+
+            #endregion
+            //生成Form页面
+
             string formPath = Path.Combine(_contentRootPath, "Areas", areaName, "Views", entityName, "Form.cshtml");
 
             FileHelper.WriteTxt(formHtml, formPath, FileMode.Create);

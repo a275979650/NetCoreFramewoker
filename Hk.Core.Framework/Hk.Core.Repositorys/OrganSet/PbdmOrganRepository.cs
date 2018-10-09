@@ -1,17 +1,17 @@
-using Hk.Core.Business.BaseBusiness;
-using Hk.Core.Data.DbContextCore;
-using Hk.Core.Entity.OrganSet;
-using Hk.Core.Util.Datas;
-using Hk.Core.Util.Extentions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
-
-namespace Hk.Core.Business.OrganSet
+using Hk.Core.Data.DbContextCore;
+using Hk.Core.Data.Repositories;
+using Hk.Core.Entity.OrganSet;
+using Hk.Core.IRepositorys.OrganSet;
+using Hk.Core.Util.Datas;
+using Hk.Core.Util.Extentions;
+namespace Hk.Core.Repositorys.OrganSet
 {
-    public class PBDM_ORGANBusiness : BaseBusiness<PBDM_ORGAN,string>
+    public class PbdmOrganRepository:BaseRepository<PbdmOrgan,string>,IPbdmOrganRepository
     {
-        public PBDM_ORGANBusiness(IDbContextCore dbContext) : base(dbContext)
+        public PbdmOrganRepository(IDbContextCore dbContext) : base(dbContext)
         {
         }
         #region 外部接口
@@ -22,7 +22,7 @@ namespace Hk.Core.Business.OrganSet
         /// <param name="condition">查询类型</param>
         /// <param name="keyword">关键字</param>
         /// <returns></returns>
-        public List<PBDM_ORGAN> GetDataList(string condition, string keyword, Pagination pagination)
+        public List<PbdmOrgan> GetDataList(string condition, string keyword, Pagination pagination)
         {
             var q = Get();
 
@@ -38,16 +38,16 @@ namespace Hk.Core.Business.OrganSet
         /// </summary>
         /// <param name="id">主键</param>
         /// <returns></returns>
-        public PBDM_ORGAN GetTheData(string id)
+        public PbdmOrgan GetTheData(string id)
         {
-            return GetSingle(id);
+             return GetSingle(id);
         }
 
         /// <summary>
         /// 添加数据
         /// </summary>
         /// <param name="newData">数据</param>
-        public void AddData(PBDM_ORGAN newData)
+        public void AddData(PbdmOrgan newData)
         {
             Add(newData);
         }
@@ -55,7 +55,7 @@ namespace Hk.Core.Business.OrganSet
         /// <summary>
         /// 更新数据
         /// </summary>
-        public void UpdateData(PBDM_ORGAN theData)
+        public void UpdateData(PbdmOrgan theData)
         {
             Update(theData);
         }
@@ -66,17 +66,12 @@ namespace Hk.Core.Business.OrganSet
         /// <param name="theData">删除的数据</param>
         public void DeleteData(List<string> ids)
         {
-            ids.ForEach(x => { Delete(x); });
-          
+            ids.ForEach(x => Delete(x));
         }
 
         #endregion
 
         #region 私有成员
-
-        #endregion
-
-        #region 数据模型
 
         #endregion
     }

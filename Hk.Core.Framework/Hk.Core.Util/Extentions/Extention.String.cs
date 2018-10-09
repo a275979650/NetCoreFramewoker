@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
+using Hk.Core.Util.Exceptions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -285,7 +286,81 @@ namespace Hk.Core.Util.Extentions
         {
             return str.Substring(0, 1).ToLower() + str.Substring(1);
         }
-
+        /// 将下划线大写方式命名的字符串转换为驼峰式。如果转换前的下划线大写方式命名的字符串为空，则返回空字符串。</br>
+        ///例如：HELLO_WORLD->helloWorld
+        /// @param name 转换前的下划线大写方式命名的字符串
+        /// @return 转换后的驼峰式命名的字符串
+        public static string ToCamelFirstNameLower(this string name)
+        {
+            StringBuilder result = new StringBuilder();
+            // 快速检查
+            if (string.IsNullOrEmpty(name))
+            {
+                // 没必要转换
+                return "";
+            }
+            else if (!name.Contains("_"))
+            {
+                // 不含下划线，仅将首字母小写
+                return name.Substring(0, 1).ToLower() + name.Substring(1);
+            }
+            // 用下划线将原始字符串分割
+            String[] camels = name.Split(new[] { "_" }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string camel in camels)
+            {
+                // 跳过原始字符串中开头、结尾的下换线或双重下划线
+                if (camel.IsEmpty())
+                {
+                    continue;
+                }
+                // 处理真正的驼峰片段
+                if (result.Length == 0)
+                {
+                    // 第一个驼峰片段，全部字母都小写
+                    result.Append(camel.ToLower());
+                }
+                else
+                {
+                    // 其他的驼峰片段，首字母大写
+                    result.Append(camel.Substring(0, 1).ToUpper());
+                    result.Append(camel.Substring(1).ToLower());
+                }
+            }
+            return result.ToString();
+        }
+        /// 将下划线大写方式命名的字符串转换为驼峰式。如果转换前的下划线大写方式命名的字符串为空，则返回空字符串。
+        ///例如：HELLO_WORLD->HelloWorld
+        /// @param name 转换前的下划线大写方式命名的字符串
+        /// @return 转换后的驼峰式命名的字符串
+        public static string ToCamelFirstNameUpper(this string name)
+        {
+            StringBuilder result = new StringBuilder();
+            // 快速检查
+            if (string.IsNullOrEmpty(name))
+            {
+                // 没必要转换
+                return "";
+            }
+            else if (!name.Contains("_"))
+            {
+                // 不含下划线，仅将首字母大写
+                return name.Substring(0, 1).ToUpper() + name.Substring(1).ToLower();
+            }
+            // 用下划线将原始字符串分割
+            String[] camels = name.Split(new[] { "_" }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string camel in camels)
+            {
+                // 跳过原始字符串中开头、结尾的下换线或双重下划线
+                if (camel.IsEmpty())
+                {
+                    continue;
+                }
+                // 其他的驼峰片段，首字母大写
+                result.Append(camel.Substring(0, 1).ToUpper());
+                result.Append(camel.Substring(1).ToLower());
+            }
+            return result.ToString();
+        }
         /// <summary>
         /// 转为网络终结点IPEndPoint
         /// </summary>=
