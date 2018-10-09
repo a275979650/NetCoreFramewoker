@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -328,6 +329,11 @@ namespace Hk.Core.Data.DbContextCore
         {
             return await this.SaveChangesWithTriggersAsync(SaveChangesAsync, acceptAllChangesOnSuccess,
                 cancellationToken: cancellationToken);
+        }
+
+        public virtual DataTable GetDataTableWithSql(string sql)
+        {
+            throw new NotImplementedException();
         }
     }
 }

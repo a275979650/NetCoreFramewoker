@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
@@ -60,6 +61,6 @@ namespace Hk.Core.Data.DbContextCore
         int SaveChangesWithTriggers(bool acceptAllChangesOnSuccess);
         Task<int> SaveChangesWithTriggersAsync(CancellationToken cancellationToken = default(CancellationToken));
         Task<int> SaveChangesWithTriggersAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default(CancellationToken));
-
+        DataTable GetDataTableWithSql(string sql);
     }
 }

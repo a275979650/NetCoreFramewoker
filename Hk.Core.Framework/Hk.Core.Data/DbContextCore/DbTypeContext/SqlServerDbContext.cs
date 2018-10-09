@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
@@ -105,6 +106,32 @@ namespace Hk.Core.Data.DbContextCore.DbTypeContext
                 pageSize = pageSize,
                 total = total
             };
+        }
+
+        public override DataTable GetDataTableWithSql(string sql)
+        {
+            using (var conn = Database.GetDbConnection() as SqlConnection ?? new SqlConnection(_option.ConnectionString))
+            {
+                if (conn.State != ConnectionState.Open)
+                {
+                    conn.Open();
+                }
+
+                using (SqlCommand cmd = new SqlCommand(sql,conn))
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = sql;
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(sql, conn)
+                    {
+                        SelectCommand = cmd
+                    };
+                    DataSet table = new DataSet();
+                    adapter.Fill(table);
+
+                    return table.Tables[0];
+                }
+            }
         }
     }
 }
