@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Reflection;
 using System.Threading.Tasks;
 using Hk.Core.Data.DbContextCore;
 using Hk.Core.Data.Models;
@@ -16,222 +12,164 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Hk.Core.Data.Repositories
 {
-    public abstract class BaseRepository<T,TKey>: IRepository<T,TKey> where T : BaseModel<TKey>
+    public class BaseRepository:IRepository
     {
         protected readonly IDbContextCore DbContext;
-        protected DbSet<T> DbSet => DbContext.GetDbSet<T>();
 
         protected BaseRepository(IDbContextCore dbContext)
         {
             DbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
             DbContext.EnsureCreatedAsync();
         }
+
         public void BeginTransaction()
         {
-            throw new NotImplementedException();
-        }
-
-        public void BulkInsert(List<T> entities)
-        {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
 
         public bool EndTransaction()
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
 
-        public void ExecuteSql(string sql)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ExecuteSql(string sql, List<DbParameter> spList)
-        {
-            throw new NotImplementedException();
-        }
-
-
-
-        #region Insert
-
-        public virtual int Add(T entity, bool withTrigger = false)
+        public virtual int Add<T>(T entity, bool withTrigger = false) where T : class, new()
         {
             return DbContext.Add(entity, withTrigger);
         }
 
-        public virtual async Task<int> AddAsync(T entity, bool withTrigger = false)
+        public virtual async Task<int> AddAsync<T>(T entity, bool withTrigger = false) where T : class, new()
         {
             return await DbContext.AddAsync(entity, withTrigger);
         }
 
-        public virtual int AddRange(ICollection<T> entities, bool withTrigger = false)
+        public virtual int AddRange<T>(ICollection<T> entities, bool withTrigger = false) where T : class, new()
         {
             return DbContext.AddRange(entities, withTrigger);
         }
 
-        public virtual async Task<int> AddRangeAsync(ICollection<T> entities, bool withTrigger = false)
+        public virtual async Task<int> AddRangeAsync<T>(ICollection<T> entities, bool withTrigger = false) where T : class, new()
         {
             return await DbContext.AddRangeAsync(entities, withTrigger);
         }
 
-        public virtual void BulkInsert(IList<T> entities, string destinationTableName = null)
+        public virtual void BulkInsert<T, TKey>(IList<T> entities, string destinationTableName = null) where T : BaseModel<TKey>
         {
             DbContext.BulkInsert<T, TKey>(entities, destinationTableName);
         }
 
-        #endregion
 
-        #region Update
+        public virtual int Delete<T, TKey>(TKey key, bool withTrigger = false) where T : BaseModel<TKey>
+        {
+            return DbContext.Delete<T, TKey>(key, withTrigger);
+        }
+        public virtual int Delete<T>(Expression<Func<T, bool>> @where) where T : class, new()
+        {
+            return DbContext.Delete(where);
+        }
 
-        public virtual int Edit(T entity, bool withTrigger = false)
+        public virtual async Task<int> DeleteAsync<T>(Expression<Func<T, bool>> @where) where T : class, new()
+        {
+            return await DbContext.DeleteAsync(where);
+        }
+
+        public virtual int Edit<T, TKey>(T entity, bool withTrigger = false) where T : BaseModel<TKey>
         {
             return DbContext.Edit<T, TKey>(entity, withTrigger);
         }
 
-        public virtual int EditRange(ICollection<T> entities, bool withTrigger = false)
+
+        public virtual int EditRange<T>(ICollection<T> entities, bool withTrigger = false) where T : class, new()
         {
             return DbContext.EditRange(entities, withTrigger);
         }
-        /// <summary>
-        /// update query datas by columns.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="where"></param>
-        /// <param name="updateExp"></param>
-        /// <returns></returns>
-        public virtual int BatchUpdate(Expression<Func<T, bool>> @where, Expression<Func<T, T>> updateExp)
+
+        public virtual int BatchUpdate<T>(Expression<Func<T, bool>> @where, Expression<Func<T, T>> updateExp) where T : class, new()
         {
             return DbContext.Update(where, updateExp);
         }
 
-        public virtual async Task<int> BatchUpdateAsync(Expression<Func<T, bool>> @where, Expression<Func<T, T>> updateExp)
+        public virtual async Task<int> BatchUpdateAsync<T>(Expression<Func<T, bool>> @where, Expression<Func<T, T>> updateExp) where T : class, new()
         {
             return await DbContext.UpdateAsync(@where, updateExp);
         }
-        public virtual int Update(T model, bool withTrigger = false, params string[] updateColumns)
+
+        public virtual int Update<T>(T model, bool withTrigger = false, params string[] updateColumns) where T : class, new()
         {
             DbContext.Update(model, withTrigger, updateColumns);
             return DbContext.SaveChanges();
         }
 
-        public virtual int Update(Expression<Func<T, bool>> @where, Expression<Func<T, T>> updateFactory)
+        public virtual int Update<T>(Expression<Func<T, bool>> @where, Expression<Func<T, T>> updateFactory) where T : class, new()
         {
             return DbContext.Update(where, updateFactory);
         }
 
-        public virtual async Task<int> UpdateAsync(Expression<Func<T, bool>> @where, Expression<Func<T, T>> updateFactory)
+        public virtual async Task<int> UpdateAsync<T>(Expression<Func<T, bool>> @where, Expression<Func<T, T>> updateFactory) where T : class, new()
         {
             return await DbContext.UpdateAsync(where, updateFactory);
         }
 
-        #endregion
-
-        #region Delete
-
-        public virtual int Delete(TKey key, bool withTrigger = false)
-        {
-            return DbContext.Delete<T, TKey>(key, withTrigger);
-        }
-
-        public virtual int Delete(Expression<Func<T, bool>> @where)
-        {
-            return DbContext.Delete(where);
-        }
-
-        public virtual async Task<int> DeleteAsync(Expression<Func<T, bool>> @where)
-        {
-            return await DbContext.DeleteAsync(where);
-        }
-
-
-        #endregion
-
-        #region Query
-
-        public virtual int Count(Expression<Func<T, bool>> @where = null)
+        public virtual int Count<T>(Expression<Func<T, bool>> @where = null) where T : class, new()
         {
             return DbContext.Count(where);
         }
 
-        public virtual async Task<int> CountAsync(Expression<Func<T, bool>> @where = null)
+        public virtual async Task<int> CountAsync<T>(Expression<Func<T, bool>> @where = null) where T : class, new()
         {
             return await DbContext.CountAsync(where);
         }
 
-
-        public virtual bool Exist(Expression<Func<T, bool>> @where = null)
+        public virtual bool Exist<T>(Expression<Func<T, bool>> @where = null) where T : class, new()
         {
             return DbContext.Exist(where);
         }
 
-        public virtual async Task<bool> ExistAsync(Expression<Func<T, bool>> @where = null)
+        public virtual async Task<bool> ExistAsync<T>(Expression<Func<T, bool>> @where = null) where T : class, new()
         {
             return await DbContext.ExistAsync(where);
         }
 
-        /// <summary>
-        /// 根据主键获取实体。建议：如需使用Include和ThenInclude请重载此方法。
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        public virtual T GetSingle(TKey key)
+        public virtual T GetSingle<T, TKey>(TKey key) where T : BaseModel<TKey>
         {
-            return DbSet.Find(key);
+            DbSet<T> dbSet  =  DbContext.GetDbSet<T>();
+            return dbSet.Find(key);
         }
 
-        public T GetSingle(TKey key, Func<IQueryable<T>, IQueryable<T>> includeFunc)
+        public virtual T GetSingle<T, TKey>(TKey key, Func<IQueryable<T>, IQueryable<T>> includeFunc) where T : BaseModel<TKey>
         {
-            if (includeFunc == null) return GetSingle(key);
-            return includeFunc(DbSet.Where(m => m.Id.Equal(key))).AsNoTracking().FirstOrDefault();
+            DbSet<T> dbSet = DbContext.GetDbSet<T>();
+            if (includeFunc == null) return dbSet.Find(key);
+            return includeFunc(dbSet.Where(m => m.Id.Equal(key))).AsNoTracking().FirstOrDefault();
         }
 
-        /// <summary>
-        /// 根据主键获取实体。建议：如需使用Include和ThenInclude请重载此方法。
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        public virtual async Task<T> GetSingleAsync(TKey key)
+        public virtual async Task<T> GetSingleAsync<T,TKey>(TKey key) where T : BaseModel<TKey>
         {
             return await DbContext.FindAsync<T, TKey>(key);
         }
 
-        /// <summary>
-        /// 获取单个实体。建议：如需使用Include和ThenInclude请重载此方法。
-        /// </summary>
-        public virtual T GetSingleOrDefault(Expression<Func<T, bool>> @where = null)
+        public virtual T GetSingleOrDefault<T>(Expression<Func<T, bool>> @where = null) where T : class, new()
         {
             return DbContext.GetSingleOrDefault(@where);
         }
 
-        /// <summary>
-        /// 获取单个实体。建议：如需使用Include和ThenInclude请重载此方法。
-        /// </summary>
-        public virtual async Task<T> GetSingleOrDefaultAsync(Expression<Func<T, bool>> @where = null)
+        public virtual async Task<T> GetSingleOrDefaultAsync<T>(Expression<Func<T, bool>> @where = null) where T : class, new()
         {
             return await DbContext.GetSingleOrDefaultAsync(where);
         }
 
-        /// <summary>
-        /// 获取实体列表。建议：如需使用Include和ThenInclude请重载此方法。
-        /// </summary>
-        public virtual IQueryable<T> Get(Expression<Func<T, bool>> @where = null)
+        public virtual IQueryable<T> Get<T>(Expression<Func<T, bool>> @where = null) where T : class, new()
         {
-            return (@where != null ? DbSet.Where(@where).AsNoTracking() : DbSet.AsNoTracking());
+            DbSet<T> dbSet = DbContext.GetDbSet<T>();
+            return (@where != null ? dbSet.Where(@where).AsNoTracking() : dbSet.AsNoTracking());
         }
 
-        /// <summary>
-        /// 获取实体列表。建议：如需使用Include和ThenInclude请重载此方法。
-        /// </summary>
-        public virtual async Task<List<T>> GetAsync(Expression<Func<T, bool>> @where = null)
+        public virtual async Task<List<T>> GetAsync<T>(Expression<Func<T, bool>> @where = null) where T : class, new()
         {
-            return await DbSet.Where(where).ToListAsync();
+            DbSet<T> dbSet = DbContext.GetDbSet<T>();
+            return await dbSet.Where(where).ToListAsync();
         }
 
-        /// <summary>
-        /// 分页获取实体列表。建议：如需使用Include和ThenInclude请重载此方法。
-        /// </summary>
-        public virtual IEnumerable<T> GetByPagination(Expression<Func<T, bool>> @where, int pageSize, int pageIndex, bool asc = true, params Func<T, object>[] @orderby)
+        public virtual IEnumerable<T> GetByPagination<T>(Expression<Func<T, bool>> @where, int pageSize, int pageIndex, bool asc = true, params Func<T, object>[] @orderby) where T : class, new()
         {
             var filter = Get(where).AsEnumerable();
             if (orderby != null)
@@ -244,27 +182,26 @@ namespace Hk.Core.Data.Repositories
             return filter.Skip(pageSize * (pageIndex - 1)).Take(pageSize);
         }
 
-        #endregion
 
-        #region other
-
-        public IEnumerator<T> GetEnumerator()
+        public virtual DataTable GetDataTableWithSql(string sql)
         {
-            return DbSet.AsQueryable().GetEnumerator();
+            return DbContext.GetDataTableWithSql(sql);
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
+        public virtual DataTable GetDataTableWithSql(string sql, List<DbParameter> parameters)
         {
-            return GetEnumerator();
+            throw new System.NotImplementedException();
         }
 
-        public Type ElementType => DbSet.AsQueryable().ElementType;
-        public Expression Expression => DbSet.AsQueryable().Expression;
-        public IQueryProvider Provider => DbSet.AsQueryable().Provider;
+        public virtual void ExecuteSql(string sql)
+        {
+            throw new System.NotImplementedException();
+        }
 
-
-        #endregion
-
+        public virtual void ExecuteSql(string sql, List<DbParameter> spList)
+        {
+            throw new System.NotImplementedException();
+        }
         #region IDisposable Support
         private bool disposedValue = false; // 要检测冗余调用
 
