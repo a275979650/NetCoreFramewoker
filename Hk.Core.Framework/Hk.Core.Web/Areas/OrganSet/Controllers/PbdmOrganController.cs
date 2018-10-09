@@ -1,20 +1,18 @@
-using Hk.Core.Business.OrganSet;
-using Hk.Core.Data.DbContextCore;
+using System;
+using Hk.Core.IRepositorys.OrganSet;
 using Hk.Core.Entity.OrganSet;
 using Hk.Core.Util.Datas;
 using Hk.Core.Util.Extentions;
 using Microsoft.AspNetCore.Mvc;
-using System;
-
 namespace Hk.Core.Web
 {
     [Area("OrganSet")]
-    public class PBDM_ORGANController : BaseMvcController
+    public class PbdmOrganController : BaseMvcController
     {
-        private PBDM_ORGANBusiness _pBDM_ORGANBusiness;
-        public PBDM_ORGANController(IDbContextCore dbContext)
+        private readonly IPbdmOrganRepository _pbdmOrganRepository;
+        public PbdmOrganController(IPbdmOrganRepository pbdmOrganRepository)
         {
-            _pBDM_ORGANBusiness = new PBDM_ORGANBusiness(dbContext);
+            _pbdmOrganRepository = pbdmOrganRepository;
         }
         #region 视图功能
 
@@ -25,7 +23,7 @@ namespace Hk.Core.Web
 
         public IActionResult Form(string id)
         {
-            var theData = id.IsNullOrEmpty() ? new PBDM_ORGAN() : _pBDM_ORGANBusiness.GetTheData(id);
+            var theData = id.IsNullOrEmpty() ? new PbdmOrgan() : _pbdmOrganRepository.GetTheData(id);
 
             return View(theData);
         }
@@ -42,7 +40,7 @@ namespace Hk.Core.Web
         /// <returns></returns>
         public IActionResult GetDataList(string condition, string keyword, Pagination pagination)
         {
-            var dataList = _pBDM_ORGANBusiness.GetDataList(condition, keyword, pagination);
+            var dataList = _pbdmOrganRepository.GetDataList(condition, keyword, pagination);
 
             return Content(pagination.BuildTableResult_DataGrid(dataList).ToJson());
         }
@@ -55,17 +53,17 @@ namespace Hk.Core.Web
         /// 保存
         /// </summary>
         /// <param name="theData">保存的数据</param>
-        public IActionResult SaveData(PBDM_ORGAN theData)
+        public IActionResult SaveData(PbdmOrgan theData)
         {
             if(theData.Id.IsNullOrEmpty())
             {
                 theData.Id = Guid.NewGuid().ToSequentialGuid();
 
-                _pBDM_ORGANBusiness.AddData(theData);
+                _pbdmOrganRepository.AddData(theData);
             }
             else
             {
-                _pBDM_ORGANBusiness.UpdateData(theData);
+                _pbdmOrganRepository.UpdateData(theData);
             }
 
             return Success();
@@ -77,7 +75,7 @@ namespace Hk.Core.Web
         /// <param name="theData">删除的数据</param>
         public IActionResult DeleteData(string ids)
         {
-            _pBDM_ORGANBusiness.DeleteData(ids.ToList<string>());
+            _pbdmOrganRepository.DeleteData(ids.ToList<string>());
 
             return Success("删除成功！");
         }

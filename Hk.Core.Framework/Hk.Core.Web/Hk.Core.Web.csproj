@@ -5,10 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Areas\OrganSet\**" />
-    <Content Remove="Areas\OrganSet\**" />
-    <EmbeddedResource Remove="Areas\OrganSet\**" />
-    <None Remove="Areas\OrganSet\**" />
+    <Compile Remove="Areas\OrganSet\Controllers\PBDM_ORGANController.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +32,10 @@
     <Content Update="nlog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\OrganSet\Controllers\" />
   </ItemGroup>
 
 </Project>

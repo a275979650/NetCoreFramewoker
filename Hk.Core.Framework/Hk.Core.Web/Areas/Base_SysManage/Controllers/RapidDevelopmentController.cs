@@ -1,5 +1,4 @@
-﻿using Hk.Core.Data.DbContextCore;
-using Hk.Core.IRepositorys;
+﻿using Hk.Core.IRepositorys;
 using Hk.Core.Util.Datas;
 using Hk.Core.Util.Extentions;
 using Microsoft.AspNetCore.Mvc;

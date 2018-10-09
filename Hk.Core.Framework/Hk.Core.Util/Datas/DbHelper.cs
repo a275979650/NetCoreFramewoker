@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.IO;
+using System.Linq;
 using Hk.Core.Util.Enum;
 using Hk.Core.Util.Extentions;
 using Hk.Core.Util.Helper;
@@ -193,6 +194,7 @@ namespace Hk.Core.Util.Datas
                 {
                     conn.Open();
                 }
+
                 using (DbCommand cmd = dbProviderFactory.CreateCommand())
                 {
                     cmd.Connection = conn;
@@ -205,6 +207,7 @@ namespace Hk.Core.Util.Datas
                             cmd.Parameters.Add(item);
                         }
                     }
+
                     count = cmd.ExecuteNonQuery();
 
                     return count;
@@ -252,7 +255,8 @@ namespace Hk.Core.Util.Datas
         /// <param name="filePath">文件路径（包含文件名）</param>
         /// <param name="nameSpace">实体命名空间</param>
         /// <param name="schemaName">架构（模式）名</param>
-        public virtual void SaveEntityToFile(List<TableInfo> infos, string tableName, string tableDescription, string filePath, string nameSpace, string schemaName = null)
+        public virtual void SaveEntityToFile(List<TableInfo> infos, string tableName, string tableDescription,
+            string filePath, string nameSpace, string schemaName = null)
         {
             string properties = "";
             string schema = "";
@@ -260,36 +264,48 @@ namespace Hk.Core.Util.Datas
                 schema = $@", Schema = ""{schemaName}""";
             infos.ForEach(item =>
             {
-                string isKey = item.IsKey ? @"
-        [Key]" : "";
+                string isKey = item.IsKey
+                    ? @"[Key]"
+                    : "";
                 Type type = DbTypeStr_To_CsharpType(item.Type);
                 string isNullable = item.IsNullable && type.IsValueType ? "?" : "";
                 string description = item.Description.IsNullOrEmpty() ? item.Name : item.Description;
+                string columnName = description.Split(new[] {"."}, StringSplitOptions.RemoveEmptyEntries)
+                    .LastOrDefault();
+                string idTest = item.Name == "Id" ? "override " : "";
                 string newPropertyStr =
-$@"
+        $@"
         /// <summary>
         /// {description}
-        /// </summary>{isKey}
-        public {type.Name}{isNullable} {item.Name} {{ get; set; }}
-";
+        /// </summary>
+        {isKey}
+        [Column(""{columnName}"")]
+        public {idTest}{type.Name}{isNullable} {item.Name.ToCamelFirstNameUpper()} {{ get; set; }}
+        ";
                 properties += newPropertyStr;
             });
+
+            #region 代码构造
+
             string fileStr =
 $@"using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Hk.Core.Data.Models;
 {_extraUsingNamespace}
 namespace {nameSpace}
 {{
     /// <summary>
     /// {tableDescription}
     /// </summary>
-    [Table(""{tableName}""{schema})]
-    public class {tableName}
+    [Table(""{tableDescription}""{schema}), Serializable]
+    public class {tableName.ToCamelFirstNameUpper()}:BaseModel<string>
     {{
-{properties}
+        {properties}
     }}
 }}";
+
+            #endregion
             FileHelper.WriteTxt(fileStr, filePath, FileMode.Create);
         }
 
